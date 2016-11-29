@@ -1,6 +1,4 @@
 <?php
-    require('functions.php');
-    special_echo('routes.phpを通りました');
     // http://192.168.33.10/seed_blog/ほげ
     // ↓↓↓↓↓
     // http://192.168.33.10/seed_blog/routes.php?url=ほげ
