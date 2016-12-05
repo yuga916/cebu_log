@@ -1,5 +1,7 @@
 <?php
-    //require('functions.php');
+    session_start();
+    require('functions.php');
+    special_echo('routesを通りました');
     // http://192.168.33.10/seed_blog/ほげ
     // ↓↓↓↓↓
     // http://192.168.33.10/seed_blog/routes.php?url=ほげ
@@ -26,12 +28,13 @@
         // $post = array('title' => 'タイトル', 'body' => '本文');
         $post = $_POST;
         //special_var_dump($post);
-    }
-    if (!empty($_FILES)) {
-        $fileName=$_FILES['picture_path']['name'];
-        $files=$_FILES;
-        //special_var_dump($_FILES);
+    
+        if (!empty($_FILES)) {
+            $fileName=$_FILES['picture_path']['name'];
+            $files=$_FILES;
+            //special_var_dump($_FILES);
 
+        }
     }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');

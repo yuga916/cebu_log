@@ -1,36 +1,22 @@
 <div>
-	<form method="POST" action="/cebu_log/pictures/create" enctype="multipart/form-data">
-		<input type="hidden" name="id" value="1">
+	<form method="POST" action="/cebu_log/pictures/post_validation" enctype="multipart/form-data">
+		<input type="hidden" name="owner_id" value="1">
 
         <div>
         	<p>紹介するお店を名前を指定してください</p>
-        	<table>
-	          <thead>
-	            <tr>
-	              <th><div>お店の名前</div></th>
-	            </tr>
-	          </thead>
-
-
-        	<input type="hidden" name="s_id" value="1">
-        	</table>
+            <select name="s_id">
+              <?php while($shops=mysqli_fetch_assoc($this->viewsoptions_shops)): ?>
+              <option value="<?php echo($shops['shop_id']) ?>"><?php echo($shops['shop_name']); ?></option>
+            <?php endwhile ?>
+            </select>
         </div>
 
         <div>
         	<p>写真のカテゴリを指定してください</p>
-        <table>
-        　<thead>
-            <tr>
-              <th><div>カテゴリ</div></th>
-            </tr>
-          </thead>
-
-            <tr>
-              <th><div></div></th>
-            </tr>
-
-        	<input type="hidden" name="categoly" value="1">
-          </table>
+            <select name="categoly">          
+              <?php while($categoly=mysqli_fetch_assoc($this->viewsoptions_categoly)): ?>
+              <option value="<?php echo($categoly['categoly_id']);?>"><?php echo($categoly['categoly']);?></option>                              
+          <?php endwhile ?>
         </div>
 
 		<div>
@@ -44,8 +30,6 @@
           <?php if(!empty($error)): ?>
           <p style="color: red;">*画像を再度選択してください</p>
           <?php endif; ?>
-
-
 		<div>
 		<input type="submit" value="投稿する">	
 		</div>

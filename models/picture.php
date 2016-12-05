@@ -1,5 +1,4 @@
 <?php 
-  require('../functions.php');
   special_echo('Modelのpictures.phpが呼び出されました。');
 
  //model class 
@@ -13,11 +12,36 @@
   	$this->dbconnect=$db;
   	}
 
-    function create($post){
+    function post_validation($post,$files){
+        $error=array();
+        if(!empty($post)){
+            //owner_idの未入力チェック
+            if($post['owner_id']==''){
+              $error['owner_id']='blank';
+            }
+            //お店の名前のID未入力チェック
+            if($post['s_id']==''){
+                $error['s_id']='blank';
+            }
+             //categolyの未入力チェック
+            if($post['categoly']==''){
+                $error['categoly']='blank';
+            }
+              if(!empty($files)){
+                  if ($files['picture_path']==''){
+                      $error['picture_path']='blank';
+                  }
+               } 
+        }                              
+     return $error;
+    }
+
+    function create($post,$files){
       special_echo('modelsのcreateが呼び出された' );
-      $sql=sprintf('INSERT INTO `pictures` SET `owner_id`=%d,`categoly`=%d,`s_id`=%d,`shop_picture_path`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['id']),mysqli_real_escape_string($this->dbconnect,$post['categoly']),mysqli_real_escape_string($this->dbconnect,$post['s_id']),mysqli_real_escape_string($this->dbconnect,$post['picture_path'])
+      $sql=sprintf('INSERT INTO `pictures` SET `owner_id`=%d,`categoly`=%d,`s_id`=%d,`shop_picture_path`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['categoly']),mysqli_real_escape_string($this->dbconnect,$post['s_id']),mysqli_real_escape_string($this->dbconnect,$files)
         );
-      //mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+      mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+
     }
 
     function add_shops(){
@@ -25,8 +49,7 @@
       //shopテーブルからshop_idとshop_nameと取り出す
       $sql='SELECT`shop_id`,`shop_name`FROM `shops`';
       $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
-      $rtn=mysqli_fetch_assoc($results);
-      return $rtn;
+      return $results;
     }
 
     function add_categoly(){
@@ -34,9 +57,7 @@
       //categolyテーブルからcategoly_idとcategolyを取り出す
       $sql='SELECT*FROM `categoly`';
       $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
-      $rtn=mysqli_fetch_assoc($results);
-      return $rtn;
-
+      return $results;
     }
   }
 ?>
