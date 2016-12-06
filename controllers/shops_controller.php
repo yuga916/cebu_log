@@ -5,7 +5,7 @@
 	  $Controller= new ShopsController();
 
 	//デバック
-	  	//special_var_dump();
+	  	special_var_dump($post);
 	  	//special_var_dump();
 	  	//special_var_dump();
 
@@ -46,12 +46,15 @@
 	 		$this->action='add';
 	 		$this->viewsoptions_shops=array();
 	 		$this->viewsoptions_categoly=array();
+	 		$this->viewerrors=array();
 	    }
 	    function post_validation($post){
 	    	special_echo('controller`sのpost_validationが呼び出されました');
 
-		        if(!empty($post)){		    	
+		        if(!empty($post)){	
+		        	$this->action='post_validation';	    	
 			    	$error=$this->shop->post_validation($post);
+			    	special_var_dump($error);
 			    	if(!empty($error)){
 			    		$this->viewerrors=$error;
 			    		$this->display();
