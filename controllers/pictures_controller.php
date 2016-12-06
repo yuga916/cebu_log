@@ -150,6 +150,7 @@
 	 		$this->action='add';
 	 		$this->viewsoptions_shops=array();
 	 		$this->viewsoptions_categoly=array();
+	 		$this->viewerrors=array();
 
 
 	    }

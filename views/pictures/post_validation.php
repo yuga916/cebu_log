@@ -1,5 +1,5 @@
 <div>
-	<form method="POST" action="/cebu_log/pictures/post_vadation" enctype="multipart/form-data">
+	<form method="POST" action="/cebu_log/shops/post_vadation" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="1">
 
         <div>
