@@ -61,11 +61,10 @@
 			    	$error=$this->picture->post_validation($post,$files);
 			    	special_var_dump($error);
 			    	if(!empty($error)){
+			    		$this->action='post_validation';
 			    		$this->viewerrors=$error;
 				 		$this->viewsoptions_shops=$this->picture->add_shops();
-				 		//special_var_dump('$this->viewsoptions_shops');
 				  		$this->viewsoptions_categoly=$this->picture->add_categoly();
-
 			    		$this->display();
 			    	}
 			    	else{

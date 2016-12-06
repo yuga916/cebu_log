@@ -26,7 +26,7 @@
             if($post['categoly']==''){
                 $error['categoly']='blank';
             }
-            if($files['picture_path']==''){
+            if($files['picture_path']['name']==''){
                   $error['picture_path']='blank';//空白の時判別できない
             }
                                  

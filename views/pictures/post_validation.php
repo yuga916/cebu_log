@@ -23,6 +23,7 @@
 		<div>
 			<p>写真投稿を行ってください</p>
 			<input type="file" name="picture_path">
+			<?php special_var_dump($this->viewerrors);?>
 		</div>
           <?php if(isset($this->viewerrors['picture_path'])&&$this->viewerrors['picture_path']=='type'): ?>
           <p style="color: red;">*画像は「jpg」「png」「gif」の画像を指定してください</p>
