@@ -216,7 +216,7 @@
 
 	}
 >>>>>>> a9d6d3211b7cba49cd9fc9bd3f724f5a07b6a598
-?>?>
+?>
 =======
 <?php
     special_echo('pictures_controller.phpが呼び出されました。');
