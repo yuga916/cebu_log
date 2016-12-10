@@ -227,12 +227,12 @@ function geocodeAddress(geocoder, resultsMap) {
 
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
- <!--    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
        <!-- Bootstrap core JavaScript
        ================================================== -->
        <!-- Placed at the end of the document so the pages load faster -->
-<!--       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
        <script src="../assets/js/bootstrap.min.js"></script>
        <script src="../assets/js/main.js"></script>
      <script src="../assets/js/masonry.pkgd.min.js"></script>
