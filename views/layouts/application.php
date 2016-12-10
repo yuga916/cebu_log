@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-        <?php
-            include('views/' . $this->resource . '/' . $this->action . '.php');
-         ?>
-=======
-<?php 
-  //セッションの設定
-  session_start();
-  require('dbconnect.php');
-
-  
-
+<?php
+    //include('views/' . $this->resource . '/' . $this->action . '.php');
+    //セッションの設定
+   // session_start();
+   // require('dbconnect.php');
 ?>
 
 <!DOCTYPE html>
@@ -117,4 +110,3 @@
     
   </body>
 </html>
->>>>>>> e08ace28a445dc3799b05aa4f817340fa3ae3175

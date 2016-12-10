@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-<div>
-	<form method="POST" action="/cebu_log/pictures/post_validation" enctype="multipart/form-data">
-		<input type="hidden" name="owner_id" value="1">
-
-        <div>
-        	<p>紹介するお店を名前を指定してください</p>
-            <select name="s_id">
-              <?php while($shops=mysqli_fetch_assoc($this->viewsoptions_shops)): ?>
-              <option value="<?php echo($shops['shop_id']) ?>"><?php echo($shops['shop_name']); ?></option>
-            <?php endwhile ?>
-            </select>
-        </div>
-
-        <div>
-        	<p>写真のカテゴリを指定してください</p>
-            <select name="categoly">          
-              <?php while($categoly=mysqli_fetch_assoc($this->viewsoptions_categoly)): ?>
-              <option value="<?php echo($categoly['categoly_id']);?>"><?php echo($categoly['categoly']);?></option>                              
-          <?php endwhile ?>
-        </div>
-
-		<div>
-			<p>写真投稿を行ってください</p>
-			<input type="file" name="picture_path">
-		</div>
-		<div>
-		<input type="submit" value="投稿する">	
-		</div>
-
-	</form>
-</div>
-=======
  <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -69,36 +36,45 @@
         <br>
         <br>
          <legend>新規foodの投稿</legend>
-         <form method="post" action="index.php" class="form-horizontal" role="form" enctype="multipart/form-data">
+         <!--post送信後どこにページ遷移する？-->
+         <form method="post" action="/cebu_log/pictures/post_validation" enctype="multipart/form-data"　class="form-horizontal" role="form">
+          <!--owner_idを入力-->
+        　<input type="hidden" name="owner_id" value="1">
+
+
            <!-- 投稿 -->
            <div class="form-group">
-             <label class="col-sm-4 control-label">投稿写真</label>
+             <label class="col-sm-4 control-label">お店名</label>
              <div class="col-sm-8">
-               <input type="text" name="nick_name" class="form-control" placeholder="Ex： Samurai" value="">
+             　<select class="form-control" name="s_id">
+                  <?php while($shops=mysqli_fetch_assoc($this->viewsoptionsShops)): ?>
+                  <option value="<?php echo($shops['shop_id']) ?>"><?php echo($shops['shop_name']); ?></option>
+                  <?php endwhile ?>
+               </select>
              </div>
            </div>
 
            <div class="form-group">
              <label class="col-sm-4 control-label">写真カテゴリー</label>
               <div class="col-sm-8">
-               <select class="form-control" name="nation_id">
-                     <option value="0">Food</option>
-                     <option value="1">お店の外装、内装</option>
-                     <option value="2">その他</option>
+               <select class="form-control" name="categoly">
+                  <?php while($categoly=mysqli_fetch_assoc($this->viewsoptionsCategoly)): ?>
+                  <option value="<?php echo($categoly['categoly_id']);?>"><?php echo($categoly['categoly']);?></option>   
+                  <?php endwhile ?>
               </select>
             </div>
            </div>
 
 
-           <!-- コメント -->
+
            <div class="form-group">
-             <label class="col-sm-4 control-label">コメント</label>
+             <label class="col-sm-4 control-label">画像のアップロード</label>
              <div class="col-sm-8">
-               <input type="email" name="email" class="form-control" placeholder="Ex： samurai@net.com" value="">
+               <input type="file" name="picture_path" class="form-control">
              </div>
            </div>
-          
 
+        
            <input type="submit" class="btn btn-default" value="新規投稿">
          </form>
        </div>
@@ -122,4 +98,3 @@
      
    </body>
  </html>
->>>>>>> e08ace28a445dc3799b05aa4f817340fa3ae3175
