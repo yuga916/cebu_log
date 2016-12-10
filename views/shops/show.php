@@ -181,7 +181,7 @@
         <input type="text" name="search_word">
         <!-- index.php?['key'] = ['value']; -->
         <!-- inputに入力されたvalueを取り出すには、$_GET['search_word'] -->
-        <!--　つぶやきの表示 -->
+        <!--つぶやきの表示 -->
         <input type="submit" value="検索" class="btn btn-success btn-xs">
       </form>
       <br>

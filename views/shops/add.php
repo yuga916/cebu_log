@@ -1,30 +1,4 @@
-<<<<<<< HEAD
-<div>
-	<form method="POST" action="/cebu_log/shops/post_validation" enctype="multipart/form-data">
-		<input type="hidden" name="owner_id" value="1">
 
-        <div>
-        	<p>紹介するお店を名前を記入してください</p>
-          <input type="text" name="shop_name">
-        </div>
-
-        <div>
-        	<p>紹介文を記入してください</p>
-          <input type="text" name="intro_shop">
-        </div>
-
-        <div>
-          <p>住所を記入してください</p>
-          <input type="text" name="address">
-        </div>
-
-		<div>
-		<input type="submit" value="投稿する">	
-		</div>
-
-	</form>
-</div>
-=======
 <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -52,6 +26,7 @@
 
     </head>
 
+<body>
 
    <div class="container">
      <div class="row">
@@ -60,20 +35,23 @@
         <br>
         <br>
          <legend>新規shopの作成</legend>
-         <form method="post" action="index.php" class="form-horizontal" role="form" enctype="multipart/form-data">
-           <!-- ニックネーム -->
+         <form method="POST" action="/cebu_log/shops/post_validation" class="form-horizontal" role="form" enctype="multipart/form-data">
+          <input type="hidden" name="owner_id" value="1">
+
+
+           <!--お店名-->
            <div class="form-group">
              <label class="col-sm-4 control-label">店名</label>
              <div class="col-sm-8">
-               <input type="text" name="nick_name" class="form-control" placeholder="Ex： Samurai" value="">
+               <input type="text" name="shop_name" class="form-control" placeholder="Ex： Samurai" value="">
              </div>
            </div>
 
-           <!-- メールアドレス -->
+           <!--紹介-->
            <div class="form-group">
              <label class="col-sm-4 control-label">紹介文</label>
              <div class="col-sm-8">
-               <input type="email" name="email" class="form-control" placeholder="Ex： samurai@net.com" value="">
+               <input type="text" name="intro_shop" class="form-control" placeholder="Ex： samurai@net.com" value="">
               
              </div>
            </div>
@@ -82,7 +60,7 @@
            <div class="form-group">
              <label class="col-sm-4 control-label">平均予算</label>
              <div class="col-sm-8">
-               <input type="email" name="email" class="form-control" placeholder="Ex： samurai@net.com" value="">
+               <input type="text" name="email" class="form-control" placeholder="Ex： samurai@net.com" value="">
              </div>
            </div>
 
@@ -90,10 +68,10 @@
            <div class="form-group">
              <label class="col-sm-4 control-label">地図</label>
              <div class="col-sm-8">
-               <form>
-               <input type="text" value="東京スカイツリー" id="address">
+               <!--<form>-->
+               <input type="number" value="555,77" id="address" name="address">
                <input type="button" value="地図検索" id="button">
-               </form>
+               <!--</form>-->
 
                <!-- 地図を表示させる要素 -->
                <div id="map-canvas"></div>
@@ -102,7 +80,7 @@
            </div>
           
 
-           <input type="submit" class="btn btn-default" value="トップ画像登録へ">
+          <input type="submit" class="btn btn-default" value="トップ画像登録へ">
          </form>
        </div>
      </div>
@@ -125,4 +103,3 @@
      
    </body>
  </html>
->>>>>>> e08ace28a445dc3799b05aa4f817340fa3ae3175

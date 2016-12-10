@@ -37,16 +37,16 @@
         <br>
          <legend>新規foodの投稿</legend>
          <!--post送信後どこにページ遷移する？-->
-         <form method="post" action="/cebu_log/pictures/post_validation" enctype="multipart/form-data"　class="form-horizontal" role="form">
+         <form method="post" action="/cebu_log/pictures/post_validation" enctype="multipart/form-data" class="form-horizontal" role="form">
           <!--owner_idを入力-->
-        　<input type="hidden" name="owner_id" value="1">
+         <input type="hidden" name="owner_id" value="1">
 
 
            <!-- 投稿 -->
            <div class="form-group">
              <label class="col-sm-4 control-label">お店名</label>
              <div class="col-sm-8">
-             　<select class="form-control" name="s_id">
+              <select class="form-control" name="s_id">
                   <?php while($shops=mysqli_fetch_assoc($this->viewsoptionsShops)): ?>
                   <option value="<?php echo($shops['shop_id']) ?>"><?php echo($shops['shop_name']); ?></option>
                   <?php endwhile ?>
