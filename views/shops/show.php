@@ -153,24 +153,32 @@
         <!-- 画面左側 -->
       <div class="col-md-4 content-margin-top">
         <!-- form部分 --> 
-      <form action="" method="post" enctype="multipart/form-data">
+      <form action="/cebu_log/tweets/post_tweet_validation" method="post" enctype="multipart/form-data" onsubmit="if(this.tweet.value==''){alert(this.tweet.name+' が未入力です');return false}">
+
           <!-- つぶやき入力画面 -->
           <div class="form-group">
             <div class="input-group" data-validate="length" data-length="4">
               <textarea type="text" class="form-control" name="tweet" id="validate-length" cols="50" rows="5" placeholder="comment" required></textarea>
             </div>
           </div>
+          <!--hiddenでデータを送信-->
+          <input type="hidden" name="reply_tweet_id" value="1">
 
           <!-- 画像の投稿枠 -->
-          <input type="file" name="img_post">
-              
-             
-          <input type="hidden" name="reply_tweet_id" value="">
+          <input type="file" name="picture_path">
 
-          <input type="hidden" name="area_id" value="">
           <!-- つぶやくボタン -->
-          <button type="submit" class="btn btn-primary col-xs-12" disabled>つぶやく</button>
-        </form>
+          <button type="submit" class="btn btn-primary col-xs-12" >つぶやく</button>
+                <!--hiddenでデータを送信-->
+          <input type="hidden" name="owner_id" value="1">
+                <!--hiddenでデータを送信-->
+
+          <input type="hidden" name="s_id" value="1">
+                          <!--hiddenでデータを送信-->
+
+          <input type="hidden" name="categoly" value="1">
+
+      </form>
       </div><!-- col-md-4 content-margin-top -->
 
       <!-- 画面右側 -->

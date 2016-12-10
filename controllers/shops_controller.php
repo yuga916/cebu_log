@@ -26,6 +26,9 @@
 	  case 'add':
 	  	$controller->add();
 		break;
+      case 'post_tweet_validation':
+        $controller->post_tweet_validation($post,$files,$fileName);
+        break;
 
 
       default:
@@ -95,6 +98,11 @@
 			    	}
 
 			    }
+        function post_tweet_validation($post,$files,$fileName){
+            special_echo('controllerのpost_tweet_validationが呼び出されました');
+                    $error=$this->post_tweet_validation;
+
+        }
 
 	   function create($post){
 	   		special_echo('controllerのcreateが呼び出されました');

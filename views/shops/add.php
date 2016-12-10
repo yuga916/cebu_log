@@ -15,18 +15,13 @@ var_dump($results);
 
       <title>Sigh In</title>
 
-<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-            <script src="/cebu_log/webroot/assets/google_map/google_map.js"></script>
+      <script src="/cebu_log/webroot/assets/google_map/google_map.js"></script>
       <link href="/cebu_log/webroot/assets/google_map/google_map.css" rel="stylesheet">
-    
       <script src="assets/js/modernizr.custom.js"></script>
-
-    <!-- googleaddress　MAP css -->
-    <link type="text/css" rel="stylesheet" href="/cebu_log/webroot/assets/google_map/google_place_map.css"></script>
-
-
-
+      <!-- googleaddress　MAP css -->
+      <link type="text/css" rel="stylesheet" href="/cebu_log/webroot/assets/google_map/google_place_map.css"></script>
     </head>
 
 <body>

@@ -45,6 +45,8 @@
          return $error;
         }
 
+        
+
         function create($post){
           special_echo('modelsのcreateが呼び出された' );
           $sql=sprintf('INSERT INTO `shops` SET `shop_name`="%s",`shop_intro`="%s",`owner_id`=%d,`shop_address`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['shop_name']),mysqli_real_escape_string($this->dbconnect,$post['intro_shop']),mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['address']));

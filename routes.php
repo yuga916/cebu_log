@@ -42,7 +42,13 @@
                 $files=$_FILES;
                 //special_var_dump($_FILES);
             }
+            
         }
+        else{
+                $fileName=null;
+                $files=null;
+
+            }
     }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
