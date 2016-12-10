@@ -12,35 +12,36 @@
     // $parameters = array('blogs', 'index');
 
     // GETパラメータで指定されたリソース名とアクション名を取得
-    //　もしリソース名もアクション名もなかったらtopページに遷移
+    //もしリソース名もアクション名もなかったらtopページに遷移
 
-    if(empty($parameters[0])&&empty($parameters[1])){//全resource名を記入($action=home picrtures,shops,timeline,user_pages_users_controller)
+    if(empty($parameters[0])||empty($parameters[1])){//全resource名を記入($action=home picrtures,shops,timeline,user_pages_users_controller)
         $resource ='home';
         $action='home';
 
     } 
+    elseif (condition) {//既存のアクション名とリソース名がない場合、homeページへ遷移
+        # code...
+    }
     else {
         $resource = $parameters[0];
         $action = $parameters[1];
         $id = 1;
         $post = array();
         $files=array();
-    }
-
-
-
-    if (isset($parameters[2])) {
-        $id = $parameters[2];
-    }
-
-    if (!empty($_POST)) {
-        $post = $_POST;
     
-        if (!empty($_FILES)) {
-            $fileName=$_FILES['picture_path']['name'];
-            $files=$_FILES;
-            //special_var_dump($_FILES);
 
+        if (isset($parameters[2])) {
+            $id = $parameters[2];
+        }
+
+        if (!empty($_POST)) {
+            $post = $_POST;
+        
+            if (!empty($_FILES)) {
+                $fileName=$_FILES['picture_path']['name'];
+                $files=$_FILES;
+                //special_var_dump($_FILES);
+            }
         }
     }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
