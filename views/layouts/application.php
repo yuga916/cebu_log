@@ -38,7 +38,7 @@
       <a href="services.html">Services</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="about.html">About</a>
-      <a href="#contact">Contact</a>
+      <a href="/cebu_log/users/logout">ログアウト</a>
       <a href="#"><i class="fa fa-facebook"></i></a>
       <a href="#"><i class="fa fa-twitter"></i></a>
       <a href="#"><i class="fa fa-dribbble"></i></a>
