@@ -32,7 +32,6 @@
         }
 
 
-
 //新規ツイート登録
         function tweet($post,$file) {
             $img_pic = '';

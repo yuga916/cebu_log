@@ -28,6 +28,48 @@
             return $rtn;
         }
 
+//いいねの数のカウント
+        function count_like($id){
+            $sql = sprintf('SELECT COUNT(`s_id`) AS like_cnt FROM `likes` WHERE `s_id`=%d',
+                              mysqli_real_escape_string($this->dbconnect, $id)
+                          );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }
+
+//likeがユーザーが押しているかどうかの判定
+        function is_like($id){
+            $sql = sprintf('SELECT `m_id` FROM `likes` 
+                                    WHERE `s_id`=%d AND `m_id` =%d',
+                              mysqli_real_escape_string($this->dbconnect, $id),
+                              $_SESSION['id']
+
+                          );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }
+
+//like機能
+        function like($id) {
+                      $sql = sprintf('INSERT INTO `likes` SET `m_id` = %d, `s_id` = %d',
+                                $_SESSION['id'],
+                                mysqli_real_escape_string($this->dbconnect, $id));
+            mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        }
+
+
+//unlike機能
+        function unlike($id) {
+             special_echo('モデルのunlikeメソッド呼び出し');
+
+              $sql = sprintf('DELETE FROM `likes` WHERE `m_id` = %d AND `s_id` = %d',
+                                  $_SESSION['id'],
+                                  mysqli_real_escape_string($this->dbconnect,$id));
+              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+          }
+
 //今までの投稿一覧ページの店名表示
         function all_show($id) {
             special_echo('モデルのshowメソッド呼び出し');

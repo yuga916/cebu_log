@@ -18,6 +18,16 @@
         $controller->show($id);
         break;
 
+//like機能
+      case 'like':
+          $controller->like($id);
+          break;
+ 
+//unlike機能
+      case 'unlike':
+          $controller->unlike($id);
+          break;
+
 //新規shopページの作成画面
       case 'add':
         $controller->add();
@@ -35,6 +45,8 @@
        case 'tweet':
         $controller->tweet($post,$file);
         break;
+
+
 
         default:
           # code...
@@ -63,6 +75,8 @@
             $this->viewPictures = array();
             $this->viewTweets = array();
             $this->viewTwpictures = array();
+            $this->viewLikes = array();
+            $this->likeCounts = '';
         }
 
 
@@ -76,44 +90,26 @@
             $this->viewPictures = $this->picture->shop_picture_show($id);
             $this->viewTweets = $this->tweet->shop_tweet_show($id);
             $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+            $this->viewLikes = $this->shop->is_like($id);
+            $this->likeCounts = $this->shop->count_like($id);
 
             // special_var_dump($this->viewOptions);
             $this->action = 'show';
             $this->display();
         }
 
-//ツイート登録処理
-        function tweet($post,$file) {
-            special_echo('Controllerのtweet()が呼び出されました。');
-            
-                if (!empty($post)) {
-                
-                  if (!empty($file)) {
-                    $fileName = $file['shop_picture_path']['name'];
-                    $error = $this->shop->file_valid($file); // バリデーション用メソッド
+//like機能
+        function like($id) {
+            $this->viewLikes = $this->shop->like($id);
+            $this->action = 'like';
+            header('Location: /cebu_log');
+        }
 
-                    if (!empty($error)) {
-                            // エラーがあった場合
-                            $this->viewOptions = $post;
-                            $this->viewErrors = $error;
-                            $this->display();
-                    } else {
-                            // エラーがなかった場合
-                            //　投稿画像のアップロード
-                            $img_post = date('YmdHis') . $file['shop_picture_path']['name'];
-                                move_uploaded_file($_FILES['shop_picture_path']['tmp_name'], 'post_img/' . $img_post);
-
-                            // つぶやきデータが入力されていれば
-                            if (!empty($file['shop_picture_path']['name'])) {
-                            $img_pic = date('YmdHis') . $_FILES['shop_picture_path']['name'];
-                            } else {
-                                $img_pic = '';
-                            }       
-                  }
-              }
-          }
-          $this->shop->tweet($post,$file);
-       }
+//unlike機能
+        function unlike($id) {
+            $this->shop->unlike($id);
+            header('Location: /cebu_log');
+        }
       
       
 

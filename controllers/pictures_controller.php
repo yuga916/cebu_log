@@ -48,17 +48,6 @@
         $controller->delete($id);
         break;
 
-//like機能
-      case 'like':
-          $controller->like();
-          break;
- 
- //unlike機能
-      case 'unlike':
-          $controller->unlike();
-          break;
-
-
       default:
         # code...
         break;

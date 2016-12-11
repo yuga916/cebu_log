@@ -12,6 +12,7 @@
 
     // GETパラメータで指定されたリソース名とアクション名を取得
     //　もしリソース名もアクション名もなかったらtopページに遷移
+    special_var_dump($parameters);
     if(empty($parameters[0])){
         
         $action = 'home';
