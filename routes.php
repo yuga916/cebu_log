@@ -1,10 +1,7 @@
 <?php
-    // http://192.168.33.10/seed_blog/ほげ
-    // ↓↓↓↓↓
-    // http://192.168.33.10/seed_blog/routes.php?url=ほげ
-    // .htaccessファイルがURLを書き換える
+    //セッションの設定
+    session_start();
     require('functions.php');
-
     special_echo('routes.phpが呼び出されました。');
 
 
@@ -28,7 +25,6 @@
     }
 
 
-
     if (isset($parameters[2])) {
         $id = $parameters[2];
     }
@@ -36,6 +32,11 @@
     if (!empty($_POST)) {
         // $post = array('title' => 'タイトル', 'body' => '本文');
         $post = $_POST;
+    }
+
+    if (!empty($_FILES)) {
+        // $post = array('title' => 'タイトル', 'body' => '本文');
+        $file = $_FILES;
     }
 
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し

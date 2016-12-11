@@ -1,8 +1,8 @@
 <?php
-    special_echo('Modelのshop.phpが呼ばれました');
+    special_echo('Modelのtweet.phpが呼ばれました');
 
     // Modelのクラス
-    class Shop {
+    class Tweet {
         // プロパティ
         private $dbconnect;
 
@@ -13,18 +13,21 @@
         }
 
 
-//お店情報
-        function show($id) {
+//shop下部のTweet画面のTweetとmember情報
+        function shop_tweet_show($id) {
             special_echo('モデルのshowメソッド呼び出し');
             special_echo('$idは' . $id . 'です(モデル内)');
 
-            $sql =  sprintf('SELECT `shop_name`,`shop_intro` 
-                 FROM `shops` 
-                WHERE `shop_id` = %d ORDER BY `created`',
+            $sql =  sprintf('SELECT t.`tweet`,t.`created`, m.`id`,m.`nick_name`, m.`picture_path` 
+                 FROM `tweets` t, `members` m 
+                WHERE t.`s_id` = %d ORDER BY `created`',
                 mysqli_real_escape_string($this->dbconnect, $id)
                 );
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-            $rtn = mysqli_fetch_assoc($results);
+            $rtn = array();
+                  while ($result = mysqli_fetch_assoc($results)) {
+                      $rtn[] = $result;
+                  }
             return $rtn;
         }
 

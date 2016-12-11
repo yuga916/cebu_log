@@ -2,21 +2,37 @@
     special_echo('users_controller.phpが呼び出されました。');
 
     require('models/user.php');
+    require('models/picture.php');
 
     // インスタンス化
     $controller = new UsersController();
 
     // アクションによって呼び出すメソッドを変える
     switch ($action) {
-//ログイン画面
-      case 'login':
-      $controller->login();
-      break;
+//サインアップの処理
+      case 'signup':
+        $controller->signup($post, $id);
+        break;
 
-//新規登録チェック画面
+//チェック画面の表示
       case 'check':
-      $controller->check();
-      break;
+        $controller->check();
+        break;
+
+//ログイン画面の表示
+      case 'login':
+        $controller->login();
+        break;
+
+//ログイン処理
+      case 'auth':
+              if (!empty($post['email']) && !empty($post['password'])) {
+                  $controller->auth($post);
+              } else {
+                  header('Location: login');
+                  exit();
+              }
+              break;
 
 //サンクスページの表示
       case 'thanks':
@@ -43,17 +59,14 @@
         break;
 
 
-      case 'create':
-        if (!empty($post['title']) && !empty($post['body'])) {
-            $controller->create($post);
-        } else {
-            $controller->add();
-        }
+//会員登録
+       case 'create':
+        $controller->create($post);
         break;
 
 //ユーザーページ表示
         case 'user_page':
-          $controller->user_page();
+          $controller->user_page($id);
           break;
 
 //フォロー一覧表示
@@ -93,13 +106,45 @@
         private $resource;
         private $action;
         private $viewOptions;
+        private $viewPictures;
+        private $viewErrors;
 
         function __construct() {
             $this->user = new User();
+            $this->picture = new Picture();
             $this->resource = 'users';
-            $this->action = 'index';
-            $this->viewOptions = array();
+            $this->action = 'signup';
+            $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
+            $this->viewPictures = array();
         }
+
+//サインアップ処理
+         function signup($post, $id) {
+            special_echo('Controllerのsignup()が呼び出されました。');
+            if (!empty($post)) {
+                // 確認画面ボタンが押されたとき
+                $error = $this->user->signup_valid($post); // バリデーション用メソッド
+                if (!empty($error)) {
+                    // エラーがあった場合
+                    $this->viewOptions = $post;
+                    $this->viewErrors = $error;
+                    $this->display();
+                } else {
+                    // エラーがなかった場合
+                    $_SESSION['users'] = $post;
+                    header('Location: picture_add');
+                    exit();
+                }
+            } else {
+                // 通常遷移のとき
+                if ($id == 'rewrite') {
+                    // checkから戻るボタンが押されたとき
+                    $this->viewOptions = $_SESSION['users'];
+                }
+                $this->display();
+            }
+        }
+        
 
 // ログインページ表示
         function login() {
@@ -107,6 +152,20 @@
             $this->action = 'login';
             $this->display();
         }
+
+//ログイン処理
+        function auth($post) {
+                    special_echo('Controllerのauth()が呼び出されました。');
+                    $login_flag = $this->user->auth($post);
+                    if ($login_flag) {
+                        header('Location: /cebu_log/');
+                        exit();
+                    } else {
+                        header('Location: login');
+                        exit();
+                    }
+                }
+
 
         //  リアルタイム表示アクション
         function realtime() {
@@ -119,7 +178,7 @@
             $this->display();
         }
 
-        // 詳細ページ表示アクション
+// 詳細ページ表示アクション
         function show($id) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
@@ -144,19 +203,22 @@
             $this->display();
         }
 
+//登録チェックページの表示
+        function check() {
+             special_echo('Controllerのcheck()が呼び出されました。');
+             $this->viewOptions = $_SESSION['users'];
+             $this->action = 'check';
+             $this->display();
+         }
+
 //会員登録処理
         function create($post) {
             special_echo('Controllerのcreate()が呼び出されました。');
             $this->user->create($post);
-            header('Location: index');
+            header('Location: thanks');
+            exit();
         }
 
-//登録チェックページの表示
-         function check() {
-             special_echo('Controllerのcheck()が呼び出されました。');
-             $this->action = 'check';
-             $this->display();
-         }   
 
 //サンクスページの表示     
          function thanks() {
@@ -173,8 +235,12 @@
         }
 
 // ユーザーページ表示アクション
-        function user_page() {
+        function user_page($id) {
             special_echo('Controllerのuser_page()が呼び出されました。');
+            special_echo('$idは' . $id . 'です。');
+            $this->viewOptions = $this->user->user_page($id);
+            $this->viewPictures = $this->picture->user_page_picture($id); // 
+            // special_var_dump($this->viewOptions);
             $this->action = 'user_page';
             $this->display();
         }

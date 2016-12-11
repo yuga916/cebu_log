@@ -1,11 +1,3 @@
-<?php 
-  //セッションの設定
-  session_start();
-  require('dbconnect.php');
-
-  
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,8 +57,7 @@
       </div><!-- row -->
     </div><!-- /container -->
   </div><!-- /portrwrap -->
-  <br>
-  <br>
+  
 
   
   
@@ -76,9 +67,7 @@
             include('views/' . $this->resource . '/' . $this->action . '.php');
          ?>
 
-  <br>
-  <br>
-  <br>
+  
   
 
     <!-- CONTACT FOOTER -->

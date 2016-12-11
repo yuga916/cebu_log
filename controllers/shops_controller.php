@@ -2,6 +2,9 @@
     special_echo('shops_controller.phpが呼び出されました。');
 
     require('models/shop.php');
+    require('models/picture.php');
+    require('models/tweet.php');
+
     // require('models/tweet.php');
     // require('models/user.php');
 
@@ -28,6 +31,11 @@
         }
         break;
 
+//Tweet投稿
+       case 'tweet':
+        $controller->tweet($post,$file);
+        break;
+
         default:
           # code...
           break;
@@ -45,9 +53,14 @@
 
         function __construct() {
             $this->shop = new Shop();
+            $this->picture = new Picture();
+            $this->tweet = new Tweet();
             $this->resource = 'shops';
             $this->action = 'index';
             $this->viewOptions = array();
+            $this->viewPictures = array();
+            $this->viewTweets = array();
+            $this->viewTwpictures = array();
         }
 
 
@@ -55,11 +68,50 @@
         function show($id) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
-            $this->viewOptions = $this->shop->show($id); // 戻り値 $rtnを受け取る
+            $this->viewOptions = $this->shop->show($id);
+            $this->viewPictures = $this->picture->shop_picture_show($id);
+            $this->viewTweets = $this->tweet->shop_tweet_show($id);
+            $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+
             // special_var_dump($this->viewOptions);
             $this->action = 'show';
             $this->display();
         }
+
+//ツイート登録処理
+        function tweet($post,$file) {
+            special_echo('Controllerのtweet()が呼び出されました。');
+            
+                if (!empty($post)) {
+                
+                  if (!empty($file)) {
+                    $fileName = $file['shop_picture_path']['name'];
+                    $error = $this->shop->file_valid($file); // バリデーション用メソッド
+
+                    if (!empty($error)) {
+                            // エラーがあった場合
+                            $this->viewOptions = $post;
+                            $this->viewErrors = $error;
+                            $this->display();
+                    } else {
+                            // エラーがなかった場合
+                            //　投稿画像のアップロード
+                            $img_post = date('YmdHis') . $file['shop_picture_path']['name'];
+                                move_uploaded_file($_FILES['shop_picture_path']['tmp_name'], 'post_img/' . $img_post);
+
+                            // つぶやきデータが入力されていれば
+                            if (!empty($file['shop_picture_path']['name'])) {
+                            $img_pic = date('YmdHis') . $_FILES['shop_picture_path']['name'];
+                            } else {
+                                $img_pic = '';
+                            }       
+                  }
+              }
+          }
+          $this->shop->tweet($post,$file);
+       }
+      
+      
 
         // 新規shopページの作成画面
         function add() {
@@ -75,6 +127,8 @@
         }
     }
  ?>
+
+
 
 
 
