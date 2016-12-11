@@ -45,15 +45,19 @@
      <div class="container">
        <div class="row mt centered">
          <div class="col-lg-8 col-lg-offset-2">
+         <br>
+         <br>
+
            <img style="border-radius: 30px;
                        height: 150px;
-                       width: 150px;" src="member_picture/<?php echo $member['picture_path']; ?>" width="100" height="100">
+                       width: 150px;" src="../../<?php echo $this->viewOptions['picture_path']; ?>" width="100" height="100">
+
                        <br>
                        <br>
          </div>
          <div class="col-lg-8 col-lg-offset-2">
-           <p><b>NAME:セブ太郎</p>
-           <p><b>INRODUCTION:</b>セブ太郎です。</p>
+           <p><b>NAME:<?php echo $this->viewOptions['nick_name']; ?></p>
+           <p><b>INRODUCTION:</b><?php echo $this->viewOptions['m_itro']; ?></p>
 
            <!-- <a href="edit.php"><button type="button" class="btn btn-primary btn-lg" style="border-color: #ff0000;background-color: #ff0000">Edit</button></a> -->
          </div>
@@ -65,30 +69,14 @@
       [<a href="like/<?php echo $viewOption['id']; ?>">Like <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>]
      <?php endforeach; ?>
 
-
-
-    
     <div class="container">
           <div id="gallery" class="zoomwall">
 
             
                       <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-      
-                      
-                      <img style="padding: 2px;" src="/cebu_log/post_img/iine.png"  data-highres="" />
-          
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-                      
-                      
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
+            <?php foreach($this->viewPictures as $viewPicture): ?>
+                      <img style="padding: 2px;" src="../../post_img/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
+            <?php endforeach; ?>
           </div>
     </div>
     <br>
