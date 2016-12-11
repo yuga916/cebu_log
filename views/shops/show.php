@@ -37,6 +37,11 @@
     
   </head>
 
+  <?php if(!empty($_POST)): ?>
+  　<?php special_var_dump($_POST); ?>
+　<?php endif; ?>
+    <?php echo $this->viewTwpictures['shop_picture_path']; ?>
+
 
   
   
@@ -45,8 +50,10 @@
       <div class="row mt centered">
         <div class="col-lg-8 col-lg-offset-2">
           <h1><b>
+          <h1><b><?php echo $this->viewOptions['shop_name']; ?>
           </b></h1>
           <p>The Mt. Fuji is the highest mountain in Japan, spanning the three prefectures.(Shizuoka,Yamanashi,Kanagawa). Mt. Fuji is 3,776 meters high and has a diameter of 44 kilometres.</p>
+          <p><?php echo $this->viewOptions['shop_intro']; ?></p>
         </div>
       </div><!-- /row -->
     </div><!-- /.container -->
@@ -126,14 +133,17 @@
       
     <div class="container">
 
+     <?php foreach($this->viewPictures as $viewPicture): ?>
         <div class="col-md-3 ">
             <figure>
 
               <img class="img-responsive" src="pictures/orange/" >
+              <img class="img-responsive" src="../../post_img/<?php echo $viewPicture['shop_picture_path'] ?>" >
               <br>
             </figure><!-- /figure -->
         </div>
       
+      <?php endforeach; ?>
     </div>
       <br>
       <br>
@@ -152,15 +162,23 @@
    
         <!-- 画面左側 -->
       <div class="col-md-4 content-margin-top">
+<<<<<<< HEAD
         <!-- form部分 --> 
       <form action="/cebu_log/tweets/post_tweet_validation" method="post" enctype="multipart/form-data" onsubmit="if(this.tweet.value==''){alert(this.tweet.name+' が未入力です');return false}">
 
+=======
+        <!-- form部分 -->
+        <!-- /cebu_log/shops/tweet  -->
+      <form action="" method="post" enctype="multipart/form-data">
+>>>>>>> 3172688162d76a90c805e8dd9faa6960398a4a4a
           <!-- つぶやき入力画面 -->
           <div class="form-group">
             <div class="input-group" data-validate="length" data-length="4">
               <textarea type="text" class="form-control" name="tweet" id="validate-length" cols="50" rows="5" placeholder="comment" required></textarea>
+              <textarea type="text" class="form-control" name="tweet" id="validate-length" cols="50" rows="5" placeholder="comment"></textarea>
             </div>
           </div>
+<<<<<<< HEAD
           <!--hiddenでデータを送信-->
           <input type="hidden" name="reply_tweet_id" value="1">
 
@@ -179,6 +197,26 @@
           <input type="hidden" name="categoly" value="1">
 
       </form>
+=======
+          <!-- 画像の投稿枠 -->
+          <input type="file" name="shop_picture_path">
+          <br>
+          <select class="form-control" name="category_id">
+                     <option value="0">Food</option>
+                     <option value="1">お店の外装、内装</option>
+                     <option value="2">その他</option>
+          </select>
+
+          <input type="hidden" name="shop_id" value="<?php echo $id; ?>">
+          <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+
+          <?php if(isset($this->viewErrors['shop_picture_path']) && $this->viewErrors['shop_picture_path'] == 'blank'): ?>
+           <p style="color:red;">* 名前を入力してください</p>
+          <?php endif; ?>
+          <!-- つぶやくボタン -->
+          <button type="submit" class="btn btn-primary col-xs-12">つぶやく</button>
+        </form>
+>>>>>>> 3172688162d76a90c805e8dd9faa6960398a4a4a
       </div><!-- col-md-4 content-margin-top -->
 
       <!-- 画面右側 -->
@@ -197,6 +235,8 @@
       <br>
       <br>
 
+        <?php foreach($this->viewTweets as $viewTweet): ?>
+        <?php foreach($this->viewTwpictures as $viewTwpicture): ?>
 
         
                   <article class="timeline-entry">
@@ -204,6 +244,7 @@
                               
                           <div class="timeline-label">
                             <img src="member_picture/<?php echo $tweet['picture_path']; ?>" width="48" height="48"
+                            <img src="../../<?php echo $viewTweet['picture_path']; ?>" width="48" height="48"
                             style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">
@@ -211,9 +252,12 @@
 
                             &nbsp;&nbsp;<p style="display:inline;">name:hoge</a></p>&nbsp;&nbsp;date:2016年<br><br>
                             <p>hogehoge</p>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewTweet['id']; ?>"><?php echo $viewTweet['nick_name']; ?></a></p>&nbsp;&nbsp;date:<?php echo $viewTweet['created']; ?><br><br>
+                            <p><?php echo $viewTweet['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
                                <img src="post_img/<?php echo $tweet['img_col']; ?>" width="300">
+                               <img src="../../post_img/<?php echo $viewTwpicture['shop_picture_path']; ?>" width="300">
                                <br>
                                <br>
 
@@ -226,6 +270,8 @@
                       
 
                   </article>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
         </div><!-- timeline-centered -->
 
           <ul>

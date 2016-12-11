@@ -35,10 +35,15 @@
 
      <body>
 
+     
+
+<?php special_var_dump($_SESSION['users']); ?>
+
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4 content-margin-top">
         <form method="post" action="thanks" class="form-horizontal" role="form">
+        <form method="post" action="/cebu_log/users/create" class="form-horizontal" role="form">
         <br>
         <br>
         <br>
@@ -50,18 +55,30 @@
                 <tr>
                   <td><div class="text-center">ニックネーム</div></td>
                   <td><div class="text-center">hogehoge</div></td>
+                  <td><div class="text-center">
+                  <?php echo $this->viewOptions['nick_name']; ?>
+                  <input type="hidden" class="form-control" name="nick_name" value="<?php echo $this->viewOptions['nick_name']; ?>">
+                  </div></td>
+
                 </tr>
                 <tr>
                   <td><div class="text-center">メールアドレス</div></td>
                   <td><div class="text-center">hoge@hoge</div></td>
+                  <td><div class="text-center"><?php echo $this->viewOptions['email']; ?>
+                  <input type="hidden" class="form-control" name="email" value="<?php echo $this->viewOptions['email']; ?>">
+                  </div></td>
                 </tr>
                 <tr>
                   <td><div class="text-center">パスワード</div></td>
                   <td><div class="text-center">●●●●●●●●</div></td>
+                  <td><div class="text-center">●●●●●●●●
+                    <input type="hidden" class="form-control" name="password" value="<?php echo $this->viewOptions['password']; ?>">
+                  </div></td>
                 </tr>
                 <tr>
                   <td><div class="text-center">プロフィール画像</div></td>
                   <td><div class="text-center"><img src="../member_picture/" width="100"></div></td>
+                  <td><div class="text-center"><img src="../<?php echo $_SESSION['join']['image_file']; ?>" width="100"></div></td>
                 </tr>
               </tbody>
             </table>

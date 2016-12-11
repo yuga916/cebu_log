@@ -141,17 +141,25 @@
             </div>
             </form>
             </div>
+        </div>
         <?php else : ?>
 
         <h2>この写真で良いですか？</h2>
         <br>
           <?php echo '<img src="'.$sImage.'" />';?>
+          <h2>この写真で良いですか？</h2>
+          <br>
+            <?php echo '<img src="../'.$sImage.'">';?>      
           
         
         <a href="check"><button type="button">確認画面へ</button></a>
 
+          <a href="check"><button type="button">確認画面へ</button></a>
+        <?php echo '</div>' ?>
 
       <?php endif; ?>
+
+    
 
         
 

@@ -1,6 +1,9 @@
 <?php
     special_echo('shops_controller.phpが呼び出されました。');
     require('models/shop.php');
+    require('models/picture.php');
+    require('models/tweet.php');
+
     // require('models/tweet.php');
     // require('models/user.php');
 
@@ -30,7 +33,6 @@
         $controller->post_tweet_validation($post,$files,$fileName);
         break;
 
-
       default:
         break;
     }
@@ -50,12 +52,19 @@
 
         function __construct() {
             $this->shop = new Shop();
+            $this->picture = new Picture();
+            $this->tweet = new Tweet();
             $this->resource = 'shops';
             $this->action = 'index';
             $this->viewOptions = array();
+
 	 		$this->viewsoptionShops=array();
 	 		$this->viewsoptions_categoly=array();
 	 		$this->viewErrors=array();
+
+            $this->viewPictures = array();
+            $this->viewTweets = array();
+            $this->viewTwpictures = array();
 
         }
 
@@ -64,11 +73,18 @@
         function show($id) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
-            $this->viewOptions = $this->shop->show($id); // 戻り値 $rtnを受け取る
+            $this->viewOptions = $this->shop->show($id);
+            $this->viewPictures = $this->picture->shop_picture_show($id);
+            $this->viewTweets = $this->tweet->shop_tweet_show($id);
+            $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+
             // special_var_dump($this->viewOptions);
             $this->action = 'show';
             $this->display();
         }
+
+      
+      
 
         // 新規shopページの作成画面
         function add() {
@@ -119,4 +135,12 @@
             require('views/layouts/application.php');
         }
     }
+
  ?>
+
+
+
+
+
+
+
