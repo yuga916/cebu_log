@@ -47,6 +47,7 @@
       <br>
       <br>
         <legend>ログイン</legend>
+        <form method="post" action="" class="form-horizontal" role="form">
         <form method="post" action="/cebu_log/users/auth" class="form-horizontal" role="form">
           <!-- メールアドレス -->
           <div class="form-group">
@@ -59,7 +60,6 @@
           <div class="form-group">
             <label class="col-sm-4 control-label">パスワード</label>
             <div class="col-sm-8">
-              <input type="password" name="password" class="form-control" placeholder="" value="<?php echo htmlspecialchars($password, ENT_QUOTES, 'utf-8'); ?>">
             </div>
           </div>
 
@@ -71,6 +71,7 @@
             </div>
             
           </div>
+          <input type="submit" class="btn btn-default" value="ログイン"> | <a href="join/index.php" class="btn btn-success">会員登録</a>
           <input type="submit" class="btn btn-default" value="ログイン"> | <a href="/cebu_log/users/signup" class="btn btn-success">会員登録</a>
         </form>
       </div>
