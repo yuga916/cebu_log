@@ -1,10 +1,3 @@
-<?php
-    //include('views/' . $this->resource . '/' . $this->action . '.php');
-    //セッションの設定
-   // session_start();
-   // require('dbconnect.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,8 +56,7 @@
       </div><!-- row -->
     </div><!-- /container -->
   </div><!-- /portrwrap -->
-  <br>
-  <br>
+  
 
   
   
@@ -74,9 +66,7 @@
             include('views/' . $this->resource . '/' . $this->action . '.php');
          ?>
 
-  <br>
-  <br>
-  <br>
+  
   
 
     <!-- CONTACT FOOTER -->
