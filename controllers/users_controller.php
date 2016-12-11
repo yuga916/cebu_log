@@ -79,6 +79,7 @@
         $controller->show_follower();
         break;
 
+//ユーザー情報の編集
       case 'edit':
         $controller->edit($id);
         break;
@@ -260,20 +261,20 @@
             $this->display();
         }
 
-
+//ユーザー情報の編集
         function edit($id) {
             special_echo('Controllerのedit()が呼び出されました。');
 
             // model処理
-            $this->viewOptions = $this->blog->edit($id);
-
+            $this->viewOptions = $this->user->edit($id);
             $this->action = 'edit';
             $this->display();
         }
 
-        function update($post) {
-            $this->blog->update($post);
-            header('Location: index');
+//ユーザー情報のアップデート処理
+        function update($post,$id) {
+            $this->user->update($post);
+            header('Location: /cebu_log/users/user_page/');
         }
 
         function delete($id) {

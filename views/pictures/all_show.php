@@ -47,7 +47,7 @@
             <div class="heading-section">
               <br>
               <br>
-              <h2>(お店名)の今までの投稿</h2>
+              <h2><?php echo $this->viewShops['shop_name']; ?>の今までの投稿</h2>
               
             </div>
           </div>
@@ -55,26 +55,13 @@
 </div>
 
 
-    
-    
     <div class="container">
           <div id="gallery" class="zoomwall">
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
+            <?php foreach($this->viewOptions as $viewOption): ?>
           
-  
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-                      
-                      
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-          </div>
+                        <img style="padding: 2px;" src="../../post_img/<?php echo $viewOption['shop_picture_path']?>"  data-highres="" />
+            <?php endforeach; ?>
+        </div>
     </div>
     <br>
     <br>

@@ -38,7 +38,7 @@
   <?php if(!empty($_POST)): ?>
   　<?php special_var_dump($_POST); ?>
 　<?php endif; ?>
-    <?php echo $this->viewTwpictures['shop_picture_path']; ?>
+    
 
 
   <!-- WELCOME SECTION -->
@@ -56,10 +56,15 @@
   <div class="container">
     <div class="row centered">
       <div class="col-lg-10 col-lg-offset-1">
-        <img class="img-responsive" src="img/region_img/<?php echo $area['region_img']; ?>" alt="Spot Theme">
+        <img class="" src="../../post_img/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
+        style="height: auto;
+               width: 500px;
+               text-align:center;">
       </div>
     </div>
   </div>
+  <br>
+  <br>
   
   <!-- CLIENT INFORMATION -->
   <div id="lg">
@@ -116,11 +121,9 @@
       </div>
     </div><!-- row -->
 
-    <div class="col-lg-8">
-      
-    </div><!-- col-lg-8-->
+    <div class="col-lg-8"></div><!-- col-lg-8-->
     <div class="col-lg-4 goright">
-      <p><a href="img_all.php"><i class="fa fa-angle-right"></i> See All Posts</a></p>
+      <p><a href="/cebu_log/pictures/all_show/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-angle-right"></i> See All Posts</a></p>
     </div>
   </div><!-- container -->
 

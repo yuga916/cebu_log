@@ -53,11 +53,13 @@
 
         function __construct() {
             $this->shop = new Shop();
+            $this->picture_top = new Picture();
             $this->picture = new Picture();
             $this->tweet = new Tweet();
             $this->resource = 'shops';
             $this->action = 'index';
             $this->viewOptions = array();
+            $this->Picture_tops = array();
             $this->viewPictures = array();
             $this->viewTweets = array();
             $this->viewTwpictures = array();
@@ -68,6 +70,8 @@
         function show($id) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
+
+            $this->Picture_tops = $this->picture->shop_top($id);
             $this->viewOptions = $this->shop->show($id);
             $this->viewPictures = $this->picture->shop_picture_show($id);
             $this->viewTweets = $this->tweet->shop_tweet_show($id);

@@ -121,20 +121,21 @@
         }
 
             
-
+//ユーザー情報の編集
         function edit($id) {
-            $sql = 'SELECT * FROM `blogs` WHERE `delete_flag` = 0 AND `id` = ' . $id;
+            $sql = 'SELECT * FROM `members` WHERE `id` = ' . $id;
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             $rtn = mysqli_fetch_assoc($results);
             return $rtn;
         }
 
+//ユーザー情報の更新処理
         function update($post) {
-            $sql = sprintf('UPDATE `blogs` SET `title` = "%s", `body` = "%s"
+            $sql = sprintf('UPDATE `members` SET `nick_name` = "%s", `m_intro` = "%s"
                                            WHERE `id` = %d',
-                        mysqli_real_escape_string($this->dbconnect,$post['title']),
-                        mysqli_real_escape_string($this->dbconnect,$post['body']),
+                        mysqli_real_escape_string($this->dbconnect,$post['nick_name']),
+                        mysqli_real_escape_string($this->dbconnect,$post['m_intro']),
                         $post['id']
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));

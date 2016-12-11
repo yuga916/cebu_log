@@ -2,6 +2,7 @@
     special_echo('pictures_controller.phpが呼び出されました。');
 
     require('models/picture.php');
+    require('models/shop.php');
 
     // インスタンス化
     $controller = new PicturesController();
@@ -71,12 +72,15 @@
         private $resource;
         private $action;
         private $viewOptions;
+        private $viewShops;
 
         function __construct() {
             $this->picture = new Picture();
+            $this->shop = new Shop();
             $this->resource = 'pictures';
             $this->action = 'realtime';
             $this->viewOptions = array();
+            $this->viewShops = array();
         }
 
         //  一覧ページ表示アクション
@@ -101,12 +105,12 @@
             $this->display();
         }
 
-        // 詳細ページ表示アクション
+        // 写真一覧ページ表示アクション
         function all_show($id) {
             special_echo('Controllerのall_show()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
-            $this->viewOptions = $this->picture->all_show($id); // 戻り値 $rtnを受け取る
-            // special_var_dump($this->viewOptions);
+            $this->viewOptions = $this->picture->all_show($id);
+            $this->viewShops = $this->shop->all_show($id);
             $this->action = 'all_show';
             $this->display();
         }

@@ -15,13 +15,13 @@
         function random() {
             special_echo('モデルのrandom()が呼び出されました。');
 
-            $sql = 'SELECT `shop_picture_path` FROM `pictures` ORDER BY RAND() LIMIT 25';
+            $sql = 'SELECT `shop_picture_path` ,`s_id` FROM `pictures` WHERE `categoly` = 0 ORDER BY RAND() LIMIT 25';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
-                $rtn = $result;
+                $rtn[] = $result;
             }
 
             // var_dump($rtn);
@@ -48,18 +48,33 @@
         function all_show($id) {
             special_echo('モデルのall_show()が呼び出されました。');
 
-            $sql = 'SELECT `shop_picture_path` FROM `pictures` ORDER BY RAND() LIMIT 25';
+            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d ORDER BY `created`',
+            mysqli_real_escape_string($this->dbconnect, $id)
+            );
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
-                $rtn = $result;
+                $rtn[] = $result;
             }
 
             // var_dump($rtn);
             return $rtn;
         }
+
+//shopのトップ画像のランダム表示
+        function shop_top($id) {
+            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d ORDER BY RAND() LIMIT 1',
+            mysqli_real_escape_string($this->dbconnect, $id)
+            );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+            // 戻り値 (Controllerへ渡すデータ)
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }        
 
         //like数と投稿写真の取得
                 function show($option) {

@@ -18,7 +18,7 @@
             special_echo('モデルのshowメソッド呼び出し');
             special_echo('$idは' . $id . 'です(モデル内)');
 
-            $sql =  sprintf('SELECT `shop_name`,`shop_intro` 
+            $sql =  sprintf('SELECT `shop_id`,`shop_name`,`shop_intro` 
                  FROM `shops` 
                 WHERE `shop_id` = %d ORDER BY `created`',
                 mysqli_real_escape_string($this->dbconnect, $id)
@@ -28,6 +28,20 @@
             return $rtn;
         }
 
+//今までの投稿一覧ページの店名表示
+        function all_show($id) {
+            special_echo('モデルのshowメソッド呼び出し');
+            special_echo('$idは' . $id . 'です(モデル内)');
+
+            $sql =  sprintf('SELECT `shop_name` 
+                 FROM `shops` 
+                WHERE `shop_id` = %d',
+                mysqli_real_escape_string($this->dbconnect, $id)
+                );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }
 
 
 //新規ツイート登録
