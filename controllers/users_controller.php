@@ -131,7 +131,7 @@
                     special_echo('Controllerのauth()が呼び出されました。');
                     $login_flag = $this->user->auth($post);
                     if ($login_flag) {
-                        header('Location:/cebu_log/');
+                        header('Location:/cebu_log/home/home');
                         exit();
                     } else {
                         header('Location:login');

@@ -109,11 +109,12 @@
         }
 
         // 詳細ページ表示アクション
-        function all_show($id) {
+        function all_show($s_id) {
             special_echo('Controllerのall_show()が呼び出されました。');
-            special_echo('$idは' . $id . 'です。');
-            $this->viewOptions = $this->picture->all_show($id); // 戻り値 $rtnを受け取る
+            special_echo('$idは' . $s_id . 'です。');
+            $this->viewOptions = $this->picture->all_show($s_id); // 戻り値 $rtnを受け取る
             // special_var_dump($this->viewOptions);
+            special_var_dump($this->viewOptions);
             $this->action = 'all_show';
             $this->display();
         }

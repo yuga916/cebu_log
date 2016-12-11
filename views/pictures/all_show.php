@@ -59,21 +59,10 @@
     
     <div class="container">
           <div id="gallery" class="zoomwall">
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-          
-  
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-                      
-                      
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
-
-
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
+          <?php foreach ($this->viewOptions as $viewOption): ?>
+                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"  data-highres="" />  
+          <?php endforeach ?>
+                       
           </div>
     </div>
     <br>

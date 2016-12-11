@@ -222,7 +222,7 @@
                       
                               
                           <div class="timeline-label">
-                            <img src="../../<?php echo $viewTweet['picture_path']; ?>" width="48" height="48"
+                            <img src="/../<?php echo $viewTweet['picture_path']; ?>" width="48" height="48"
                             style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">

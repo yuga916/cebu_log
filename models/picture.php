@@ -38,7 +38,7 @@
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
-                $rtn = $result;
+                $rtn[] = $result;
             }
 
             // var_dump($rtn);
@@ -47,17 +47,13 @@
 
         function all_show($id) {
             special_echo('モデルのall_show()が呼び出されました。');
+            $sql = 'SELECT `shop_picture_path` FROM `pictures`  ORDER BY RAND() LIMIT 25';
+            $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
-            $sql = 'SELECT `shop_picture_path` FROM `pictures` ORDER BY RAND() LIMIT 25';
-            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-            // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
-                $rtn = $result;
+                $rtn[] = $result;
             }
-
-            // var_dump($rtn);
             return $rtn;
         }
 
