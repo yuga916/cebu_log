@@ -40,7 +40,7 @@
   <?php if(!empty($_POST)): ?>
   　<?php special_var_dump($_POST); ?>
 　<?php endif; ?>
-    <?php echo $this->viewTwpictures['shop_picture_path']; ?>
+    <?php echo $this->viewTwpictures[1]['shop_picture_path']; ?>
 
 
   
@@ -135,7 +135,7 @@
         <div class="col-md-3 ">
             <figure>
 
-              <img class="img-responsive" src="../../post_img/<?php echo $viewPicture['shop_picture_path'] ?>" >
+              <img class="img-responsive" src="../uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
               <br>
             </figure><!-- /figure -->
         </div>
@@ -183,11 +183,12 @@
 
 
           <br>
-          <select class="form-control" name="category">
-                     <option value="0">Food</option>
-                     <option value="1">お店の外装、内装</option>
-                     <option value="2">その他</option>
-          </select>
+          
+         <select class="form-control" name="categoly">
+            <?php while($categoly=mysqli_fetch_assoc($this->viewsoptionsCategoly)): ?>
+            <option value="<?php echo($categoly['categoly_id']);?>"><?php echo($categoly['categoly']);?></option>   
+            <?php endwhile ?>
+        </select>
 
           <?php if(isset($this->viewErrors['shop_picture_path']) && $this->viewErrors['shop_picture_path'] == 'blank'): ?>
            <p style="color:red;">* 名前を入力してください</p>
@@ -227,14 +228,11 @@
                                   width: 40px;">
                               
 
-                            &nbsp;&nbsp;<p style="display:inline;">name:hoge</a></p>&nbsp;&nbsp;date:2016年<br><br>
-                            <p>hogehoge</p>
-                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewTweet['id']; ?>"><?php echo $viewTweet['nick_name']; ?></a></p>&nbsp;&nbsp;date:<?php echo $viewTweet['created']; ?><br><br>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="../uploads/users/<?php echo $viewTweet['id']; ?>"><?php echo $viewTweet['nick_name']; ?></a></p>&nbsp;&nbsp;date:<?php echo $viewTweet['created']; ?><br><br>
                             <p><?php echo $viewTweet['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
-                               <img src="post_img/<?php echo $tweet['img_col']; ?>" width="300">
-                               <img src="../../post_img/<?php echo $viewTwpicture['shop_picture_path']; ?>" width="300">
+                               <img src="../uploads/pictures/<?php echo $viewTwpicture['shop_picture_path']; ?>" width="300">
                                <br>
                                <br>
 

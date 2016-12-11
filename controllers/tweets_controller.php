@@ -49,16 +49,16 @@
 				 special_echo('tweets_controller.phpのpost_tweet_validationが呼び出されました');
 	                  //画像の拡張子チェック
 	                      if(!empty($fileName)){
-	                           $ext=substr($fileName,-3);
-	                          if($ext !='jpg'&&$ext !='gif'&&$ext !='png'){
-	                            $error['picture_path']='type';
-	                          }
+		                           $ext=substr($fileName,-3);
+			                          if($ext !='jpg'&&$ext !='gif'&&$ext !='png'){
+			                            $error['picture_path']='type';
+		                          }
 	                         
 		              //エラーがない場合 画像をアップロードする
 		                        special_echo('画像をアップロード処理');
 		                        $picture_path=date('YmdHis').$fileName;
 		                        move_uploaded_file($files['picture_path']['tmp_name'],'uploads/pictures/' .$picture_path);
-		                    	}
+		                  }
 		                        $_SESSION['post']=$post;
 		                        $_SESSION['picture_path']=$picture_path;
 		                        special_echo('$_SESSION＝');
@@ -69,15 +69,17 @@
 //picturesへの登録
 			function create_picture($post,$files){
 				special_echo('tweets_controller.phpのcreate_pictureが呼び出されました');
+				special_var_dump($post);
+				special_var_dump($files);
 				$this->picture->create($post,$files);
 				header("Location:show_p_id");
 				exit();
 			}
 			function show_p_id($post){
 				special_echo('tweets_controllerのshow_p_idを通りました');
-				special_var_dump($_SESSION['post']);
+				special_var_dump($post);
 				$_SESSION['picture']=$this->picture->show_p_id($post);
-				special_var_dump($_SESSION['picture_id']);
+				special_var_dump($_SESSION['picture']);
 				header('Location:create');
 				exit();
 			}
@@ -85,10 +87,10 @@
 			function create($post,$picture_id){
 				special_echo('tweets_controllerのcreateを通りました');
 				special_var_dump($post);
-				special_var_dump($picture_id);
+				special_var_dump($pictureture_id);
 				$this->tweet->create($post,$picture_id);
-				//header('Location:/shops/show');
-				//exit();
+				header('Location:/cebu_log/shops/show');
+				exit();
 			}
 
 

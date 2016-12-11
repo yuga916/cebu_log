@@ -59,7 +59,7 @@
             $this->viewOptions = array();
 
 	 		$this->viewsoptionShops=array();
-	 		$this->viewsoptions_categoly=array();
+	 		$this->viewsoptionsCategoly=array();
 	 		$this->viewErrors=array();
 
             $this->viewPictures = array();
@@ -77,8 +77,17 @@
             $this->viewPictures = $this->picture->shop_picture_show($id);
             $this->viewTweets = $this->tweet->shop_tweet_show($id);
             $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+            $this->viewsoptionsCategoly=$this->picture->add_categoly();
 
-            // special_var_dump($this->viewOptions);
+            special_echo('viewOptions');
+            special_var_dump($this->viewOptions);
+            special_echo('viewPictures');
+            special_var_dump($this->viewPictures);
+            special_echo('viewTwpictures');
+            special_var_dump($this->viewTwpictures);
+            special_echo('viewTweets');
+            special_var_dump($this->viewTweets);
+
             $this->action = 'show';
             $this->display();
         }
@@ -114,16 +123,11 @@
 			    	}
 
 			    }
-        function post_tweet_validation($post,$files,$fileName){
-            special_echo('controllerのpost_tweet_validationが呼び出されました');
-                    $error=$this->post_tweet_validation;
-
-        }
 
 	   function create($post){
 	   		special_echo('controllerのcreateが呼び出されました');
 	   		$this->shop->create($post);
-	   		session_destroy();
+	   		//session_destroy();登録使用したでーたは消す
 	   		//header('Location:add');
 	   		//exit();
 	   }

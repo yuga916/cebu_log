@@ -89,7 +89,7 @@
         //  一覧ページ表示アクション
         function random() {
             special_echo('Controllerのrandom()が呼び出されました。');
-            
+              
             // モデルを呼び出してデータを返り値として取得
             $this->viewOptions = $this->picture->random();
 

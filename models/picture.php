@@ -121,7 +121,7 @@
                     special_echo('modelsのcreateが呼び出された' );
                     $sql=sprintf('INSERT INTO `pictures` SET `owner_id`=%d,`categoly`=%d,`s_id`=%d,`shop_picture_path`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['categoly']),mysqli_real_escape_string($this->dbconnect,$post['s_id']),mysqli_real_escape_string($this->dbconnect,$files)
                       );
-                    //mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                    mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
                   }
 
 
@@ -141,14 +141,13 @@
                     return $results;
                   }
 
-                  function show_p_id($post){
+                 function show_p_id($post){
                     special_echo('modelのshow_idが呼び出されました');
                     $sql=sprintf('SELECT `picture_id`FROM `pictures`WHERE `owner_id`=%d AND `s_id`=%d order by `created` DESC LIMIT 1',mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['s_id']));
                     $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
                     $result=mysqli_fetch_assoc($results);
                     return $result;
-                  }      
-                   
+                  }                       
 
 //shopの画像を取り出す。（8枚）
               function shop_picture_show($id) {

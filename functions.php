@@ -1,5 +1,4 @@
 <?php
-    define('DEBUG', false);
     define('DEBUG', true);
 
     function special_echo($val) {

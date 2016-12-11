@@ -10,7 +10,7 @@
                   if (! $_FILES['image_file']['error'] && $_FILES['image_file']['size'] < 250 * 1024) {
                       if (is_uploaded_file($_FILES['image_file']['tmp_name'])) {
                           // new unique filename
-                          $sTempFileName = 'member_img/' . md5(time().rand());
+                          $sTempFileName = 'uploads/users/' . md5(time().rand());
                           // move uploaded file into cache folder
                           move_uploaded_file($_FILES['image_file']['tmp_name'], $sTempFileName);
                           // $_SESSION['join']['image_file'] = $sResultFileName;
