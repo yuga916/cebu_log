@@ -92,6 +92,39 @@
             // var_dump($rtn);
             return $rtn;
         }
+
+//ユーザーがフォローしているかどうかの判定
+        function is_follow($id){
+            $sql = sprintf('SELECT `follow_id` FROM `follows` 
+                                    WHERE `following_id`=%d',
+                              mysqli_real_escape_string($this->dbconnect, $id)
+                          );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }
+
+//フォロー機能
+        function follow($option){
+        
+            $sql = sprintf('INSERT INTO `followings` 
+                            SET `follower_id` = %d, `following_id` = %d',
+                            mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
+                            mysqli_real_escape_string($this->dbconnect,$option)
+                            );
+            mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        }
+
+
+//unlike機能
+        function unlike($id) {
+             special_echo('モデルのunlikeメソッド呼び出し');
+
+              $sql = sprintf('DELETE FROM `likes` WHERE `m_id` = %d AND `s_id` = %d',
+                                  $_SESSION['id'],
+                                  mysqli_real_escape_string($this->dbconnect,$id));
+              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+          }
     
 
         function show_follow($id) {
@@ -167,30 +200,6 @@
                       return $rtn;
          }
 
-
-//like機能
-        function like($option) {
-            special_echo('モデルのlikeメソッド呼び出し');
-  
-              $sql = sprintf('INSERT INTO `likes` SET `u_id` = %d, `p_id` = %d',
-                                  $_SESSION['id'],
-                                  $option
-                             );
-  
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        }
-        
-//unlike機能
-        function unlike($option) {
-             special_echo('モデルのunlikeメソッド呼び出し');
-
-              $sql = sprintf('DELETE FROM `likes` WHERE `u_id` = %d AND `p_id` = %d',
-                                  $_SESSION['id'],
-                                  $option
-                             );
-
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-          }        
 
     }
  ?>

@@ -49,11 +49,15 @@
         <div class="col-lg-8 col-lg-offset-2">
           <h1><b><?php echo $this->viewOptions['shop_name']; ?>
           
-          <?php if(is_null($this->viewLikes['m_id'])): ?>
-            </b><a href="/cebu_log/shops/like/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
-          <?php else: ?>
-            </b><a href="/cebu_log/shops/unlike/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
-          <?php endif; ?>
+
+            <?php if(is_null($this->viewLikes['m_id'])): ?>
+              </b><a href="/cebu_log/shops/like/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
+            <?php else: ?>
+              </b><a href="/cebu_log/shops/unlike/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
+            <?php endif; ?>
+          
+
+          
           
           <p>総いいね数：<?php echo $this->likeCounts['like_cnt']; ?></p>
           <p><?php echo $this->viewOptions['shop_intro']; ?></p>
