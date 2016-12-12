@@ -140,6 +140,8 @@
 			    	$error=$this->shop->post_validation($post);
 			    	special_var_dump($error);
 			    	if(!empty($error)){
+                        $this->action='add';
+                        $this->resource='shops';
 			    		$this->viewErrors=$error;
 			    		$this->display();
 			    	}
@@ -155,10 +157,12 @@
 
 	   function create($post){
 	   		special_echo('controllerのcreateが呼び出されました');
+            special_var_dump($post);
 	   		$this->shop->create($post);
-	   		//session_destroy();登録使用したでーたは消す
-	   		//header('Location:add');
-	   		//exit();
+	   		session_destroy();//登録使用したでーたは消す
+	   		header('Location:add');
+	   		exit();
+            //special_var_dump($_SESSION['post']);
 	   }
 
 

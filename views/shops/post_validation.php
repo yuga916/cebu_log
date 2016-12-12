@@ -7,6 +7,11 @@
           <?php if (!empty($this->viewErrors['shop_name'])): ?>
           <p style="color: red;">*お店を再度記入してください</p>
           <?php endif ?>
+
+          <?php if (!empty($this->viewErrors['duplicate'])): ?>
+          <p style="color: red;">*お店がすでに登録されています</p>
+          <?php endif ?>
+
           <input type="text" name="shop_name">
         </div>
 
@@ -25,6 +30,8 @@
           <?php if (!empty($this->viewErrors['address'])): ?>
           <p style="color: red;">*住所を再度記入してください</p>
           <?php endif ?>
+
+
 
           <input type="text" name="address">
         </div>

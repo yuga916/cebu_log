@@ -43,7 +43,14 @@ var_dump($results);
            <div class="form-group">
              <label class="col-sm-4 control-label">店名</label>
              <div class="col-sm-8">
-               <input type="text" name="shop_name" class="form-control" placeholder="Ex： Samurai" value="">
+                    <?php if (!empty($this->viewErrors['shop_name'])): ?>
+                    <p style="color: red;">*お店を再度記入してください</p>
+                    <?php endif ?>
+
+                    <?php if (!empty($this->viewErrors['duplicate'])): ?>
+                    <p style="color: red;">*お店がすでに登録されています</p>
+                    <?php endif ?>
+               <input type="text" name="shop_name" class="form-control" placeholder="Ex:ORANGE" value="">
              </div>
            </div>
 
@@ -51,16 +58,10 @@ var_dump($results);
            <div class="form-group">
              <label class="col-sm-4 control-label">紹介文</label>
              <div class="col-sm-8">
-               <input type="text" name="intro_shop" class="form-control" placeholder="Ex： samurai@net.com" value="">
-              
-             </div>
-           </div>
-
-           <!-- 平均予算 -->
-           <div class="form-group">
-             <label class="col-sm-4 control-label">平均予算</label>
-             <div class="col-sm-8">
-               <input type="text" name="email" class="form-control" placeholder="Ex： samurai@net.com" value="">
+                <?php if (!empty($this->viewErrors['intro_shop'])): ?>
+                <p style="color: red;">*紹介文を再度記入してください</p>
+                <?php endif ?>
+               <textarea name="intro_shop" class="form-control" placeholder="お店の紹介文を作成してください" value=""></textarea>              
              </div>
            </div>
 
@@ -68,16 +69,13 @@ var_dump($results);
            <div class="form-group">
              <label class="col-sm-4 control-label">地図</label>
              <div class="col-sm-8">
-               <!--<form>-->
-               <input type="number" value="555" id="address" name="address">
-               <input type="button" value="地図検索" id="button">
-               <!--</form>-->
+                <?php if (!empty($this->viewErrors['result_lat'])||!empty($this->viewErrors['result_lng'])): ?>
+                <p style="color: red;">*住所を再度記入してください</p>
+                <?php endif ?>
 
-
-
-              <input type="text" name="result_lat" id="result_lat">
-              <input type="text" name="result_lng" id="result_lng">
-              <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+              <input type="hidden" name="result_lat" id="result_lat">
+              <input type="hidden" name="result_lng" id="result_lng">
+              <input id="pac-input" placeholder="お店の場所を設定してください" class="controls" type="text" placeholder="Search Box">
 
 
                              <!-- 地図を表示させる要素 -->
