@@ -81,26 +81,6 @@
             return $rtn;
         }
     
-        function show_follow($id) {
-            special_echo('モデルのshowメソッド呼び出し');
-            special_echo('$idは' . $id . 'です(モデル内)');
-            // パラメータから取得した$idを元に記事データ一件取得
-                // WHERE `id` = $id ← この条件でデータを取得します
-            $sql = 'SELECT * FROM `members`';
-            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-            $rtn = mysqli_fetch_assoc($results);
-            return $rtn;
-        }
-        function show_follower($id) {
-            special_echo('モデルのshowメソッド呼び出し');
-            special_echo('$idは' . $id . 'です(モデル内)');
-            // パラメータから取得した$idを元に記事データ一件取得
-                // WHERE `id` = $id ← この条件でデータを取得します
-            $sql = 'SELECT * FROM `members`';
-            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-            $rtn = mysqli_fetch_assoc($results);
-            return $rtn;
-        }
             
 //ユーザー情報の編集
         function edit($id) {
@@ -166,47 +146,70 @@
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
-      function followings(){
-        specialEcho('usersのfollowings()が呼び出されました');
-        // フォローしている人の一覧
-        $sql = sprintf('SELECT u.*, f.`following_id` 
-                        FROM `users`
-                        AS u
-                        LEFT JOIN `followings`
-                        AS f
-                        ON u.`user_id` = f.`following_id`
-                        WHERE u.`user_id` = f.`following_id`
-                        AND f.`follower_id` = %d',
-               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
-        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        $rtn = array();
-        while($result = mysqli_fetch_assoc($results)){
-                $rtn[] = $result;
-        }
-        return $rtn;
-      }
-      function followers(){
-        specialEcho('usersのfollowers()が呼び出されました');
+
+      function followings($id){
+        special_echo('usersのfollowers()が呼び出されました');
         // フォローされている人の一覧
-        $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
-                        FROM `users`
-                        AS u
+        $sql = sprintf('SELECT m.*, f.`following_id` 
+                        FROM `members`
+                        AS m
                         LEFT JOIN `followings`
                         AS f
-                        ON u.`user_id` = f.`follower_id`
-                        WHERE u.`user_id` = f.`follower_id`
+                        ON m.`id` = f.`following_id`
+                        WHERE m.`id` = f.`following_id`
+                        AND f.`follower_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$id));
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = array();
+              while($result = mysqli_fetch_assoc($results)){
+              $rtn[] = $result;
+          
+            }
+            return $rtn;
+      }
+
+      function followers($id){
+        special_echo('usersのfollowings()が呼び出されました');
+        // フォローしている人の一覧
+        $sql = sprintf('SELECT m.*,f.`follower_id`, f.`following_id`
+                        FROM `members`
+                        AS m
+                        LEFT JOIN `followings`
+                        AS f
+                        ON m.`id` = f.`follower_id`
+                        WHERE m.`id` = f.`follower_id`
                         AND f.`following_id` = %d',
-               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+               mysqli_real_escape_string($this->dbconnect,$id));
         $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         $rtn = array();
         while($result = mysqli_fetch_assoc($results)){
                 $rtn[] = $result;
         }
-        // echo '<pre>';
-        // var_dump($rtn);
-        // echo '</pre>';
         return $rtn;
       }
+
+
+
+
+//フォロー数
+    function countFollowing($id){
+        $sql = sprintf('SELECT COUNT(*) AS `follow_cnt` FROM `followings` WHERE `follower_id`=%d',
+          mysqli_real_escape_string($this->dbconnect, $id)
+          );
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $rtn = mysqli_fetch_assoc($results);
+        return $rtn;
+    }
+
+  //フォロワー数
+    function countFollower($id){
+        $sql = sprintf('SELECT COUNT(*) AS `following_cnt` FROM `followings` WHERE `following_id`=%d',
+          mysqli_real_escape_string($this->dbconnect, $id)
+          );
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $rtn = mysqli_fetch_assoc($results);
+        return $rtn;
+    }
 
 
     }

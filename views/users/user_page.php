@@ -73,6 +73,24 @@
 
                <a href="/cebu_log/users/unfollow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
            <?php endif; ?>
+
+
+        <!-- follower,followeringのカウント -->
+        
+            <div class="row mt centered">
+              <div class="col-lg-6">
+                <br>
+                <p><b>フォロー数:<a href="/cebu_log/users/followings/<?php echo $this->viewOptions['id']; ?>"><?php echo $this->followings['follow_cnt']; ?></a></b>人</p>
+              </div>
+
+              <div class="col-lg-6">
+                <br>
+                <p><b>フォロワー数:<a href="/cebu_log/users/followers/<?php echo $this->viewOptions['id']; ?>"><?php echo $this->followers['following_cnt']; ?></a></b>人</p>
+              </div>
+            </div>
+        
+
+
            
          </div>
        </div><!-- /row -->
