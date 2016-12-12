@@ -119,204 +119,27 @@
 					</div>
 
 				<div id="ri-grid" class="ri-grid animate-box">
-					<img class="ri-loading-image" src="images/loading.gif"/>
+					<img class="ri-loading-image" src="../../images/loading.gif"/>
 					<ul>
+
+					<?php foreach($this->viewOptions as $viewOption): ?>
 						<li>
-							<a href="#">
-								<img src="images/salad.jpg"/>
+							<a href="/cebu_log/shops/<?php echo $viewOption['s_id'] ?>">
+								<img src="post_img/<?php echo $viewOption['shop_picture_path'] ?>"/>
 								<div class="desc">
 									<h3>Album<br><span>129 Photos</span></h3>
 								</div>
 							</a>
 						</li>
-						<li>
-							<a href="#">
-								<img src="images/ribu.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>129 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/chuka.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>129 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/hana.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>129 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/niku.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>129 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/potato.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>128 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pan.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>127 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/makaroni.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>126 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pizza.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>125 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/niku.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>124 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic11.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>123 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic12.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>122 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic13.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>121 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic14.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>120 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic15.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>129 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/makaroni.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>128 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic17.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>127 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic18.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>126 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic19.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>125 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic20.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>124 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic21.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>123 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic22.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>122 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic23.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>121 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="images/pic24.jpg"/>
-								<div class="desc">
-									<h3>Album<br><span>121 Photos</span></h3>
-								</div>
-							</a>
-						</li>
+						
+					<?php endforeach; ?>
+					
+
 					</ul>
 				</div>
 			</div>
 		</div>
+
 		<div id="fh5co-services-section">
 			<div class="container">
 				<div class="row">
@@ -365,6 +188,10 @@
 				    			<h3>グルメなユーザーから探す</h3>
 				    			<hr>
 				    		</div>
+				    		<div class="col-lg-8"></div><!-- col-lg-8-->
+                  <div class="col-lg-4 goright">
+                   <p><a href="img_all.php"><i class="fa fa-angle-right"></i>ユーザーランキングを見る</a></p>
+                  </div>
 				    	</div>
 				    	<div class="row mt">
 				    		<div class="col-lg-4">
@@ -392,7 +219,70 @@
 				    </div><!-- /container -->
 			    </div><!-- /white -->
 
+			    <div id="white">
+				    <div class="container">
+				    	<div class="row mt">
+				    		<div class="col-lg-4 col-lg-offset-4 centered">
+				    			<h3>リアルタイムで投稿されている写真から探す</h3>
+				    			<hr>
+				    		</div>
+				    		<div class="col-lg-8"></div><!-- col-lg-8-->
+                <div class="col-lg-4 goright">
+                 <p><a href="img_all.php"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
+    </div>
+				    	</div>
+				    	<div class="row mt">
+				    		<div class="col-lg-2">
+				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">
+                  <br>
+				    		</div>
 
+				    		<div class="col-lg-2">
+				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">
+                  <br>
+				    		</div>
+
+				    		<div class="col-lg-2">
+				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">
+                  <br>
+				    		</div>
+
+				    		<div class="col-lg-2">
+				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">
+                  <br>
+				    		</div>
+
+				    		<div class="col-lg-2">
+				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">
+                  <br>
+				    		</div>
+
+				    		<div class="col-lg-2">
+				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">
+                  <br>
+				    		</div>
+
+				    		
+				
+				    	</div><!-- /row -->
+				    </div><!-- /container -->
+			    </div><!-- /white -->
+			    <br>
+				    		<br>
+				    		<br>
+				    		<br>
 
 	
 	</div>

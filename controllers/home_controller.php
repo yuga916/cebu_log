@@ -27,6 +27,8 @@
 
         // プロパティ
         private $home;
+        private $picture;
+        private $user;
         private $resource;
         private $action;
         private $viewOptions;
@@ -41,7 +43,6 @@
 
         function home() {
             special_echo('Controllerのhome()が呼び出されました。');
-
             // モデルを呼び出してデータを返り値として取得
             $this->viewOptions = $this->picture->random();
             // データをViewに送る

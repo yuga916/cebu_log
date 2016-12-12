@@ -56,10 +56,21 @@
                        <br>
          </div>
          <div class="col-lg-8 col-lg-offset-2">
-           <p><b>NAME:<?php echo $this->viewOptions['nick_name']; ?></p>
-           <p><b>INRODUCTION:</b><?php echo $this->viewOptions['m_itro']; ?></p>
+             <p><b>NAME:<?php echo $this->viewOptions['nick_name']; ?></p>
+             <p><b>INRODUCTION:</b><?php echo $this->viewOptions['m_intro']; ?></p>
+           <?php if($_SESSION['id'] == $this->viewOptions['id']): ?>
+             <a href="../edit/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">ユーザー情報を編集する</button></a>
+           <?php endif; ?>
+           <br>
+           <br>
+           
+           <?php if(is_null($this->viewFollows['m_id'])): ?>
+               <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローする</button></a>
+           <?php else: ?>   
 
-           <!-- <a href="edit.php"><button type="button" class="btn btn-primary btn-lg" style="border-color: #ff0000;background-color: #ff0000">Edit</button></a> -->
+               <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
+           <?php endif; ?>
+           
          </div>
        </div><!-- /row -->
      </div><!-- /.container -->
