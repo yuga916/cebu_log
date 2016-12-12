@@ -295,7 +295,7 @@
            $referer_option = $referer[6];
            specialVarDump($referer);
            header('Location: /cebu_log/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
-      }
+      
         }
 
 //アンフォロー機能

@@ -102,13 +102,13 @@
         function like($id) {
             $this->viewLikes = $this->shop->like($id);
             $this->action = 'like';
-            header('Location: /cebu_log');
+            header('Location: /cebu_log/shops/show/' . $id);
         }
 
 //unlike機能
         function unlike($id) {
             $this->shop->unlike($id);
-            header('Location: /cebu_log');
+            header('Location: /cebu_log/shops/show/' . $id);
         }
       
       

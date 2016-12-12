@@ -106,7 +106,6 @@
 
 //フォロー機能
         function follow($option){
-        
             $sql = sprintf('INSERT INTO `followings` 
                             SET `follower_id` = %d, `following_id` = %d',
                             mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
