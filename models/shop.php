@@ -106,29 +106,34 @@
                 mysqli_real_escape_string($this->dbconnect, $post['category_id'])
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        }
 
-//ファイルのバリデーション
-        function file_valid($file) {
-            $error = '';
-            $fileName = $file['shop_picture_path']['name'];
-            $ext = substr($fileName,-3);
-            if ($ext != 'jpg' && $ext != 'gif' && $ext != 'png' && $ext != 'JPG') {
-              $error['shop_picture_path'] = 'type';
-            }
+        function post_validation($post){
+            $error=array();
+                //owner_idの未入力チェック
+                if($post['owner_id']==''){
+                  $error['owner_id']='blank';
+                }
+                //お店の名前のID未入力チェック
+                if($post['shop_name']==''){
+                    $error['shop_name']='blank';
+                }
+                 //categolyの未入力チェック
+                if($post['intro_shop']==''){
+                    $error['intro_shop']='blank';
+                }
+                if ($post['address']==''){
+                    $error['address']='blank';
+                }
+                                         
             return $error;
-            
+
         }
 
-        
+        function create($post){
+          special_echo('modelsのcreateが呼び出された' );
+          $sql=sprintf('INSERT INTO `shops` SET `shop_name`="%s",`shop_intro`="%s",`owner_id`=%d,`shop_address`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['shop_name']),mysqli_real_escape_string($this->dbconnect,$post['intro_shop']),mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['address']));//$post['address']
+          mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
-    }
- ?>
-
-
-
-
-
-
-
-
+        }
+  }
+?>

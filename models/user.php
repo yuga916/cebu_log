@@ -1,19 +1,14 @@
 <?php
     special_echo('Modelのuser.phpが呼ばれました');
-
-
-
     // Modelのクラス
     class User {
         // プロパティ
         private $dbconnect;
-
         function __construct() {
             //DB接続
             require('dbconnect.php');
             $this->dbconnect = $db;
         }
-
 //バリデーション処理
         function signup_valid($post) {
                     $error = array();
@@ -31,7 +26,6 @@
                     }
                     return $error;
                 }
-
 //ログイン処理
          function auth($post) {
             special_echo('モデルのauth()が呼び出されました。');
@@ -52,7 +46,6 @@
             }
             return $login_flag;
         }
-
 //新規登録処理
         function create($post) {
             $sql = sprintf('INSERT INTO `members` SET `nick_name` = "%s", `email` = "%s", `password` = "%s",`picture_path`="%s", `created` = NOW()',
@@ -75,20 +68,15 @@
                        $result = mysqli_fetch_assoc($results);
                        return $result;
          }
-
-
         function rank() {
             special_echo('モデルのrank()が呼び出されました。');
-
             $sql = 'SELECT `shop_picture_path` FROM `pictures` ORDER BY RAND() LIMIT 25';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
                 $rtn[] = $result;
             }
-
             // var_dump($rtn);
             return $rtn;
         }
@@ -125,42 +113,35 @@
               mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
           }
     
-
         function show_follow($id) {
             special_echo('モデルのshowメソッド呼び出し');
             special_echo('$idは' . $id . 'です(モデル内)');
-
             // パラメータから取得した$idを元に記事データ一件取得
                 // WHERE `id` = $id ← この条件でデータを取得します
             $sql = 'SELECT * FROM `members`';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
             $rtn = mysqli_fetch_assoc($results);
             return $rtn;
         }
-
         function show_follower($id) {
             special_echo('モデルのshowメソッド呼び出し');
             special_echo('$idは' . $id . 'です(モデル内)');
-
             // パラメータから取得した$idを元に記事データ一件取得
                 // WHERE `id` = $id ← この条件でデータを取得します
             $sql = 'SELECT * FROM `members`';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
             $rtn = mysqli_fetch_assoc($results);
             return $rtn;
         }
-
             
 //ユーザー情報の編集
         function edit($id) {
             $sql = 'SELECT * FROM `members` WHERE `id` = ' . $id;
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
             $rtn = mysqli_fetch_assoc($results);
             return $rtn;
         }
+
 
 //ユーザー情報の更新処理
         function update($post) {
@@ -172,7 +153,6 @@
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         }
-
         function delete($id) {
             // 物理削除
             // $sql = 'DELETE FROM `blogs` WHERE `id` = ' . $id;
@@ -181,7 +161,6 @@
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
             
         }
-
 //like数と投稿写真の取得
         function show($id) {
                       $sql = sprintf('SELECT p.*, l.`u_id` AS `is_like` FROM `pictures` AS p LEFT JOIN `likes` AS l
@@ -199,12 +178,30 @@
                       return $rtn;
          }
 
+//like機能
+        function like($option) {
+            special_echo('モデルのlikeメソッド呼び出し');
+  
+              $sql = sprintf('INSERT INTO `likes` SET `u_id` = %d, `p_id` = %d',
+                                  $_SESSION['id'],
+                                  $option
+                             );
+  
+              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        }
+        
+//unlike機能
+        function unlike($option) {
+             special_echo('モデルのunlikeメソッド呼び出し');
+              $sql = sprintf('DELETE FROM `likes` WHERE `u_id` = %d AND `p_id` = %d',
+                                  $_SESSION['id'],
+                                  $option
+                             );
+              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+          }        
 
     }
  ?>
-
-
-
 
 
 

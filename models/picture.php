@@ -38,7 +38,7 @@
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
-                $rtn = $result;
+                $rtn[] = $result;
             }
 
             // var_dump($rtn);
@@ -47,19 +47,14 @@
 
         function all_show($id) {
             special_echo('モデルのall_show()が呼び出されました。');
-
-            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d ORDER BY `created`',
-            mysqli_real_escape_string($this->dbconnect, $id)
-            );
-            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $sql = 'SELECT `shop_picture_path` FROM `pictures`  ORDER BY RAND() LIMIT 25';
+            $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
                 $rtn[] = $result;
             }
-
-            // var_dump($rtn);
             return $rtn;
         }
 
@@ -76,6 +71,57 @@
             return $rtn;
         }        
  
+                function post_validation($post,$files){
+                      $error=array();
+                          //owner_idの未入力チェック
+                          if($post['owner_id']==''){
+                            $error['owner_id']='blank';
+                          }
+                          //お店の名前のID未入力チェック
+                          if($post['s_id']==''){
+                              $error['s_id']='blank';
+                          }
+                           //categolyの未入力チェック
+                          if($post['categoly']==''){
+                              $error['categoly']='blank';
+                          }
+                          if($files['picture_path']['name']==''){
+                                $error['picture_path']='blank';//空白の時判別できない
+                          }
+                                               
+                   return $error;
+                  }
+                  function create($post,$files){
+                    special_echo('modelsのcreateが呼び出された' );
+                    $sql=sprintf('INSERT INTO `pictures` SET `owner_id`=%d,`categoly`=%d,`s_id`=%d,`shop_picture_path`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['categoly']),mysqli_real_escape_string($this->dbconnect,$post['s_id']),mysqli_real_escape_string($this->dbconnect,$files)
+                      );
+                    mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                  }
+
+
+                  function add_shops(){
+                    special_echo('modelのadd_shopsが呼び出された');
+                    //shopテーブルからshop_idとshop_nameと取り出す
+                    $sql='SELECT`shop_id`,`shop_name`FROM `shops`';
+                    $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                    return $results;
+                  }
+
+                  function add_categoly(){
+                    special_echo('modelのadd_categolyが呼び出された');
+                    //categolyテーブルからcategoly_idとcategolyを取り出す
+                    $sql='SELECT*FROM `categoly`';
+                    $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                    return $results;
+                  }
+
+                 function show_p_id($post){
+                    special_echo('modelのshow_idが呼び出されました');
+                    $sql=sprintf('SELECT `picture_id`FROM `pictures`WHERE `owner_id`=%d AND `s_id`=%d order by `created` DESC LIMIT 1',mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['s_id']));
+                    $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                    $result=mysqli_fetch_assoc($results);
+                    return $result;
+                  }                       
 
 //shopの画像を取り出す。（8枚）
               function shop_picture_show($id) {
@@ -130,17 +176,5 @@
                   return $rtn;
           
                 }   
-
-
-
-
     }
  ?>
-
-
-
-
-
-
-
-

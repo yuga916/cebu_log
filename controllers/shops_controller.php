@@ -1,6 +1,5 @@
 <?php
     special_echo('shops_controller.phpが呼び出されました。');
-
     require('models/shop.php');
     require('models/picture.php');
     require('models/tweet.php');
@@ -29,28 +28,24 @@
           break;
 
 //新規shopページの作成画面
-      case 'add':
-        $controller->add();
+	  case 'post_validation':
+	    $controller->post_validation($post);
+	    break;
+
+	  case 'create':
+		$controller->create($_SESSION['post']);
+		break;
+
+	  case 'add':
+	  	$controller->add();
+		break;
+      case 'post_tweet_validation':
+        $controller->post_tweet_validation($post,$files,$fileName);
         break;
 
-      case 'create':
-        if (!empty($post['title']) && !empty($post['body'])) {
-            $controller->create($post);
-        } else {
-            $controller->add();
-        }
+      default:
         break;
 
-//Tweet投稿
-       case 'tweet':
-        $controller->tweet($post,$file);
-        break;
-
-
-
-        default:
-          # code...
-          break;
     }
 
 
@@ -62,6 +57,9 @@
         private $resource;
         private $action;
         private $viewOptions;
+	 	private $viewsoptionShops;
+	 	private $viewErrors;
+
 
         function __construct() {
             $this->shop = new Shop();
@@ -72,11 +70,15 @@
             $this->action = 'index';
             $this->viewOptions = array();
             $this->Picture_tops = array();
+	 		$this->viewsoptionShops=array();
+	 		$this->viewsoptionsCategoly=array();
+	 		$this->viewErrors=array();
             $this->viewPictures = array();
             $this->viewTweets = array();
             $this->viewTwpictures = array();
             $this->viewLikes = array();
             $this->likeCounts = '';
+
         }
 
 
@@ -90,10 +92,20 @@
             $this->viewPictures = $this->picture->shop_picture_show($id);
             $this->viewTweets = $this->tweet->shop_tweet_show($id);
             $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+
             $this->viewLikes = $this->shop->is_like($id);
             $this->likeCounts = $this->shop->count_like($id);
+            $this->viewsoptionsCategoly=$this->picture->add_categoly();
 
-            // special_var_dump($this->viewOptions);
+            special_echo('viewOptions');
+            special_var_dump($this->viewOptions);
+            special_echo('viewPictures');
+            special_var_dump($this->viewPictures);
+            special_echo('viewTwpictures');
+            special_var_dump($this->viewTwpictures);
+            special_echo('viewTweets');
+            special_var_dump($this->viewTweets);
+
             $this->action = 'show';
             $this->display();
         }
@@ -111,14 +123,44 @@
             header('Location: /cebu_log/shops/show/' . $id);
         }
       
-      
 
         // 新規shopページの作成画面
         function add() {
             special_echo('Controllerのadd()が呼び出されました。');
-            $this->action = 'add';
+            $this->action ='add';
             $this->display();
         }
+
+
+	    function post_validation($post){
+	    	special_echo('controller`sのpost_validationが呼び出されました');
+
+		        if(!empty($post)){	
+		        	$this->action='post_validation';	    	
+			    	$error=$this->shop->post_validation($post);
+			    	special_var_dump($error);
+			    	if(!empty($error)){
+			    		$this->viewErrors=$error;
+			    		$this->display();
+			    	}
+			    	else{         	
+		                    $_SESSION['post']=$post;
+		                    special_var_dump($_SESSION);
+		                    header('Location:create');
+		                    exit();
+		                }
+			    	}
+
+			    }
+
+	   function create($post){
+	   		special_echo('controllerのcreateが呼び出されました');
+	   		$this->shop->create($post);
+	   		//session_destroy();登録使用したでーたは消す
+	   		//header('Location:add');
+	   		//exit();
+	   }
+
 
         
         // Viewを表示するメソッド
@@ -126,6 +168,7 @@
             require('views/layouts/application.php');
         }
     }
+
  ?>
 
 

@@ -59,7 +59,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label">パスワード</label>
             <div class="col-sm-8">
-              <input type="password" name="password" class="form-control" placeholder="" value="">
+            <input type="password" name="password" class="form-control" >
             </div>
           </div>
 

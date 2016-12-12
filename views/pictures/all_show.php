@@ -57,11 +57,11 @@
 
     <div class="container">
           <div id="gallery" class="zoomwall">
-            <?php foreach($this->viewOptions as $viewOption): ?>
-          
-                        <img style="padding: 2px;" src="../../post_img/<?php echo $viewOption['shop_picture_path']?>"  data-highres="" />
-            <?php endforeach; ?>
-        </div>
+          <?php foreach ($this->viewOptions as $viewOption): ?>
+                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"  data-highres="" />  
+          <?php endforeach ?>
+                       
+          </div>
     </div>
     <br>
     <br>

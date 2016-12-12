@@ -1,6 +1,5 @@
 <?php
     special_echo('pictures_controller.phpが呼び出されました。');
-
     require('models/picture.php');
     require('models/shop.php');
 
@@ -22,6 +21,11 @@
         $controller->add();
         break;
 
+      case 'post_validation':
+        $controller->post_validation($post,$files,$fileName);
+        break;
+
+
 
 //food一覧ページ表示
       case 'all_show':
@@ -29,11 +33,7 @@
         break;
 
       case 'create':
-        if (!empty($post['title']) && !empty($post['body'])) {
-            $controller->create($post);
-        } else {
-            $controller->add();
-        }
+             $controller->create($_SESSION['post'],$_SESSION['picture_path']);
         break;
 
       case 'edit':
@@ -57,11 +57,15 @@
     class PicturesController {
 
         // プロパティ
-        private $blog;
+        private $picture;
         private $resource;
         private $action;
         private $viewOptions;
         private $viewShops;
+        private $viewsoptionsShops;
+        private $viewsoptionsCategoly;
+        private $viewerrors;
+
 
         function __construct() {
             $this->picture = new Picture();
@@ -70,12 +74,15 @@
             $this->action = 'realtime';
             $this->viewOptions = array();
             $this->viewShops = array();
+            $this->viewsoptionsShops=array();
+            $this->viewsoptionsCategoly=array();
+            $this->viewerrors=array();
         }
 
         //  一覧ページ表示アクション
         function random() {
             special_echo('Controllerのrandom()が呼び出されました。');
-            
+              
             // モデルを呼び出してデータを返り値として取得
             $this->viewOptions = $this->picture->random();
 
@@ -94,6 +101,7 @@
             $this->display();
         }
 
+
         // 写真一覧ページ表示アクション
         function all_show($id) {
             special_echo('Controllerのall_show()が呼び出されました。');
@@ -106,34 +114,40 @@
 
         function add() {
             special_echo('Controllerのadd()が呼び出されました。');
-            $this->action = 'add';
+            $this->action ='add';
+            $this->viewsoptionsShops=$this->picture->add_shops();
+            //special_var_dump('$this->viewsoptionsShops');
+            $this->viewsoptionsCategoly=$this->picture->add_categoly();
             $this->display();
         }
 
-        function create($post) {
+     function create($post,$files){
             special_echo('Controllerのcreate()が呼び出されました。');
-            $this->blog->create($post);
-            header('Location: index');
+            $this->picture->create($post,$files);
+              session_destroy();
+              header('Location:add');
+              exit();
+               //header('Location: index');
         }
 
         function edit($id) {
             special_echo('Controllerのedit()が呼び出されました。');
 
             // model処理
-            $this->viewOptions = $this->blog->edit($id);
+            $this->viewOptions = $this->picture->edit($id);
 
             $this->action = 'edit';
             $this->display();
         }
 
         function update($post) {
-            $this->blog->update($post);
+            $this->picture->update($post);
             header('Location: index');
         }
 
         function delete($id) {
             special_echo('controllerのdeleteが表示されました。');
-            $this->blog->delete($id);
+            $this->picture->delete($id);
             header('Location: ../index');
         }
 
@@ -148,6 +162,46 @@
                       $this->picture->unlike($option);
                       header('Location: ../index');
                   }       
+      function post_validation($post,$files,$fileName){
+        special_echo('controller`sのpost_validationが呼び出されました');
+
+            if(!empty($post)){          
+            $error=$this->picture->post_validation($post,$files);
+            special_var_dump($error);
+            if(!empty($error)){
+              $this->action='post_validation';
+              $this->viewerrors=$error;
+            $this->viewsoptions_shops=$this->picture->add_shops();
+              $this->viewsoptions_categoly=$this->picture->add_categoly();
+              $this->display();
+            }
+            else{
+                  //画像の拡張子チェック
+                      if(!empty($fileName)){
+                           $ext=substr($fileName,-3);
+                          if($ext !='jpg'&&$ext !='gif'&&$ext !='png'){
+                            $error['picture_path']='type';
+                          }
+                      
+                  
+              //エラーがない場合 画像をアップロードする
+                        special_echo('画像をアップロード処理');
+                        $picture_path=date('YmdHis').$fileName;
+                        move_uploaded_file($files['picture_path']['tmp_name'],'uploads/pictures/' .$picture_path);
+                        $_SESSION['post']=$post;
+                        $_SESSION['picture_path']=$picture_path;
+                        special_echo('$_SESSION＝');
+                        special_var_dump($_SESSION);
+                        header('Location:create');
+                        exit();
+                      }  
+                    }
+            }
+
+          }
+      
+
+
 
         // Viewを表示するメソッド
         function display() {

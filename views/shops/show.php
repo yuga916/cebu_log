@@ -29,10 +29,12 @@
     
     <script src="assets/js/modernizr.custom.js"></script>
 
+
     <!-- oneline_bbs -->
     <link rel="stylesheet" href="assets/css/form.css">
     <link rel="stylesheet" href="assets/css/timeline.css">
 
+    
   </head>
 
   <?php if(!empty($_POST)): ?>
@@ -40,9 +42,11 @@
 　<?php endif; ?>
   <?php special_var_dump($this->likeCounts); ?>
   <?php special_var_dump($this->viewLikes['m_id']); ?>
-    
+  
+    <?php echo $this->viewTwpictures[1]['shop_picture_path']; ?>
 
-
+  
+  
   <!-- WELCOME SECTION -->
     <div class="container">
       <div class="row mt centered">
@@ -142,14 +146,16 @@
 
       
     <div class="container">
+
      <?php foreach($this->viewPictures as $viewPicture): ?>
         <div class="col-md-3 ">
             <figure>
 
-              <img class="img-responsive" src="../../post_img/<?php echo $viewPicture['shop_picture_path'] ?>" >
+              <img class="img-responsive" src="../uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
               <br>
             </figure><!-- /figure -->
         </div>
+      
       <?php endforeach; ?>
     </div>
       <br>
@@ -169,26 +175,36 @@
    
         <!-- 画面左側 -->
       <div class="col-md-4 content-margin-top">
-        <!-- form部分 -->
-        <!-- /cebu_log/shops/tweet  -->
-      <form action="" method="post" enctype="multipart/form-data">
+        <!-- form部分 --> 
+      <form action="/cebu_log/tweets/post_tweet_validation" method="post" enctype="multipart/form-data" onsubmit="if(this.tweet.value==''){alert(this.tweet.name+' が未入力です');return false}">
+
           <!-- つぶやき入力画面 -->
           <div class="form-group">
             <div class="input-group" data-validate="length" data-length="4">
               <textarea type="text" class="form-control" name="tweet" id="validate-length" cols="50" rows="5" placeholder="comment"></textarea>
             </div>
           </div>
-          <!-- 画像の投稿枠 -->
-          <input type="file" name="shop_picture_path">
-          <br>
-          <select class="form-control" name="category_id">
-                     <option value="0">Food</option>
-                     <option value="1">お店の外装、内装</option>
-                     <option value="2">その他</option>
-          </select>
+          <!--hiddenでデータを送信-->
+          <input type="hidden" name="reply_tweet_id" value="1">
 
-          <input type="hidden" name="shop_id" value="<?php echo $id; ?>">
-          <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+          <!-- 画像の投稿枠 -->
+          <input type="file" name="picture_path">
+
+                <!--hiddenでデータを送信-->
+          <input type="hidden" name="owner_id" value="1">
+                <!--hiddenでデータを送信-->
+
+          <input type="hidden" name="s_id" value="1">
+                          <!--hiddenでデータを送信-->
+
+
+          <br>
+          
+         <select class="form-control" name="categoly">
+            <?php while($categoly=mysqli_fetch_assoc($this->viewsoptionsCategoly)): ?>
+            <option value="<?php echo($categoly['categoly_id']);?>"><?php echo($categoly['categoly']);?></option>   
+            <?php endwhile ?>
+        </select>
 
           <?php if(isset($this->viewErrors['shop_picture_path']) && $this->viewErrors['shop_picture_path'] == 'blank'): ?>
            <p style="color:red;">* 名前を入力してください</p>
@@ -206,7 +222,7 @@
         <input type="text" name="search_word">
         <!-- index.php?['key'] = ['value']; -->
         <!-- inputに入力されたvalueを取り出すには、$_GET['search_word'] -->
-        <!--　つぶやきの表示 -->
+        <!--つぶやきの表示 -->
         <input type="submit" value="検索" class="btn btn-success btn-xs">
       </form>
       <br>
@@ -217,19 +233,22 @@
         <?php foreach($this->viewTweets as $viewTweet): ?>
         <?php foreach($this->viewTwpictures as $viewTwpicture): ?>
 
+        
                   <article class="timeline-entry">
+                      
+                              
                           <div class="timeline-label">
-                            <img src="../../<?php echo $viewTweet['picture_path']; ?>" width="48" height="48"
+                            <img src="/../<?php echo $viewTweet['picture_path']; ?>" width="48" height="48"
                             style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">
                               
 
-                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewTweet['id']; ?>"><?php echo $viewTweet['nick_name']; ?></a></p>&nbsp;&nbsp;date:<?php echo $viewTweet['created']; ?><br><br>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="../uploads/users/<?php echo $viewTweet['id']; ?>"><?php echo $viewTweet['nick_name']; ?></a></p>&nbsp;&nbsp;date:<?php echo $viewTweet['created']; ?><br><br>
                             <p><?php echo $viewTweet['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
-                               <img src="../../post_img/<?php echo $viewTwpicture['shop_picture_path']; ?>" width="300">
+                               <img src="../uploads/pictures/<?php echo $viewTwpicture['shop_picture_path']; ?>" width="300">
                                <br>
                                <br>
 
