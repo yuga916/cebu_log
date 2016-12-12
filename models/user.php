@@ -161,44 +161,7 @@
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
             
         }
-//like数と投稿写真の取得
-        function show($id) {
-                      $sql = sprintf('SELECT p.*, l.`u_id` AS `is_like` FROM `pictures` AS p LEFT JOIN `likes` AS l
-                                              ON p.`id`=l.`p_id` AND l.`u_id`=%d
-                                              WHERE p.`delete_flag`=0
-                                              ORDER BY p.`created` DESC',
-                                        $_SESSION['id']
-                                    );
-          
-                      $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-                      // $rtn = array();
-                       $result = mysqli_fetch_assoc($results);// ) {
-                                // $rtn = $result;
-                      // }
-                      return $rtn;
-         }
 
-//like機能
-        function like($option) {
-            special_echo('モデルのlikeメソッド呼び出し');
-  
-              $sql = sprintf('INSERT INTO `likes` SET `u_id` = %d, `p_id` = %d',
-                                  $_SESSION['id'],
-                                  $option
-                             );
-  
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        }
-        
-//unlike機能
-        function unlike($option) {
-             special_echo('モデルのunlikeメソッド呼び出し');
-              $sql = sprintf('DELETE FROM `likes` WHERE `u_id` = %d AND `p_id` = %d',
-                                  $_SESSION['id'],
-                                  $option
-                             );
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-          }        
 
     }
  ?>
