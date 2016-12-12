@@ -107,7 +107,10 @@
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
         function post_validation($post){
             $error=array();
                 //owner_idの未入力チェック
@@ -118,13 +121,27 @@
                 if($post['shop_name']==''){
                     $error['shop_name']='blank';
                 }
+                //重複チェック                
+                if (!empty($post['shop_name'])) {
+                    $sql=sprintf('SELECT COUNT(*) AS cnt FROM `shops` WHERE `shop_name`="%s"',mysqli_real_escape_string($this->dbconnect,$post['shop_name']));
+                    $record=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                    $table=mysqli_fetch_assoc($record);
+                        if($table['cnt']>0)
+                            {
+                              $error['shop_name']='duplicate';
+                            }                    
+                }
                  //categolyの未入力チェック
                 if($post['intro_shop']==''){
                     $error['intro_shop']='blank';
                 }
-                if ($post['address']==''){
-                    $error['address']='blank';
+                if ($post['result_lat']==''){
+                    $error['result_lat']='blank';
                 }
+                if ($post['result_lng']==''){
+                    $error['result_lng']='blank';
+                }
+
                                          
             return $error;
 
@@ -132,9 +149,12 @@
 
         function create($post){
           special_echo('modelsのcreateが呼び出された' );
-          $sql=sprintf('INSERT INTO `shops` SET `shop_name`="%s",`shop_intro`="%s",`owner_id`=%d,`shop_address`="%s",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['shop_name']),mysqli_real_escape_string($this->dbconnect,$post['intro_shop']),mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['address']));//$post['address']
+          $sql=sprintf('INSERT INTO `shops` SET `shop_name`="%s",`shop_intro`="%s",`owner_id`=%d,`shop_lat`="%.14f",`shop_lng`="%.14f",`created`=NOW()',mysqli_real_escape_string($this->dbconnect,$post['shop_name']),mysqli_real_escape_string($this->dbconnect,$post['intro_shop']),mysqli_real_escape_string($this->dbconnect,$post['owner_id']),mysqli_real_escape_string($this->dbconnect,$post['result_lat']),mysqli_real_escape_string($this->dbconnect,$post['result_lng']));//$post['address']
           mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
         }
+
+    //お店の名前
+
   }
 ?>
