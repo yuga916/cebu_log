@@ -1,17 +1,22 @@
 <?php 
     // Controllerのクラス
-        requre('tweets/index.php');
-        // special_echo("tweets_controllers.phpが読み込まれました。");
-        $controller = new tweetsController();
+        require('models/tweet.php');
+        //special_echo("tweets_controllers.phpが読み込まれました。");
+        $controller = new TweetsController();
 
         switch ($action) {
-          case 'index':
-            $controller->index();
+          case 'index': //Tweet表示
+            $Controller->index();
             break;
 
-          default:
-            # code...
+          case 'create': // 新規投稿
+            if (!empty($post['title']) && !empty($post['body'])) {
+              $controller->create($post);
+            } else {
+              $controller->index();
+            }
             break;
+
         }
 
   class TweetsController{
@@ -19,9 +24,9 @@
     private $resource;
     private $action;
     private $viewOption;
-  }
+  
 
-      function__construct() {
+      function __construct() {
         $this->tweet = new Tweet();
         $this->resource = 'tweets';
         $this->action = 'index';
@@ -31,10 +36,18 @@
       // tweet：プルダウン内容選択「food・shop」
       // tweet：つぶやき一覧降順（新→古）表示
           function index(){
+//            special_echo("tweets_controllersのindex()を通りました");
             $this->viewOptions = $this->tweet->index();
-            require('views/tweets/index.php');
             $this->display();
           }
+
+          function display() {
+            require('views/tweets/index.php');
+          }
+        }
+
+
+      // 追加候補機能
       // // tweet：返信ボタン
       //     function 
       // // tweet：いいねボタン
