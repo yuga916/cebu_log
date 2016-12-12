@@ -89,8 +89,8 @@
 				special_var_dump($post);
 				special_var_dump($picture_id);
 				$this->tweet->create($post,$picture_id);
-				//header('Location:/cebu_log/shops/show');
-				//exit();
+				header('Location:/cebu_log/shops/show');
+				exit();
 			}
 
 
