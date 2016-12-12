@@ -230,25 +230,27 @@
       <br>
       <br>
 
-        <?php foreach($this->viewTweets as $viewTweet): ?>
-        <?php foreach($this->viewTwpictures as $viewTwpicture): ?>
+        <?php foreach($this->viewSamples as $viewSample): ?>
 
         
                   <article class="timeline-entry">
                       
                               
                           <div class="timeline-label">
-                            <img src="/../<?php echo $viewTweet['picture_path']; ?>" width="48" height="48"
+                            <img src="/../<?php echo $viewSample['picture_path']; ?>" width="48" height="48"
                             style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">
                               
 
-                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="../uploads/users/<?php echo $viewTweet['id']; ?>"><?php echo $viewTweet['nick_name']; ?></a></p>&nbsp;&nbsp;date:<?php echo $viewTweet['created']; ?><br><br>
-                            <p><?php echo $viewTweet['tweet']; ?></p>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="../uploads/users/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
+                            &nbsp;&nbsp;date:<?php echo $viewSample['created']; ?><br><br>
+                            <p><?php echo $viewSample['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
-                               <img src="../uploads/pictures/<?php echo $viewTwpicture['shop_picture_path']; ?>" width="300">
+                                <?php if ($viewSample['shop_picture_path']!==''): ?>
+                               <img src="../uploads/pictures/<?php echo $viewSample['shop_picture_path']; ?>" width="300">                 
+                                <?php endif ?>
                                <br>
                                <br>
 
@@ -261,7 +263,6 @@
                       
 
                   </article>
-                <?php endforeach; ?>
                 <?php endforeach; ?>
         </div><!-- timeline-centered -->
 
