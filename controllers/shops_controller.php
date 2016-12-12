@@ -1,53 +1,108 @@
-<?php 
-	 require('models/shop.php');
-	 special_echo('shops_controller.phpが呼び出されました');
-	//インスタンス化
-	  $Controller= new ShopsController();
+<?php
+    special_echo('shops_controller.phpが呼び出されました。');
+    require('models/shop.php');
+    require('models/picture.php');
+    require('models/tweet.php');
 
-	//デバック
-	  	special_var_dump($post);
-	  	//special_var_dump();
-	  	//special_var_dump();
+    // require('models/tweet.php');
+    // require('models/user.php');
 
-	//actionの条件分岐
-	  switch ($action){
-	  	case 'post_validation':
-	  		$Controller->post_validation($post);
+    // インスタンス化
+    $controller = new ShopsController();
 
-	  		break;
+    // アクションによって呼び出すメソッドを変える
+    switch ($action) {
+    
+      case 'show':
+        $controller->show($id);
+        break;
 
-	  	case 'create':
-			$Controller->create($_SESSION['post']);
+//新規shopページの作成画面
+	  case 'post_validation':
+	    $controller->post_validation($post);
+	    break;
 
-			break;
+	  case 'create':
+		$controller->create($_SESSION['post']);
+		break;
 
-		case 'add':
-	  		$Controller->add();
-			break;
+	  case 'add':
+	  	$controller->add();
+		break;
+      case 'post_tweet_validation':
+        $controller->post_tweet_validation($post,$files,$fileName);
+        break;
+
+      default:
+        break;
+    }
 
 
-	  	default:
+// コントローラのクラス
+    class ShopsController {
 
-	  		break;
-	  }
+        // プロパティ
+        private $shop;
+        private $resource;
+        private $action;
+        private $viewOptions;
+	 	private $viewsoptionShops;
+	 	private $viewErrors;
 
-	//controller class 
-	 class ShopsController{
-	 	//プロパティ
-	 	private $shop;
-	 	private $resourse;
-	 	private $action;
-	 	private $viewsoptions_shops;
-	 	private $viewerrors;
 
-	 	function __construct(){
-	 		$this->shop=new Shop();
-	 		$this->resource='shops';
-	 		$this->action='add';
-	 		$this->viewsoptions_shops=array();
-	 		$this->viewsoptions_categoly=array();
-	 		$this->viewerrors=array();
-	    }
+        function __construct() {
+            $this->shop = new Shop();
+            $this->picture = new Picture();
+            $this->tweet = new Tweet();
+            $this->resource = 'shops';
+            $this->action = 'index';
+            $this->viewOptions = array();
+
+	 		$this->viewsoptionShops=array();
+	 		$this->viewsoptionsCategoly=array();
+	 		$this->viewErrors=array();
+
+            $this->viewPictures = array();
+            $this->viewTweets = array();
+            $this->viewTwpictures = array();
+
+        }
+
+
+// 詳細ページ表示アクション
+        function show($id) {
+            special_echo('Controllerのshow()が呼び出されました。');
+            special_echo('$idは' . $id . 'です。');
+            $this->viewOptions = $this->shop->show($id);
+            $this->viewPictures = $this->picture->shop_picture_show($id);
+            $this->viewTweets = $this->tweet->shop_tweet_show($id);
+            $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+            $this->viewsoptionsCategoly=$this->picture->add_categoly();
+
+            special_echo('viewOptions');
+            special_var_dump($this->viewOptions);
+            special_echo('viewPictures');
+            special_var_dump($this->viewPictures);
+            special_echo('viewTwpictures');
+            special_var_dump($this->viewTwpictures);
+            special_echo('viewTweets');
+            special_var_dump($this->viewTweets);
+
+            $this->action = 'show';
+            $this->display();
+        }
+
+      
+      
+
+        // 新規shopページの作成画面
+        function add() {
+            special_echo('Controllerのadd()が呼び出されました。');
+            $this->action ='add';
+            $this->display();
+        }
+
+
 	    function post_validation($post){
 	    	special_echo('controller`sのpost_validationが呼び出されました');
 
@@ -56,7 +111,7 @@
 			    	$error=$this->shop->post_validation($post);
 			    	special_var_dump($error);
 			    	if(!empty($error)){
-			    		$this->viewerrors=$error;
+			    		$this->viewErrors=$error;
 			    		$this->display();
 			    	}
 			    	else{         	
@@ -68,26 +123,28 @@
 			    	}
 
 			    }
-	    
-
-
-	    function add(){
-	 		special_echo('Void the Controller’s add()');
-	 		$this->action='add';
-	  		$this->display();
-	   }
 
 	   function create($post){
 	   		special_echo('controllerのcreateが呼び出されました');
 	   		$this->shop->create($post);
-	   		session_destroy();
+	   		//session_destroy();登録使用したでーたは消す
 	   		//header('Location:add');
 	   		//exit();
 	   }
 
-	   function display(){
-	 		require('views/layouts/application.php');
-	   }
 
-	}
-?>
+        
+        // Viewを表示するメソッド
+        function display() {
+            require('views/layouts/application.php');
+        }
+    }
+
+ ?>
+
+
+
+
+
+
+

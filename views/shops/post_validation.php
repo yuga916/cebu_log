@@ -4,7 +4,7 @@
 
         <div>
         	<p>紹介するお店を名前を記入してください</p>
-          <?php if (!empty($this->viewerrors['shop_name'])): ?>
+          <?php if (!empty($this->viewErrors['shop_name'])): ?>
           <p style="color: red;">*お店を再度記入してください</p>
           <?php endif ?>
           <input type="text" name="shop_name">
@@ -13,7 +13,7 @@
 
         <div>
         	<p>紹介文を記入してください</p>
-          <?php if (!empty($this->viewerrors['intro_shop'])): ?>
+          <?php if (!empty($this->viewErrors['intro_shop'])): ?>
           <p style="color: red;">*紹介文を再度記入してください</p>
           <?php endif ?>
 
@@ -22,7 +22,7 @@
 
         <div>
           <p>住所を記入してください</p>
-          <?php if (!empty($this->viewerrors['address'])): ?>
+          <?php if (!empty($this->viewErrors['address'])): ?>
           <p style="color: red;">*住所を再度記入してください</p>
           <?php endif ?>
 
