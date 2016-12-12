@@ -107,6 +107,10 @@
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         function post_validation($post){
             $error=array();
                 //owner_idの未入力チェック

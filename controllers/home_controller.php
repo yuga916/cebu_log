@@ -34,10 +34,10 @@
         private $viewOptions;
 
         function __construct() {
-            $this->picture = new Picture();
-            $this->user = new User();
             $this->resource = 'home';
             $this->action = 'home';
+            $this->picture = new Picture();
+            $this->user = new User();
             $this->viewOptions = array();
         }
 

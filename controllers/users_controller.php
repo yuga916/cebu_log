@@ -103,7 +103,12 @@
         private $action;
         private $viewOptions;
         private $viewPictures;
+        private $followings;
+        private $followers;
+        private $viewFollows;
         private $viewErrors;
+
+        
         function __construct() {
             $this->user = new User();
             $this->picture = new Picture();
@@ -112,6 +117,9 @@
             $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
             $this->viewPictures = array();
             $this->viewFollows = array();
+            $this->followings = array();
+            $this->followers = array();
+            
         }
 //サインアップ処理
          function signup($post, $id) {
@@ -151,7 +159,7 @@
                     special_echo('Controllerのauth()が呼び出されました。');
                     $login_flag = $this->user->auth($post);
                     if ($login_flag) {
-                        header('Location:/cebu_log/home/home');
+                        header('Location:/cebu_log/');
                         exit();
                     } else {
                         header('Location:login');
@@ -238,49 +246,38 @@
             special_echo('Controllerのuser_page()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
             $this->viewOptions = $this->user->user_page($id);
-            $this->viewPictures = $this->picture->user_page_picture($id); 
-            $this->viewfollows = $this->user->is_follow($id);
+            $this->viewPictures = $this->picture->user_page_picture($id);
+            $this->viewFollows = $this->user->is_follow($id); 
             // special_var_dump($this->viewOptions);
             $this->action = 'user_page';
             $this->display();
         }
 
+
+
 //フォロー機能
         function follow($id) {
-            specialEcho('users_controllerのfollow()が呼び出されました');
+            special_echo('users_controllerのfollow()が呼び出されました');
             $this->user->follow($id);
-            // $this->displayProf();
-           $referer = get_last_referer();
-           $referer_resource = $referer[4];
-           $referer_action = $referer[5];
-           $referer_option = $referer[6];
-           specialVarDump($referer);
-           header('Location: /cebu_log/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
-      
+           header('Location: /cebu_log/users/user_page/' . $id);
+    
         }
 
 //アンフォロー機能
         function unfollow($id) {
-            specialEcho('users_controllerのunfollow()が呼び出されました');
-            $this->user->unfollow($option);
-            // $this->displayProf();
-            $referer = get_last_referer();
-            $referer_resource = $referer[4];
-            $referer_action = $referer[5];
-            $referer_option = $referer[6];
-            specialVarDump($referer);
-            header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+            special_echo('users_controllerのunfollow()が呼び出されました');
+            $this->user->unfollow($id);
+            header('Location: /cebu_log/users/user_page/' . $id);
         }
 
-
         function followings(){
-            specialEcho('users_controllerのfollowings()が呼び出されました');
+            special_echo('users_controllerのfollowings()が呼び出されました');
             $this->followings = $this->user->followings();
             require('views/users/followings.php');
         }
 
         function followers(){
-            specialEcho('users_controllerのfollowers()が呼び出されました');
+            special_echo('users_controllerのfollowers()が呼び出されました');
             $this->followers = $this->user->followers();
             require('views/users/followers.php');
         }

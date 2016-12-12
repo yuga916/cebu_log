@@ -60,7 +60,7 @@
 
 //shopのトップ画像のランダム表示
         function shop_top($id) {
-            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d ORDER BY RAND() LIMIT 1',
+            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d AND `categoly`= 0 ORDER BY RAND() LIMIT 1',
             mysqli_real_escape_string($this->dbconnect, $id)
             );
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));

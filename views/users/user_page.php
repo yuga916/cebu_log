@@ -41,6 +41,8 @@
 
   <body>
 
+  <?php  special_var_dump($this->viewFollows['is_follow']); ?>
+
   <!-- WELCOME SECTION -->
      <div class="container">
        <div class="row mt centered">
@@ -64,11 +66,12 @@
            <br>
            <br>
            
-           <?php if(is_null($this->viewFollows['m_id'])): ?>
+           <?php if($this->viewFollows['is_follow'] == 0): ?>
                <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローする</button></a>
+           
            <?php else: ?>   
 
-               <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
+               <a href="/cebu_log/users/unfollow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
            <?php endif; ?>
            
          </div>
@@ -86,7 +89,7 @@
             
                       <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
             <?php foreach($this->viewPictures as $viewPicture): ?>
-                      <img style="padding: 2px;" src="../../post_img/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
+                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
             <?php endforeach; ?>
           </div>
     </div>

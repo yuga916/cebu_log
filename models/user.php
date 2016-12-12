@@ -48,7 +48,7 @@
         }
 //新規登録処理
         function create($post) {
-            $sql = sprintf('INSERT INTO `members` SET `nick_name` = "%s", `email` = "%s", `password` = "%s",`picture_path`="%s", `created` = NOW()',
+            $sql = sprintf('INSERT INTO `members` SET `nick_name` = "%s", `email` = "%s", `password` = "%s",`picture_path`="%s", `m_intro` = "" , `created` = NOW()',
                         mysqli_real_escape_string($this->dbconnect,$post['nick_name']),
                         mysqli_real_escape_string($this->dbconnect,$post['email']),
                         mysqli_real_escape_string($this->dbconnect, sha1($post['password'])),
@@ -80,38 +80,6 @@
             // var_dump($rtn);
             return $rtn;
         }
-
-//ユーザーがフォローしているかどうかの判定
-        function is_follow($id){
-            $sql = sprintf('SELECT `follow_id` FROM `follows` 
-                                    WHERE `following_id`=%d',
-                              mysqli_real_escape_string($this->dbconnect, $id)
-                          );
-            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-            $rtn = mysqli_fetch_assoc($results);
-            return $rtn;
-        }
-
-//フォロー機能
-        function follow($option){
-            $sql = sprintf('INSERT INTO `followings` 
-                            SET `follower_id` = %d, `following_id` = %d',
-                            mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
-                            mysqli_real_escape_string($this->dbconnect,$option)
-                            );
-            mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        }
-
-
-//unlike機能
-        function unlike($id) {
-             special_echo('モデルのunlikeメソッド呼び出し');
-
-              $sql = sprintf('DELETE FROM `likes` WHERE `m_id` = %d AND `s_id` = %d',
-                                  $_SESSION['id'],
-                                  mysqli_real_escape_string($this->dbconnect,$id));
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-          }
     
         function show_follow($id) {
             special_echo('モデルのshowメソッド呼び出し');
@@ -161,44 +129,85 @@
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
             
         }
-//like数と投稿写真の取得
-        function show($id) {
-                      $sql = sprintf('SELECT p.*, l.`u_id` AS `is_like` FROM `pictures` AS p LEFT JOIN `likes` AS l
-                                              ON p.`id`=l.`p_id` AND l.`u_id`=%d
-                                              WHERE p.`delete_flag`=0
-                                              ORDER BY p.`created` DESC',
-                                        $_SESSION['id']
-                                    );
-          
-                      $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-                      // $rtn = array();
-                       $result = mysqli_fetch_assoc($results);// ) {
-                                // $rtn = $result;
-                      // }
-                      return $rtn;
-         }
 
-//like機能
-        function like($option) {
-            special_echo('モデルのlikeメソッド呼び出し');
-  
-              $sql = sprintf('INSERT INTO `likes` SET `u_id` = %d, `p_id` = %d',
-                                  $_SESSION['id'],
-                                  $option
-                             );
-  
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+//フォローしているかどうかの判定
+        function is_follow($id) {
+          $sql = sprintf('SELECT COUNT(*) AS `is_follow` 
+                                          FROM `followings`  
+                                          WHERE `follower_id` = %d 
+                                          AND  `following_id` = %d',
+                                          mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
+                                          mysqli_real_escape_string($this->dbconnect,$id)
+                                          );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
         }
+
+//フォロー機能
+        function follow($id){
         
-//unlike機能
-        function unlike($option) {
-             special_echo('モデルのunlikeメソッド呼び出し');
-              $sql = sprintf('DELETE FROM `likes` WHERE `u_id` = %d AND `p_id` = %d',
-                                  $_SESSION['id'],
-                                  $option
-                             );
-              mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-          }        
+        $sql = sprintf('INSERT INTO `followings` 
+                        SET `follower_id` = %d, `following_id` = %d',
+                        mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
+                        mysqli_real_escape_string($this->dbconnect,$id)
+                        );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+      }
+
+
+//アンフォロー機能
+      function unfollow($id){
+        $sql = sprintf('DELETE FROM `followings`
+                        WHERE `follower_id` = %d
+                        AND `following_id` = %d',
+                        mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
+                        mysqli_real_escape_string($this->dbconnect,$id)
+                        );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+      }
+      function followings(){
+        specialEcho('usersのfollowings()が呼び出されました');
+        // フォローしている人の一覧
+        $sql = sprintf('SELECT u.*, f.`following_id` 
+                        FROM `users`
+                        AS u
+                        LEFT JOIN `followings`
+                        AS f
+                        ON u.`user_id` = f.`following_id`
+                        WHERE u.`user_id` = f.`following_id`
+                        AND f.`follower_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $rtn = array();
+        while($result = mysqli_fetch_assoc($results)){
+                $rtn[] = $result;
+        }
+        return $rtn;
+      }
+      function followers(){
+        specialEcho('usersのfollowers()が呼び出されました');
+        // フォローされている人の一覧
+        $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
+                        FROM `users`
+                        AS u
+                        LEFT JOIN `followings`
+                        AS f
+                        ON u.`user_id` = f.`follower_id`
+                        WHERE u.`user_id` = f.`follower_id`
+                        AND f.`following_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $rtn = array();
+        while($result = mysqli_fetch_assoc($results)){
+                $rtn[] = $result;
+        }
+        // echo '<pre>';
+        // var_dump($rtn);
+        // echo '</pre>';
+        return $rtn;
+      }
+
 
     }
  ?>
