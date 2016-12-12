@@ -41,6 +41,8 @@
 
   <body>
 
+  <?php  special_var_dump($this->viewFollows['is_follow']); ?>
+
   <!-- WELCOME SECTION -->
      <div class="container">
        <div class="row mt centered">
@@ -64,11 +66,12 @@
            <br>
            <br>
            
-           <?php if(is_null($this->viewFollows['m_id'])): ?>
+           <?php if($this->viewFollows['is_follow'] == 0): ?>
                <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローする</button></a>
+           
            <?php else: ?>   
 
-               <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
+               <a href="/cebu_log/users/unfollow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
            <?php endif; ?>
            
          </div>
