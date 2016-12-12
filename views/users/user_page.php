@@ -86,7 +86,7 @@
             
                       <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
             <?php foreach($this->viewPictures as $viewPicture): ?>
-                      <img style="padding: 2px;" src="../../post_img/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
+                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
             <?php endforeach; ?>
           </div>
     </div>
