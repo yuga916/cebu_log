@@ -106,6 +106,7 @@
                 mysqli_real_escape_string($this->dbconnect, $post['category_id'])
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        }
 
         function post_validation($post){
             $error=array();
