@@ -2,25 +2,18 @@
     session_start();
     require('functions.php');
     special_echo('routesを通りました');
-    // http://192.168.33.10/seed_blog/ほげ
-    // ↓↓↓↓↓
-    // http://192.168.33.10/seed_blog/routes.php?url=ほげ
-    // .htaccessファイルがURLを書き換える
-    // explode()関数 : 第二引数の文字列を、第一引数の文字で分割し配列で返す
     $parameters = explode('/', $_GET['url']);
     // $_GET['url'] = 'blogs/index';
     // $parameters = array('blogs', 'index');
 
     // GETパラメータで指定されたリソース名とアクション名を取得
-    //もしリソース名もアクション名もなかったらtopページに遷移
-
+    //　もしリソース名もアクション名もなかったらtopページに遷移
     special_var_dump($parameters);
-    if(empty($parameters[0])){//全resource名を記入($action=home picrtures,shops,timeline,user_pages_users_controller)
-        $resource='home';
-        $action='home';
-    require('controllers/' . $resource . '_controller.php');
+    if(empty($parameters[0])){
+        
+        $action = 'home';
+        require('controllers/home_controller.php');
         exit();
-
     } 
     else {
         $resource = $parameters[0];

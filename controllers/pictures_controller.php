@@ -1,6 +1,7 @@
 <?php
     special_echo('pictures_controller.phpが呼び出されました。');
     require('models/picture.php');
+    require('models/shop.php');
 
     // インスタンス化
     $controller = new PicturesController();
@@ -47,17 +48,6 @@
         $controller->delete($id);
         break;
 
-//like機能
-      case 'like':
-          $controller->like();
-          break;
- 
- //unlike機能
-      case 'unlike':
-          $controller->unlike();
-          break;
-
-
       default:
         # code...
         break;
@@ -71,6 +61,7 @@
         private $resource;
         private $action;
         private $viewOptions;
+        private $viewShops;
         private $viewsoptionsShops;
         private $viewsoptionsCategoly;
         private $viewerrors;
@@ -78,9 +69,11 @@
 
         function __construct() {
             $this->picture = new Picture();
+            $this->shop = new Shop();
             $this->resource = 'pictures';
             $this->action = 'realtime';
             $this->viewOptions = array();
+            $this->viewShops = array();
             $this->viewsoptionsShops=array();
             $this->viewsoptionsCategoly=array();
             $this->viewerrors=array();
@@ -108,13 +101,13 @@
             $this->display();
         }
 
-        // 詳細ページ表示アクション
-        function all_show($s_id) {
+
+        // 写真一覧ページ表示アクション
+        function all_show($id) {
             special_echo('Controllerのall_show()が呼び出されました。');
-            special_echo('$idは' . $s_id . 'です。');
-            $this->viewOptions = $this->picture->all_show($s_id); // 戻り値 $rtnを受け取る
-            // special_var_dump($this->viewOptions);
-            special_var_dump($this->viewOptions);
+            special_echo('$idは' . $id . 'です。');
+            $this->viewOptions = $this->picture->all_show($id);
+            $this->viewShops = $this->shop->all_show($id);
             $this->action = 'all_show';
             $this->display();
         }

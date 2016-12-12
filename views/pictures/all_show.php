@@ -47,7 +47,7 @@
             <div class="heading-section">
               <br>
               <br>
-              <h2>(お店名)の今までの投稿</h2>
+              <h2><?php echo $this->viewShops['shop_name']; ?>の今までの投稿</h2>
               
             </div>
           </div>
@@ -55,8 +55,6 @@
 </div>
 
 
-    
-    
     <div class="container">
           <div id="gallery" class="zoomwall">
           <?php foreach ($this->viewOptions as $viewOption): ?>

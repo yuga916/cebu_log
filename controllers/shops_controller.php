@@ -17,6 +17,16 @@
         $controller->show($id);
         break;
 
+//like機能
+      case 'like':
+          $controller->like($id);
+          break;
+ 
+//unlike機能
+      case 'unlike':
+          $controller->unlike($id);
+          break;
+
 //新規shopページの作成画面
 	  case 'post_validation':
 	    $controller->post_validation($post);
@@ -35,6 +45,7 @@
 
       default:
         break;
+
     }
 
 
@@ -52,19 +63,21 @@
 
         function __construct() {
             $this->shop = new Shop();
+            $this->picture_top = new Picture();
             $this->picture = new Picture();
             $this->tweet = new Tweet();
             $this->resource = 'shops';
             $this->action = 'index';
             $this->viewOptions = array();
-
+            $this->Picture_tops = array();
 	 		$this->viewsoptionShops=array();
 	 		$this->viewsoptionsCategoly=array();
 	 		$this->viewErrors=array();
-
             $this->viewPictures = array();
             $this->viewTweets = array();
             $this->viewTwpictures = array();
+            $this->viewLikes = array();
+            $this->likeCounts = '';
 
         }
 
@@ -73,10 +86,15 @@
         function show($id) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
+
+            $this->Picture_tops = $this->picture->shop_top($id);
             $this->viewOptions = $this->shop->show($id);
             $this->viewPictures = $this->picture->shop_picture_show($id);
             $this->viewTweets = $this->tweet->shop_tweet_show($id);
             $this->viewTwpictures = $this->picture->shop_twpicture_show($id);
+
+            $this->viewLikes = $this->shop->is_like($id);
+            $this->likeCounts = $this->shop->count_like($id);
             $this->viewsoptionsCategoly=$this->picture->add_categoly();
 
             special_echo('viewOptions');
@@ -92,7 +110,18 @@
             $this->display();
         }
 
-      
+//like機能
+        function like($id) {
+            $this->viewLikes = $this->shop->like($id);
+            $this->action = 'like';
+            header('Location: /cebu_log/shops/show/' . $id);
+        }
+
+//unlike機能
+        function unlike($id) {
+            $this->shop->unlike($id);
+            header('Location: /cebu_log/shops/show/' . $id);
+        }
       
 
         // 新規shopページの作成画面

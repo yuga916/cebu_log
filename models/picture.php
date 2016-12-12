@@ -15,13 +15,13 @@
         function random() {
             special_echo('モデルのrandom()が呼び出されました。');
 
-            $sql = 'SELECT `shop_picture_path` FROM `pictures` ORDER BY RAND() LIMIT 25';
+            $sql = 'SELECT `shop_picture_path` ,`s_id` FROM `pictures` WHERE `categoly` = 0 ORDER BY RAND() LIMIT 25';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
-                $rtn = $result;
+                $rtn[] = $result;
             }
 
             // var_dump($rtn);
@@ -50,6 +50,7 @@
             $sql = 'SELECT `shop_picture_path` FROM `pictures`  ORDER BY RAND() LIMIT 25';
             $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
+            // 戻り値 (Controllerへ渡すデータ)
             $rtn = array();
             while ($result = mysqli_fetch_assoc($results)) {
                 $rtn[] = $result;
@@ -57,42 +58,19 @@
             return $rtn;
         }
 
-        //like数と投稿写真の取得
-        function show($option) {
-          $sql = sprintf('SELECT p.*, l.`u_id` AS `is_like` FROM `pictures` AS p LEFT JOIN `likes` AS l ON p.`id`=l.`p_id` AND l.`u_id`=%d WHERE p.`delete_flag`=0 ORDER BY p.`created` DESC',$_SESSION['id']);
+//shopのトップ画像のランダム表示
+        function shop_top($id) {
+            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d ORDER BY RAND() LIMIT 1',
+            mysqli_real_escape_string($this->dbconnect, $id)
+            );
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
-          $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-          // $rtn = array();
-          $result = mysqli_fetch_assoc($results);// ) {
-                    // $rtn = $result;
-        // }
-        return $rtn;
-      }
-
-
-        //like機能
-                function like() {
-                    special_echo('モデルのlikeメソッド呼び出し');
-          
-                      $sql = sprintf('INSERT INTO `likes` SET `u_id` = %d, `p_id` = %d',
-                                          $_SESSION['id'],
-                                          $option
-                                     );
-          
-                      mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-                }
-                
-        //unlike機能
-                function unlike() {
-                     special_echo('モデルのunlikeメソッド呼び出し');
-
-                      $sql = sprintf('DELETE FROM `likes` WHERE `u_id` = %d AND `p_id` = %d',
-                                          $_SESSION['id'],
-                                          $option
-                                     );
-
-                      mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-                  }  
+            // 戻り値 (Controllerへ渡すデータ)
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }        
+ 
                 function post_validation($post,$files){
                       $error=array();
                           //owner_idの未入力チェック
