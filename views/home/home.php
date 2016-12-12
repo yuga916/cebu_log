@@ -125,7 +125,7 @@
 					<?php foreach($this->viewOptions as $viewOption): ?>
 						<li>
 							<a href="/cebu_log/shops/<?php echo $viewOption['s_id'] ?>">
-								<img src="post_img/<?php echo $viewOption['shop_picture_path'] ?>"/>
+								<img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path'] ?>"/>
 								<div class="desc">
 									<h3>Album<br><span>129 Photos</span></h3>
 								</div>

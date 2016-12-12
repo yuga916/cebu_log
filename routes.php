@@ -14,13 +14,13 @@
         $action = 'home';
         require('controllers/home_controller.php');
         exit();
-    } 
-    else {
+    } else {
         $resource = $parameters[0];
         $action = $parameters[1];
         $id = 1;
         $post = array();
         $files=array();
+    }
     
 
         if (isset($parameters[2])) {
@@ -36,12 +36,11 @@
                 //special_var_dump($_FILES);
             }
             
-        }
-        else{
+        } else {
                 $fileName=null;
                 $files=null;
-            }
-    }
+        }
+    
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
 ?>
