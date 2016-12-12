@@ -65,13 +65,14 @@
       <br>
       <br>
 
+        <?php foreach($this->viewOptions as $viewOption): ?>
 
         
                   <article class="timeline-entry">
                       
                               
                           <div class="timeline-label">
-                            <img src="member_picture/<?php echo $tweet['picture_path']; ?>" width="48" height="48"
+                            <img src="cebu_log/uploads/users/<?php echo $viewOption['picture_path']; ?>" width="48" height="48"
                             style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">
@@ -95,6 +96,8 @@
 
                   </article>
         </div><!-- timeline-centered -->
+      <?php endforeach; ?>
+
 
           <ul>
                 
