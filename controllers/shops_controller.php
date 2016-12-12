@@ -79,6 +79,8 @@
             $this->viewLikes = array();
             $this->likeCounts = '';
 
+            $this->viewSamples=array();
+
         }
 
 
@@ -96,15 +98,17 @@
             $this->viewLikes = $this->shop->is_like($id);
             $this->likeCounts = $this->shop->count_like($id);
             $this->viewsoptionsCategoly=$this->picture->add_categoly();
-
-            special_echo('viewOptions');
-            special_var_dump($this->viewOptions);
-            special_echo('viewPictures');
-            special_var_dump($this->viewPictures);
-            special_echo('viewTwpictures');
-            special_var_dump($this->viewTwpictures);
-            special_echo('viewTweets');
-            special_var_dump($this->viewTweets);
+//sample
+            $this->viewSamples=$this->shop->sample($id);
+            special_var_dump($this->viewSample);
+            //special_echo('viewOptions');
+            //special_var_dump($this->viewOptions);
+            //special_echo('viewPictures');
+            //special_var_dump($this->viewPictures);
+            //special_echo('viewTwpictures');
+            //special_var_dump($this->viewTwpictures);
+            //special_echo('viewTweets');
+            //special_var_dump($this->viewTweets);
 
             $this->action = 'show';
             $this->display();

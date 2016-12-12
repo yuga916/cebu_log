@@ -27,7 +27,7 @@
             special_echo('モデルのshowメソッド呼び出し');
             special_echo('$idは' . $id . 'です(モデル内)');
 
-            $sql =  sprintf('SELECT t.`tweet`,t.`created`, m.`id`,m.`nick_name`, m.`picture_path` 
+            $sql =  sprintf('SELECT t.`tweet`,t.`created`,t.`picture_id`, m.`id`,m.`nick_name`, m.`picture_path` 
                  FROM `tweets` t, `members` m 
                 WHERE t.`s_id` = %d ORDER BY `created`',
                 mysqli_real_escape_string($this->dbconnect, $id)
@@ -73,6 +73,8 @@
             return $error;
             
         }
+
+        
 
     }
  ?>
