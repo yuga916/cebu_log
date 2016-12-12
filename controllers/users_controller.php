@@ -73,12 +73,12 @@
           break;
 
 //フォロー一覧表示
-       case 'show_follow':
-        $controller->show_follow();
+       case 'followings':
+        $controller->followings($id);
         break;
 //フォロワー一覧表示
-       case 'show_follower':
-        $controller->show_follower();
+       case 'followers':
+        $controller->followers($id);
         break;
 
 //ユーザー情報の編集
@@ -248,7 +248,9 @@
             $this->viewOptions = $this->user->user_page($id);
             $this->viewPictures = $this->picture->user_page_picture($id);
             $this->viewFollows = $this->user->is_follow($id); 
-            // special_var_dump($this->viewOptions);
+            $this->followings = $this->user->countFollowing($id); 
+            $this->followers = $this->user->countFollower($id); 
+
             $this->action = 'user_page';
             $this->display();
         }
@@ -270,30 +272,22 @@
             header('Location: /cebu_log/users/user_page/' . $id);
         }
 
-        function followings(){
+//フォロー一覧ページ
+        function followings($id){
             special_echo('users_controllerのfollowings()が呼び出されました');
-            $this->followings = $this->user->followings();
-            require('views/users/followings.php');
+            $this->followings = $this->user->followings($id);
+            $this->action = 'following';
+            $this->display();
         }
 
-        function followers(){
+//フォロワー一覧ページ
+        function followers($id){
             special_echo('users_controllerのfollowers()が呼び出されました');
-            $this->followers = $this->user->followers();
-            require('views/users/followers.php');
+            $this->followers = $this->user->followers($id);
+            $this->action = 'follower';
+            $this->display();
         }
 
-// フォロー一覧表示アクション
-        function show_follow() {
-            special_echo('Controllerのshow_follow()が呼び出されました。');
-            $this->action = 'show_follow';
-            $this->display();
-        }
-// フォロワー一覧表示アクション
-        function show_follower() {
-            special_echo('Controllerのshow_follower()が呼び出されました。');
-            $this->action = 'show_follower';
-            $this->display();
-        }
 //ユーザー情報の編集
         function edit($id) {
             special_echo('Controllerのedit()が呼び出されました。');
