@@ -29,16 +29,19 @@
 
         if (!empty($_POST)) {
             $post = $_POST;
-        
+        }
+            
+        if(isset($_FILES['picture_path']['name'])) {
             if (!empty($_FILES)) {
                 $fileName=$_FILES['picture_path']['name'];
                 $files=$_FILES;
                 //special_var_dump($_FILES);
             }
+        }
             
-        } else {
-                $fileName=null;
-                $files=null;
+         else {
+            $fileName=null;
+            $files=null;
         }
 
             $get=$_GET;

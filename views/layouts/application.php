@@ -56,10 +56,12 @@
       <div class="row">
         <h2>セブログ
         <?php if(empty($_SESSION['id'])): ?>
-           <?php if(($this->action != 'sighup') 
-              OR ($this->action != 'picture_add') 
-              OR ($this->action != 'check')
-              OR ($this->action != 'thanks')):?> 
+           <?php if(($this->action != 'signup') 
+              AND ($this->action != 'picture_add') 
+              AND ($this->action != 'check')
+              AND ($this->action != 'thanks')
+              AND ($this->action != 'login')
+              ):?> 
 
           
               &nbsp;&nbsp;<a href="/cebu_log/users/signup"><button type="button" class="btn btn-danger" style="float: right;">新規登録</button></a>&nbsp;&nbsp;<a href="/cebu_log/users/login"><button type="button" class="btn btn-secondary" style="float: right;">ログイン</button></a></h2>
