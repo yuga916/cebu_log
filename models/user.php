@@ -92,7 +92,7 @@
 
 
 //ユーザー情報の更新処理
-        function update($post) {
+        function update($post,$id) {
             $sql = sprintf('UPDATE `members` SET `nick_name` = "%s", `m_intro` = "%s"
                                            WHERE `id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$post['nick_name']),

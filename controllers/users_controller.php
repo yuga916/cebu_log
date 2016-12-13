@@ -86,7 +86,7 @@
         $controller->edit($id);
         break;
       case 'update':
-        $controller->update($post);
+        $controller->update($post,$id);
         break;
       case 'delete':
         $controller->delete($id);
@@ -300,7 +300,7 @@
 //ユーザー情報のアップデート処理
         function update($post,$id) {
             $this->user->update($post);
-            header('Location: /cebu_log/users/user_page/');
+            header('Location:/cebu_log/users/user_page/' . $id);
         }
         function delete($id) {
             special_echo('controllerのdeleteが表示されました。');
