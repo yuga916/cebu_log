@@ -74,6 +74,16 @@
             
         }
 
+//ツイートの削除
+        function delete($id) {
+            // 物理削除
+            // $sql = 'DELETE FROM `blogs` WHERE `id` = ' . $id;
+            // 論理削除
+            $sql = 'DELETE FROM `tweets` WHERE `tweet_id` =' . $id;
+            mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            
+        }
+
         
 
     }
