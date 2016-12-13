@@ -46,6 +46,7 @@
             }
             return $login_flag;
         }
+        
 //新規登録処理
         function create($post) {
             $sql = sprintf('INSERT INTO `members` SET `nick_name` = "%s", `email` = "%s", `password` = "%s",`picture_path`="%s", `m_intro` = "" , `created` = NOW()',
@@ -58,9 +59,8 @@
         }
 //ユーザー情報とそのユーザーが投稿した画像の表示の表示
         function user_page($id) {
-                      $sql = sprintf('SELECT m.*, p.`shop_picture_path` FROM `members` m, `pictures` p WHERE p.`owner_id` = %d AND m.`id` = %d ORDER BY p.`created` DESC',
-                          $id,
-                          $id
+                      $sql = sprintf('SELECT * FROM `members` WHERE `id` = %d',
+                          mysqli_real_escape_string($this->dbconnect,$id)
                           );  
                       
                       $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));

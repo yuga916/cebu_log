@@ -66,7 +66,7 @@
            <br>
            <br>
            
-          <?php if($this->viewOptions['id'] ==! $_SESSION['id']): ?>
+          <?php if($this->viewOptions['id'] != $_SESSION['id']): ?>
              
            
            <?php if($this->viewFollows['is_follow'] == 0): ?>
@@ -104,7 +104,7 @@
      
     <div class="container">
           <div id="gallery" class="zoomwall">
-                      <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
+
             <?php foreach($this->viewPictures as $viewPicture): ?>
                       <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
             <?php endforeach; ?>
