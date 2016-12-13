@@ -16,7 +16,7 @@
 
 //タイムライン機能
 		function show($id){
-			$sql=sprintf('  SELECT m.`id`,m.`nick_name`,m.`picture_path`,t.`tweet_id`,t.`tweet`,p.`s_id`,s.`shop_name`, p.`shop_picture_path`, p.`created` FROM `tweets` t 
+			$sql=sprintf('  SELECT m.`id`,m.`nick_name`,m.`picture_path`,t.`tweet_id`,t.`tweet`,p.`s_id`,s.`shop_id`,s.`shop_name`, p.`shop_picture_path`, p.`created` FROM `tweets` t 
 							LEFT JOIN `pictures` p ON t.`picture_id`= p.`picture_id` 
 							LEFT JOIN `members` m ON t.`m_id`= m.`id` 
 							LEFT JOIN `followings` f ON f.`following_id`=t.`m_id` 
@@ -25,7 +25,7 @@
 
 							UNION
 
-							SELECT m.`id`,m.`nick_name`,m.`picture_path`,t.`tweet_id`,t.`tweet`,p.`s_id`,s.`shop_name`,p.`shop_picture_path`,p.`created` 
+							SELECT m.`id`,m.`nick_name`,m.`picture_path`,t.`tweet_id`,t.`tweet`,p.`s_id`,s.`shop_id`,s.`shop_name`,p.`shop_picture_path`,p.`created` 
 							FROM `pictures` p 
 							LEFT JOIN `members`m ON p.`owner_id`=m.`id` 
 							LEFT JOIN `followings` f ON p.`owner_id`=f.`following_id` 

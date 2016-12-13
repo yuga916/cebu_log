@@ -40,17 +40,8 @@
 
    <div class="container" style="padding-top: 40px;">
 
-     
-
-   
-        <!-- 画面左側 -->
-      <div class="col-md-4 content-margin-top">
-        <!-- form部分 --> 
-      
-      </div><!-- col-md-4 content-margin-top -->
-
       <!-- 画面右側 -->
-      <div class="col-md-8 content-margin-top">
+      <div class="col-md-6 col-lg-offset-3">
         <div class="timeline-centered">
       <!-- 検索ボックスの表示 -->
       <form action="/cebu_log/timelines/index" method="get" class="form-horizontal">
@@ -67,17 +58,16 @@
 
         <?php foreach($this->viewOptions as $viewOption): ?>
 
-        
                   <article class="timeline-entry">
-                      
-                              
                           <div class="timeline-label">
 
-                            <img src="/cebu_log/uploads/users/<?php echo $viewOption['picture_path']; ?>" width="48" height="48">
+                            <img src="/cebu_log/<?php echo $viewOption['picture_path']; ?>" width="48" height="48" style="border-radius: 10px;
+                                       height: 40px;
+                                       width: 40px;">
                               
 
                             &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewOption['id']; ?>"><?php echo $viewOption['nick_name']; ?></a></p>
-                            &nbsp;&nbsp;お店名:<?php echo $viewOption['shop_name']; ?>                            
+                            &nbsp;&nbsp;お店名:<a href="/cebu_log/shops/show/<?php echo $viewOption['shop_id']; ?>"><?php echo $viewOption['shop_name']; ?></a>                            
                             &nbsp;&nbsp;date:<?php echo $viewOption['created']; ?><br><br>
                             <p><?php echo $viewOption['tweet']; ?></p>
 
@@ -87,39 +77,16 @@
                                 <?php endif ?>
                                <br>
                                <br>
-
-                                  <i class="fa fa-trash-o" style="float: right;"></i>
-                                  <!-- ①ゴミ箱をクリック -->
-                                  <!-- ②クリック後、http://localhost/oneline_bbs/bbs.php?action=edit&id=8のようなアドレスに遷移 -->
-                                  <i class="fa fa-pencil-square-o" style="float: right;  margin-right: 5px;"></i>
                           </div>
-
-                      
-
                   </article>
-        </div><!-- timeline-centered -->
       <?php endforeach; ?>
 
-
-          <ul>
-                
-                  <li style="display: inline-block;">前</li>
-                  <li style="display: inline-block;">次</li>
-    
-                
-                
-          </ul>
       </div>
      </div>
-    </div><!-- container -->
+     </div>
+    
         
-          <article class="timeline-entry begin">
-              <div class="timeline-entry-inner">
-                  <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
-                      <i class="entypo-flight"></i> 
-                  </div>
-              </div>
-          </article>
+          
 
 
   <!-- CONTACT FOOTER -->
