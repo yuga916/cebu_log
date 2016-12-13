@@ -72,17 +72,19 @@
                       
                               
                           <div class="timeline-label">
-                            <img src="cebu_log/uploads/users/<?php echo $viewOption['picture_path']; ?>" width="48" height="48"
-                            style="border-radius: 10px;
-                                  height: 40px;
-                                  width: 40px;">
+
+                            <img src="/cebu_log/uploads/users/<?php echo $viewOption['picture_path']; ?>" width="48" height="48">
                               
 
-                            &nbsp;&nbsp;<p style="display:inline;">name:hoge</a></p>&nbsp;&nbsp;date:2016年<br><br>
-                            <p>hogehoge</p>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewOption['id']; ?>"><?php echo $viewOption['nick_name']; ?></a></p>
+                            &nbsp;&nbsp;お店名:<?php echo $viewOption['shop_name']; ?>                            
+                            &nbsp;&nbsp;date:<?php echo $viewOption['created']; ?><br><br>
+                            <p><?php echo $viewOption['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
-                               <img src="post_img/<?php echo $tweet['img_col']; ?>" width="300">
+                                <?php if ($viewOption['shop_picture_path']!==''): ?>
+                               <img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>" width="300">                 
+                                <?php endif ?>
                                <br>
                                <br>
 
@@ -91,7 +93,7 @@
                                   <!-- ②クリック後、http://localhost/oneline_bbs/bbs.php?action=edit&id=8のようなアドレスに遷移 -->
                                   <i class="fa fa-pencil-square-o" style="float: right;  margin-right: 5px;"></i>
                           </div>
-                        
+
                       
 
                   </article>
