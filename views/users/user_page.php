@@ -97,14 +97,9 @@
      </div><!-- /.container -->
      <br>
      <br>
-     <?php foreach($this->viewOptions as $viewOption): ?>
-      [<a href="like/<?php echo $viewOption['id']; ?>">Like <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>]
-     <?php endforeach; ?>
-
+     
     <div class="container">
           <div id="gallery" class="zoomwall">
-
-            
                       <img style="padding: 2px;" src="/cebu_log/post_img/20161119163921orange6.jpg"  data-highres="" />
             <?php foreach($this->viewPictures as $viewPicture): ?>
                       <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
