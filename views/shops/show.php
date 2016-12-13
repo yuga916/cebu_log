@@ -73,7 +73,7 @@
   <div class="container">
     <div class="row centered">
       <div class="col-lg-10 col-lg-offset-1">
-        <img class="" src="../uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
+        <img class="" src="/cebu_log/uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
         style="height: auto;
                width: 500px;
                text-align:center;">
@@ -150,9 +150,10 @@
      <?php foreach($this->viewPictures as $viewPicture): ?>
         <div class="col-md-3 ">
             <figure>
-
-              <img class="img-responsive" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
-              <br>
+                <?php if ($viewPicture['shop_picture_path']!==''): ?>
+                    <img class="img-responsive" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
+                    <br>
+                <?php endif ?>
             </figure><!-- /figure -->
         </div>
       
@@ -237,10 +238,8 @@
                       
                               
                           <div class="timeline-label">
+
                             <img src="/cebu_log/<?php echo $viewSample['picture_path']; ?>" width="48" height="48"
-                            style="border-radius: 10px;
-                                  height: 40px;
-                                  width: 40px;">
                               
 
                             &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
