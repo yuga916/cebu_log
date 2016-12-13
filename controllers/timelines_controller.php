@@ -83,7 +83,7 @@
             $this->viewOptions = $this->timeline->show(); // 戻り値 $rtnを受け取る
             special_var_dump($this->viewOptions);
             $this->action = 'show';
-            $this->display();
+            //$this->display();
         }
 
 
