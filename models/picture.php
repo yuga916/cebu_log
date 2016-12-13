@@ -48,7 +48,7 @@
         function realtime() {
             special_echo('モデルのrealtime()が呼び出されました。');
 
-            $sql = 'SELECT `shop_picture_path` FROM `pictures` ORDER BY RAND() LIMIT 25';
+            $sql = 'SELECT `s_id`,`shop_picture_path` FROM `pictures` ORDER BY `created` DESC LIMIT 25';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
