@@ -111,7 +111,7 @@
       <div class="row">
         <div class="col-lg-8">
               <div id="mapwrap">
-            <iframe height="400" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.es/maps?t=m&amp;ie=UTF8&amp;ll=52.752693,22.791016&amp;spn=67.34552,156.972656&amp;z=6&amp;output=embed"></iframe>
+            <iframe height="400" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.es/maps?t=m&amp;ie=UTF8&amp;q=loc:<?php echo sprintf("%.15f",$this->viewOptions['shop_lat']); ?>,<?php echo sprintf("%.15f",$this->viewOptions['shop_lng']); ?>&amp;spn=67.34552,156.972656&amp;z=17&amp;output=embed"></iframe>
           </div>  
         </div><!--col-lg-8-->
         <div class="col-lg-4">
