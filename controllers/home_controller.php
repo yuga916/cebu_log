@@ -32,6 +32,7 @@
         private $resource;
         private $action;
         private $viewOptions;
+        private $Counts;
 
         function __construct() {
             $this->resource = 'home';
@@ -39,12 +40,15 @@
             $this->picture = new Picture();
             $this->user = new User();
             $this->viewOptions = array();
+            $this->Counts = array();
         }
 
         function home() {
             special_echo('Controllerのhome()が呼び出されました。');
             // モデルを呼び出してデータを返り値として取得
             $this->viewOptions = $this->picture->random();
+            $this->Counts = $this->picture->count();
+            special_var_dump($this->Counts);
             // データをViewに送る
             $this->display();
         }

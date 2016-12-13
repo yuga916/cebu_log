@@ -189,8 +189,6 @@
       }
 
 
-
-
 //フォロー数
     function countFollowing($id){
         $sql = sprintf('SELECT COUNT(*) AS `follow_cnt` FROM `followings` WHERE `follower_id`=%d',

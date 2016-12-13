@@ -102,24 +102,25 @@
 						</div>
 						<div class="fh5co-narrow-content animate-box">
 							<div class="row" >
+
 								<div class="col-md-4 text-center">
-									<span class="fh5co-counter js-counter" data-from="0" data-to="130" data-speed="5000" data-refresh-interval="50"></span>
-									<span class="fh5co-counter-label">Client</span>
+									<span class="fh5co-counter js-counter" data-from="0" data-to="<?php echo $this->Counts[0]['cnt']; ?>" data-speed="5000" data-refresh-interval="50"></span>
+									<span class="fh5co-counter-label">写真数</span>
 								</div>
 								<div class="col-md-4 text-center">
-									<span class="fh5co-counter js-counter" data-from="0" data-to="1450" data-speed="5000" data-refresh-interval="50"></span>
-									<span class="fh5co-counter-label">Photos</span>
+									<span class="fh5co-counter js-counter" data-from="0" data-to="<?php echo $this->Counts[1]['cnt']; ?>" data-speed="5000" data-refresh-interval="50"></span>
+									<span class="fh5co-counter-label">お店数</span>
 								</div>
 								<div class="col-md-4 text-center">
-									<span class="fh5co-counter js-counter" data-from="0" data-to="7497" data-speed="5000" data-refresh-interval="50"></span>
-									<span class="fh5co-counter-label">Pixels</span>
+									<span class="fh5co-counter js-counter" data-from="0" data-to="<?php echo $this->Counts[2]['cnt']; ?>" data-speed="5000" data-refresh-interval="50"></span>
+									<span class="fh5co-counter-label">ユーザー数</span>
 								</div>
 							</div>
 						</div>
 					</div>
 
 				<div id="ri-grid" class="ri-grid animate-box">
-					<img class="ri-loading-image" src="../../images/loading.gif"/>
+					<img class="ri-loading-image" src="/cebu_log/images/loading.gif"/>
 					<ul>
 
 					<?php foreach($this->viewOptions as $viewOption): ?>

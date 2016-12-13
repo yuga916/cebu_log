@@ -43,7 +43,7 @@
   <?php special_var_dump($this->likeCounts); ?>
   <?php special_var_dump($this->viewLikes['m_id']); ?>
   
-    <?php echo $this->viewTwpictures[1]['shop_picture_path']; ?>
+  
 
   
   
@@ -239,7 +239,9 @@
                               
                           <div class="timeline-label">
 
-                            <img src="/cebu_log/<?php echo $viewSample['picture_path']; ?>" width="48" height="48"
+                            <img src="/cebu_log/<?php echo $viewSample['picture_path']; ?>" width="48" height="48" style="border-radius: 10px;
+                                  height: 40px;
+                                  width: 40px;">
                               
 
                             &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
