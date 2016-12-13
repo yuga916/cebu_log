@@ -50,7 +50,7 @@
         <div class="row mt">
          
          <?php foreach($this->followings as $following): ?>        
-             <div class="col-lg-6">
+             <div class="col-lg-4">
                       <article class="timeline-entry">        
                               <div class="timeline-label">
                                 <img src="/cebu_log/<?php echo $following['picture_path']; ?>" width="48" height="48"

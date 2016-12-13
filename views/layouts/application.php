@@ -29,37 +29,39 @@
 
   <body>
   <!-- Menu -->
-  <nav class="menu" id="theMenu">
-    <div class="menu-wrap">
-      <h1 class="logo"><a href="index.php#home">セブログ</a></h1>
-      <i class="fa fa-arrow-right menu-close"></i>
-      <a href="/cebu_log/">Home</a>
-      <a href="/cebu_log/users/user_page/<?php echo $_SESSION['id']; ?>">Mypage</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About</a>
-      <a href="/cebu_log/users/logout">Log out</a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-dribbble"></i></a>
-      <a href="#"><i class="fa fa-envelope"></i></a>
-    </div>
-    
-    <!-- Menu button -->
-    <div id="menuToggle"><i class="fa fa-bars"></i></div>
-  </nav>
+  <?php if(!empty($_SESSION['id'])): ?>
+      <nav class="menu" id="theMenu">
+        <div class="menu-wrap">
+          <h1 class="logo"><a href="index.php#home">セブログ</a></h1>
+          <i class="fa fa-arrow-right menu-close"></i>
+          <a href="/cebu_log/users/user_page/<?php echo $_SESSION['id']; ?>">マイページ</a>
+          <a href="/cebu_log/timelines/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
+          <a href="/cebu_log/pictures/add">写真を投稿</a>
+          <a href="/cebu_log/shops/add">お店ページを作成</a>
+          <a href="/cebu_log/users/logout">ログアウト</a>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-dribbble"></i></a>
+          <a href="#"><i class="fa fa-envelope"></i></a>
+        </div>
+        
+        <!-- Menu button -->
+        <div id="menuToggle"><i class="fa fa-bars"></i></div>
+      </nav>
+  <?php endif; ?>
   
   <!-- MAIN PROJECT SECTION -->
   <div id="sp">
     <div class="container">
       <div class="row">
-        <h2>セブログ</h2>
+        <h2>セブログ
+        <?php if(empty($_SESSION['id']) AND ($this->action == 'home')): ?>
+           &nbsp;&nbsp;<a href="/cebu_log/users/signup"><button type="button" class="btn btn-danger" style="float: right;">新規登録</button></a>&nbsp;&nbsp;<a href="/cebu_log/users/login"><button type="button" class="btn btn-secondary" style="float: right;">ログイン</button></a></h2>
+        <?php endif; ?>
       </div><!-- row -->
+    
     </div><!-- /container -->
   </div><!-- /portrwrap -->
-  
-
-  
-  
 
 
   <?php
