@@ -41,10 +41,8 @@
                 $files=null;
         }
 
-        if(!empty($_GET)){
             $get=$_GET;
-        }
-    
+    special_var_dump($get);
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
 ?>
