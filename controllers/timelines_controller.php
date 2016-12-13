@@ -46,24 +46,35 @@
             $this->resource = 'timelines';
             $this->action = 'index';
             $this->viewOptions = array();
-            $this->viewResultsTweets=array();
+            $this->results='';
         }
 
-        //  検索結果表示アクション
+        // タイムラインの表示 検索結果の表示
         function index($search_word,$id) {
             special_echo('Controllerのindex()が呼び出されました。');
             if (empty($search_word)) {
-                header('Location:show');
-                exit();
-            }
-            else{
-            // モデルを呼び出してデータを返り値として取得
-            $this->viewResultsTweets = $this->timeline->search($search_word,$id);
-            //special_var_dump($search_word);
+            $this->viewOptions = $this->timeline->show($id); // 戻り値 $rtnを受け取る
+            special_var_dump($this->viewOptions);
             //special_var_dump($this->viewResultsTweets);
-            $this->action='show';
-            // データをViewに送る
+            $this->action = 'show';
+            special_var_dump($_SESSION['id']);
             $this->display();
+
+            }
+            //検索
+            else{
+            $resultsTweets = $this->timeline->search($search_word,$id);
+                    //戻り値が空の場合
+                    if (empty($resultsTweets)) {
+                        $this->action='show';                        
+                    }
+                    //検索結果が空ではない場合
+                    else{
+                        $this->viewOptions=$resultsTweets;
+                        $this->action='show';
+                    }    
+                        // データをViewに送る
+                        $this->display();
             }
         }
 
@@ -77,19 +88,6 @@
             // データをViewに送る
             $this->display();
         }
-
-        // タイムラインの表示アクション//following_idを代入
-        function show($id) {
-            special_echo('Controllerのshow()が呼び出されました。');
-            special_echo('$idは' . $id . 'です。');
-            $this->viewOptions = $this->timeline->show($id); // 戻り値 $rtnを受け取る
-            special_var_dump($this->viewOptions);
-            //special_var_dump($this->viewResultsTweets);
-            $this->action = 'show';
-            special_var_dump($_SESSION['id']);
-            $this->display();
-        }
-
 
         // Viewを表示するメソッド
         function display() {
