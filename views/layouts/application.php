@@ -35,7 +35,7 @@
       <i class="fa fa-arrow-right menu-close"></i>
       <a href="/cebu_log/">Home</a>
       <a href="/cebu_log/users/user_page/<?php echo $_SESSION['id']; ?>">Mypage</a>
-      <a href="portfolio.html">Portfolio</a>
+      <a href="/cebu_log/timeline/show/<?php echo $_SESSION['id']; ?>">Timeline</a>
       <a href="about.html">About</a>
       <a href="/cebu_log/users/logout">Log out</a>
       <a href="#"><i class="fa fa-facebook"></i></a>
