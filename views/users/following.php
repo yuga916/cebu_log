@@ -49,18 +49,18 @@
   <div class="container" style="padding-top: 40px;">
         <div class="row mt">
          
-         <?php foreach($this->followers as $follower): ?>        
+         <?php foreach($this->followings as $following): ?>        
              <div class="col-lg-6">
                       <article class="timeline-entry">        
                               <div class="timeline-label">
-                                <img src="member_picture/<?php echo $tweet['picture_path']; ?>" width="48" height="48"
+                                <img src="/cebu_log/<?php echo $following['picture_path']; ?>" width="48" height="48"
                                 style="border-radius: 10px;
                                       height: 80px;
                                       width: 80px;">
 
-                                &nbsp;&nbsp;<p style="display:inline;">name:<?php echo $follower['nick_name'] ?></a><button type="button" class="btn btn-warning" style="float: right; margin-top: 25px;">フォロー</button></p>
-                
-                
+                                &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $following['id']; ?>"><?php echo $following['nick_name']; ?></a>
+
+                                
                                 <br>
                                 <br>
                                 <br>

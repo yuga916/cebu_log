@@ -152,7 +152,7 @@
         }
 //sample
         function sample($id){
-            $sql=sprintf('SELECT t.`tweet_id`, m.`nick_name`,m.`picture_path`,t.`tweet`, p.`shop_picture_path`, t.`created` 
+            $sql=sprintf('SELECT t.`tweet_id`, m.`id`, m.`nick_name`,m.`picture_path`,t.`tweet`,t.`m_id`, p.`shop_picture_path`, t.`created` 
                  FROM `tweets` t 
                  LEFT JOIN `pictures` p ON t.`picture_id`= p.`picture_id`
                  LEFT JOIN `members` m  ON t.`m_id`= m.`id`

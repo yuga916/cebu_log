@@ -100,7 +100,7 @@
             $this->viewsoptionsCategoly=$this->picture->add_categoly();
 //sample
             $this->viewSamples=$this->shop->sample($id);
-            special_var_dump($this->viewSample);
+            special_var_dump($this->viewSamples);
             //special_echo('viewOptions');
             //special_var_dump($this->viewOptions);
             //special_echo('viewPictures');

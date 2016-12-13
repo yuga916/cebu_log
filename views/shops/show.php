@@ -255,10 +255,9 @@
                                <br>
                                <br>
 
-                                  <i class="fa fa-trash-o" style="float: right;"></i>
-                                  <!-- ①ゴミ箱をクリック -->
-                                  <!-- ②クリック後、http://localhost/oneline_bbs/bbs.php?action=edit&id=8のようなアドレスに遷移 -->
-                                  <i class="fa fa-pencil-square-o" style="float: right;  margin-right: 5px;"></i>
+                               <?php if($viewSample['m_id'] == $_SESSION['id']): ?>
+                                  <a href="/cebu_log/tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o" style="float: right;"></i></a>
+                                <?php endif; ?>
                           </div>
                         
                       
