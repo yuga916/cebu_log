@@ -46,7 +46,7 @@
             }
             return $login_flag;
         }
-        
+
 //新規登録処理
         function create($post) {
             $sql = sprintf('INSERT INTO `members` SET `nick_name` = "%s", `email` = "%s", `password` = "%s",`picture_path`="%s", `m_intro` = "" , `created` = NOW()',
@@ -150,7 +150,7 @@
       function followings($id){
         special_echo('usersのfollowers()が呼び出されました');
         // フォローされている人の一覧
-        $sql = sprintf('SELECT m.*, f.`following_id` 
+        $sql = sprintf('SELECT m.*, f.`following_id`, f.`follower_id` 
                         FROM `members`
                         AS m
                         LEFT JOIN `followings`

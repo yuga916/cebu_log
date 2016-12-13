@@ -276,6 +276,7 @@
         function followings($id){
             special_echo('users_controllerのfollowings()が呼び出されました');
             $this->followings = $this->user->followings($id);
+            special_var_dump($this->followings);
             $this->action = 'following';
             $this->display();
         }
