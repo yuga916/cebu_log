@@ -255,7 +255,7 @@
                                <br>
                                <br>
 
-                               <?php if($viewSample['tweet_id'] == $_SESSION['id']): ?>
+                               <?php if($viewSample['m_id'] == $_SESSION['id']): ?>
                                   <a href="/cebu_log/tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o" style="float: right;"></i></a>
                                 <?php endif; ?>
                           </div>
