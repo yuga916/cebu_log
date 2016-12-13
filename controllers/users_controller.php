@@ -86,7 +86,7 @@
         $controller->edit($id);
         break;
       case 'update':
-        $controller->update($post);
+        $controller->update($post,$id);
         break;
       case 'delete':
         $controller->delete($id);
@@ -250,7 +250,7 @@
             $this->viewFollows = $this->user->is_follow($id); 
             $this->followings = $this->user->countFollowing($id); 
             $this->followers = $this->user->countFollower($id); 
-
+            special_var_dump($this->viewOptions);
             $this->action = 'user_page';
             $this->display();
         }
@@ -276,6 +276,7 @@
         function followings($id){
             special_echo('users_controllerのfollowings()が呼び出されました');
             $this->followings = $this->user->followings($id);
+            special_var_dump($this->followings);
             $this->action = 'following';
             $this->display();
         }
@@ -300,7 +301,7 @@
 //ユーザー情報のアップデート処理
         function update($post,$id) {
             $this->user->update($post);
-            header('Location: /cebu_log/users/user_page/');
+            header('Location:/cebu_log/users/user_page/' . $id);
         }
         function delete($id) {
             special_echo('controllerのdeleteが表示されました。');

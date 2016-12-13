@@ -17,8 +17,14 @@
 		case 'show_p_id':
 			$controller->show_p_id($_SESSION['post']);
 			break;
+
 		case 'create':
 			$controller->create($_SESSION['post'],$_SESSION['picture'],$id);
+			break;
+
+//ツイートの削除
+			case 'delete':
+			$controller->delete($id);
 			break;
 		
 		default:
@@ -92,6 +98,13 @@
 				header('Location:/cebu_log/shops/show/' . $id);
 				exit();
 			}
+
+//ツイートの削除
+			function delete($id) {
+            special_echo('controllerのdeleteが表示されました。');
+            $this->tweet->delete($id);
+            header('Location: /cebu_log');
+        }
 
 
 	}
