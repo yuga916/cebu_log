@@ -212,7 +212,7 @@ function geocodeAddress(geocoder, resultsMap) {
            </div>
           
 
-          <input type="submit" class="btn btn-default" value="トップ画像登録へ">
+          <input type="submit" class="btn btn-default" value="お店ページの登録">
          </form>
        </div>
      </div>

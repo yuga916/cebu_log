@@ -55,8 +55,15 @@
     <div class="container">
       <div class="row">
         <h2>セブログ
-        <?php if(empty($_SESSION['id']) AND ($this->action == 'home')): ?>
-           &nbsp;&nbsp;<a href="/cebu_log/users/signup"><button type="button" class="btn btn-danger" style="float: right;">新規登録</button></a>&nbsp;&nbsp;<a href="/cebu_log/users/login"><button type="button" class="btn btn-secondary" style="float: right;">ログイン</button></a></h2>
+        <?php if(empty($_SESSION['id'])): ?>
+           <?php if(($this->action != 'sighup') 
+              OR ($this->action != 'picture_add') 
+              OR ($this->action != 'check')
+              OR ($this->action != 'thanks')):?> 
+
+          
+              &nbsp;&nbsp;<a href="/cebu_log/users/signup"><button type="button" class="btn btn-danger" style="float: right;">新規登録</button></a>&nbsp;&nbsp;<a href="/cebu_log/users/login"><button type="button" class="btn btn-secondary" style="float: right;">ログイン</button></a></h2>
+           <?php endif; ?>
         <?php endif; ?>
       </div><!-- row -->
     
@@ -70,7 +77,17 @@
 
   
   
+    <?php if (($this->action == 'signup') 
+          OR ($this->action == 'picture_add')
+          OR ($this->action == 'check')
+          OR ($this->action == 'thanks')
+          OR ($this->action == 'login')
+          OR ($this->action == 'add')
+          OR ($this->action == 'edit')
+          ): ?>
 
+    <?php else: ?>
+      
     <!-- CONTACT FOOTER -->
     <div id="cf">
       <div class="container">
@@ -92,7 +109,7 @@
         </div><!-- row -->
       </div><!-- container -->
     </div><!-- Contact Footer -->
-
+  <?php endif; ?>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

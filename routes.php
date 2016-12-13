@@ -43,7 +43,7 @@
 
             $get=$_GET;
     special_var_dump($get);
-    special_var_dump($_SESSION['id']);
+    
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
 ?>

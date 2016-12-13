@@ -60,13 +60,13 @@
          <div class="col-lg-8 col-lg-offset-2">
              <p><b>NAME:<?php echo $this->viewOptions['nick_name']; ?></p>
              <p><b>INRODUCTION:</b><?php echo $this->viewOptions['m_intro']; ?></p>
-           <?php if($_SESSION['id'] == $this->viewOptions['id']): ?>
+           <?php if((isset($_SESSION['id']) AND ($_SESSION['id'] == $this->viewOptions['id']))): ?>
              <a href="../edit/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">ユーザー情報を編集する</button></a>
            <?php endif; ?>
            <br>
            <br>
            
-          <?php if($this->viewOptions['id'] != $_SESSION['id']): ?>
+          <?php if(isset($_SESSION['id']) AND ($this->viewOptions['id'] != $_SESSION['id'])): ?>
              
            
            <?php if($this->viewFollows['is_follow'] == 0): ?>

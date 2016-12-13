@@ -37,7 +37,7 @@
     
   </head>
   <?php special_var_dump($this->followers); ?>
-  <?php special_var_dump($_SESSION['id']); ?>
+  
 
   <div class="container">
     <div class="row">
