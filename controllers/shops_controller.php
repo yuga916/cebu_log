@@ -59,6 +59,7 @@
         private $viewOptions;
 	 	private $viewsoptionShops;
 	 	private $viewErrors;
+        private $viewSamples;
 
 
         function __construct() {
@@ -100,6 +101,7 @@
             $this->viewsoptionsCategoly=$this->picture->add_categoly();
 //sample
             $this->viewSamples=$this->shop->sample($id);
+
             special_var_dump($this->viewSamples);
             //special_echo('viewOptions');
             //special_var_dump($this->viewOptions);

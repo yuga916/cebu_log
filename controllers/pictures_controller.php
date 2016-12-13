@@ -95,7 +95,8 @@
             special_echo('Controllerのrealtime()が呼び出されました。');
             
             // モデルを呼び出してデータを返り値として取得
-            $this->viewOptions = $this->picture->random();
+            $this->viewOptions = $this->picture->realtime();
+            special_var_dump($this->viewOptions);
 
             // データをViewに送る
             $this->display();
