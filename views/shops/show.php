@@ -151,7 +151,7 @@
         <div class="col-md-3 ">
             <figure>
 
-              <img class="img-responsive" src="../uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
+              <img class="img-responsive" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
               <br>
             </figure><!-- /figure -->
         </div>
@@ -191,10 +191,10 @@
           <input type="file" name="picture_path">
 
                 <!--hiddenでデータを送信-->
-          <input type="hidden" name="owner_id" value="1">
+          <input type="hidden" name="owner_id" value="<?php echo $_SESSION['id']; ?>">
                 <!--hiddenでデータを送信-->
 
-          <input type="hidden" name="s_id" value="1">
+          <input type="hidden" name="s_id" value="<?php echo $this->viewOptions['shop_id']; ?>">
                           <!--hiddenでデータを送信-->
 
 
@@ -237,19 +237,19 @@
                       
                               
                           <div class="timeline-label">
-                            <img src="/../<?php echo $viewSample['picture_path']; ?>" width="48" height="48"
+                            <img src="/cebu_log/<?php echo $viewSample['picture_path']; ?>" width="48" height="48"
                             style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">
                               
 
-                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="../uploads/users/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
                             &nbsp;&nbsp;date:<?php echo $viewSample['created']; ?><br><br>
                             <p><?php echo $viewSample['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
                                 <?php if ($viewSample['shop_picture_path']!==''): ?>
-                               <img src="../uploads/pictures/<?php echo $viewSample['shop_picture_path']; ?>" width="300">                 
+                               <img src="/cebu_log/uploads/pictures/<?php echo $viewSample['shop_picture_path']; ?>" width="300">                 
                                 <?php endif ?>
                                <br>
                                <br>

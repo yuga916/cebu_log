@@ -18,7 +18,7 @@
 			$controller->show_p_id($_SESSION['post']);
 			break;
 		case 'create':
-			$controller->create($_SESSION['post'],$_SESSION['picture']);
+			$controller->create($_SESSION['post'],$_SESSION['picture'],$id);
 			break;
 		
 		default:
@@ -84,12 +84,12 @@
 				exit();
 			}
 //tweetへの登録、その後shops/showへ遷移
-			function create($post,$picture_id){
+			function create($post,$picture_id,$id){
 				special_echo('tweets_controllerのcreateを通りました');
 				special_var_dump($post);
 				special_var_dump($picture_id);
 				$this->tweet->create($post,$picture_id);
-				header('Location:/cebu_log/shops/show');
+				header('Location:/cebu_log/shops/show/' . $id);
 				exit();
 			}
 
