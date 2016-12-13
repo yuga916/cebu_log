@@ -31,13 +31,13 @@
   <!-- Menu -->
   <nav class="menu" id="theMenu">
     <div class="menu-wrap">
-      <h1 class="logo"><a href="index.php#home">LINK</a></h1>
+      <h1 class="logo"><a href="index.php#home">セブログ</a></h1>
       <i class="fa fa-arrow-right menu-close"></i>
-      <a href="index.php">Home</a>
-      <a href="services.html">Services</a>
+      <a href="/cebu_log/">Home</a>
+      <a href="/cebu_log/users/user_page/<?php echo $_SESSION['id']; ?>">Mypage</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="about.html">About</a>
-      <a href="/cebu_log/users/logout">ログアウト</a>
+      <a href="/cebu_log/users/logout">Log out</a>
       <a href="#"><i class="fa fa-facebook"></i></a>
       <a href="#"><i class="fa fa-twitter"></i></a>
       <a href="#"><i class="fa fa-dribbble"></i></a>

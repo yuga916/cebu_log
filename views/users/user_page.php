@@ -66,6 +66,9 @@
            <br>
            <br>
            
+          <?php if($this->viewOptions['id'] ==! $_SESSION['id']): ?>
+             
+           
            <?php if($this->viewFollows['is_follow'] == 0): ?>
                <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローする</button></a>
            
@@ -74,6 +77,7 @@
                <a href="/cebu_log/users/unfollow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
            <?php endif; ?>
 
+          <?php endif; ?> 
 
         <!-- follower,followeringのカウント -->
         
@@ -117,7 +121,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/cebu_log/webroot/assets/js/bootstrap.min.js"></script>
-    <script src="/cebu_log/webroot/assets/js/main.js"></script>
   <script src="/cebu_log/webroot/assets/js/masonry.pkgd.min.js"></script>
   <script src="/cebu_log/webroot/assets/js/imagesloaded.js"></script>
     <script src="/cebu_log/webroot/assets/js/classie.js"></script>
