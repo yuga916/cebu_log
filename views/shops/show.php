@@ -43,7 +43,7 @@
   <?php special_var_dump($this->likeCounts); ?>
   <?php special_var_dump($this->viewLikes['m_id']); ?>
   
-    <?php echo $this->viewTwpictures[1]['shop_picture_path']; ?>
+  
 
   
   

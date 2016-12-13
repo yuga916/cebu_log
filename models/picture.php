@@ -27,6 +27,22 @@
             // var_dump($rtn);
             return $rtn;
         } 
+
+//お店、ユーザー、写真の数をカウント
+        function count() {
+            special_echo('モデルのcount()が呼び出されました。');
+            $sql = 'SELECT COUNT(*) AS `cnt` FROM `pictures`
+                    UNION ALL
+                    SELECT COUNT(*) AS `cnt` FROM `shops`
+                    UNION ALL
+                    SELECT COUNT(*) AS `cnt` FROM `members`';
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn = array();
+              while($result = mysqli_fetch_assoc($results)){
+                      $rtn[] = $result;
+              }
+              return $rtn;
+        }
         
 
         function realtime() {
