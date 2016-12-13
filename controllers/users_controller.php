@@ -250,7 +250,7 @@
             $this->viewFollows = $this->user->is_follow($id); 
             $this->followings = $this->user->countFollowing($id); 
             $this->followers = $this->user->countFollower($id); 
-
+            special_echo($this->viewOptions);
             $this->action = 'user_page';
             $this->display();
         }
