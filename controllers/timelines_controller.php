@@ -12,22 +12,16 @@
     switch ($action) {
       
       case 'show':
-        $controller->show($id);
+        $controller->show($_SESSION['id']);
         break;
 
-      case 'edit':
-        $controller->edit($id);
+      case 'realtime':
+        $controller->realtime($id);
         break;
 
-      case 'update':
-        $controller->update($post);
+      case 'index':
+        $controller->index($post);
         break;
-
-      case 'delete':
-        $controller->delete($id);
-        break;
-
-
 
       default:
         # code...
@@ -54,12 +48,12 @@
             $this->viewOptions = array();
         }
 
-        //  一覧ページ表示アクション
+        //  検索結果表示アクション
         function index() {
             special_echo('Controllerのcreate()が呼び出されました。');
             
             // モデルを呼び出してデータを返り値として取得
-            $this->viewOptions = $this->user->random();
+            $this->viewOptions = $this->timeline->search();
 
             // データをViewに送る
             $this->display();
@@ -76,13 +70,14 @@
             $this->display();
         }
 
-        // タイムラインの表示アクション
+        // タイムラインの表示アクション//following_idを代入
         function show($id) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
-            $this->viewOptions = $this->timeline->show(); // 戻り値 $rtnを受け取る
+            $this->viewOptions = $this->timeline->show($id); // 戻り値 $rtnを受け取る
             special_var_dump($this->viewOptions);
             $this->action = 'show';
+            special_var_dump($_SESSION['id']);
             $this->display();
         }
 

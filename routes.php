@@ -40,6 +40,10 @@
                 $fileName=null;
                 $files=null;
         }
+
+        if(!empty($_GET)){
+            $get=$_GET;
+        }
     
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
