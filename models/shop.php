@@ -18,7 +18,7 @@
             special_echo('モデルのshowメソッド呼び出し');
             special_echo('$idは' . $id . 'です(モデル内)');
 
-            $sql =  sprintf('SELECT `shop_id`,`shop_name`,`shop_intro` 
+            $sql =  sprintf('SELECT `shop_id`,`shop_name`,`shop_intro`,`shop_lat`,`shop_lng` 
                  FROM `shops` 
                 WHERE `shop_id` = %d ORDER BY `created`',
                 mysqli_real_escape_string($this->dbconnect, $id)
