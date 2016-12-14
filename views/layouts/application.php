@@ -116,6 +116,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
+    
+
     <!-- ヘッダーの動きをつける -->
     <script src="/cebu_log/webroot/assets/js/main.js"></script>
     

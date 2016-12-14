@@ -56,7 +56,6 @@
 
 	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/style.css">
 
-
 	<!-- Modernizr JS -->
 	<script src="/cebu_log/webroot/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
