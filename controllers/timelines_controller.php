@@ -49,7 +49,7 @@
             $this->results='';
         }
 
-        // タイムラインの表示 検索結果の表示
+        // タイムラインの表示 検索結果の表示 id:user_id
         function index($search_word,$id) {
             special_echo('Controllerのindex()が呼び出されました。');
             if (empty($search_word)) {
