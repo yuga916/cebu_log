@@ -56,12 +56,10 @@
 
 	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/style.css">
 
+
 	<!-- Modernizr JS -->
 	<script src="/cebu_log/webroot/js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+
 
 	</head>
 	<body>
@@ -87,6 +85,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="fh5co-photos-section">
 			<div class="container">
 
@@ -124,15 +123,15 @@
 
 					<?php foreach($this->viewOptions as $viewOption): ?>
 						<li>
-							<a href="/cebu_log/shops/<?php echo $viewOption['s_id'] ?>">
-								<img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path'] ?>"/>
+							<a href="/cebu_log/shops/<?php echo $viewOption['s_id']; ?>">
+								<img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>">
 								<div class="desc">
 									<h3>Album<br><span>129 Photos</span></h3>
 								</div>
 							</a>
 						</li>
 						
-					<?php endforeach; ?>
+				 <?php endforeach; ?>
 					
 
 					</ul>
@@ -280,12 +279,13 @@
 				    </div><!-- /container -->
 			    </div><!-- /white -->
 			    <br>
-				    		<br>
-				    		<br>
-				    		<br>
+	    		<br>
+	    		<br>
+	    		<br>
 
 	
 	</div>
+
 
 	<!-- jQuery -->
 	<script src="/cebu_log/webroot/js/jquery.min.js"></script>
@@ -304,6 +304,9 @@
 
 	<!-- Main JS (Do not remove) -->
 	<script src="/cebu_log/webroot/js/main.js"></script>
+
+	
+
 
 	<script type="text/javascript">	
 		$(function() {
