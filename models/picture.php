@@ -48,7 +48,7 @@
         function realtime() {
             special_echo('モデルのrealtime()が呼び出されました。');
 
-            $sql = 'SELECT `s_id`,`shop_picture_path` FROM `pictures` ORDER BY `created` DESC LIMIT 25';
+            $sql = 'SELECT `s_id`,`shop_picture_path` FROM `pictures` ORDER BY `created` DESC';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
@@ -63,7 +63,7 @@
 
         function all_show($id) {
             special_echo('モデルのall_show()が呼び出されました。');
-            $sql = 'SELECT `shop_picture_path` FROM `pictures`  ORDER BY RAND() LIMIT 25';
+            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id`=%d  ORDER BY RAND() LIMIT 25',$id);
             $results=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)

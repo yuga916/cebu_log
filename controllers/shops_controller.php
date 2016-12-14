@@ -81,7 +81,7 @@
             $this->likeCounts = '';
 
             $this->viewSamples=array();
-
+            $this->shop_id='';
         }
 
 
@@ -163,10 +163,14 @@
 
 	   function create($post){
 	   		special_echo('controllerのcreateが呼び出されました');
-            special_var_dump($post);
+            special_echo('$postは');
+            special_var_dump($post['owner_id']);
 	   		$this->shop->create($post);
-	   		session_destroy();//登録使用したでーたは消す
-	   		header('Location:add');
+	   		//session_destroy();//登録使用したでーたは消す
+            $this->shopid=$this->shop->show_shop_id($post);
+            special_echo('shopidは');
+            special_var_dump($this->shopid);
+	   		header('Location:show/'.$this->shopid['shop_id']);
 	   		exit();
             //special_var_dump($_SESSION['post']);
 	   }

@@ -17,7 +17,7 @@
     } else {
         $resource = $parameters[0];
         $action = $parameters[1];
-        $id = 1;
+        //$id = 1;
         $post = array();
         $files=array();
     }

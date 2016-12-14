@@ -90,12 +90,12 @@
 				exit();
 			}
 //tweetへの登録、その後shops/showへ遷移
-			function create($post,$picture_id,$id){
+			function create($post,$picture_id){
 				special_echo('tweets_controllerのcreateを通りました');
 				special_var_dump($post);
 				special_var_dump($picture_id);
 				$this->tweet->create($post,$picture_id);
-				header('Location:/cebu_log/shops/show/' . $id);
+				header('Location:/cebu_log/shops/show/' . $post['s_id']);
 				exit();
 			}
 
