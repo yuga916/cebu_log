@@ -32,7 +32,7 @@
   <?php if(!empty($_SESSION['id'])): ?>
       <nav class="menu" id="theMenu">
         <div class="menu-wrap">
-          <h1 class="logo"><a href="index.php#home">セブログ</a></h1>
+          <h1 class="logo"><a href="/cebu_log/">セブログ</a></h1>
           <i class="fa fa-arrow-right menu-close"></i>
           <a href="/cebu_log/users/user_page/<?php echo $_SESSION['id']; ?>">マイページ</a>
           <a href="/cebu_log/timelines/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
