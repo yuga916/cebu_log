@@ -150,7 +150,7 @@
           mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
         }
-//sample
+//sample　talk spot
         function sample($id){
             $sql=sprintf('SELECT t.`tweet_id`, m.`id`, m.`nick_name`,m.`picture_path`,t.`tweet`,t.`m_id`, p.`shop_picture_path`, t.`created` 
                  FROM `tweets` t 
@@ -165,9 +165,16 @@
             }            
             return $rtn;
         }
-//sample
+//登録後のお店の名前を取得
+        function show_shop_id($post)
+        {
+            $sql=sprintf('SELECT `shop_id`,`created`FROM `shops` WHERE `owner_id`=%d ORDER BY `created` DESC limit 1',mysqli_real_escape_string($this->dbconnect,$post['owner_id']));
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $result=mysqli_fetch_assoc($results);
 
-    //お店の名前
+            return $result;
+        }
+
 
   }
 ?>

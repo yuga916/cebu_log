@@ -103,13 +103,14 @@
         }
 
 
-        // 写真一覧ページ表示アクション
+        // 写真一覧ページ表示アクション修正//id:shop_id
         function all_show($id) {
             special_echo('Controllerのall_show()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
             $this->viewOptions = $this->picture->all_show($id);
             $this->viewShops = $this->shop->all_show($id);
             $this->action = 'all_show';
+            special_var_dump($_SESSION);
             $this->display();
         }
 
@@ -124,11 +125,13 @@
 
      function create($post,$files){
             special_echo('Controllerのcreate()が呼び出されました。');
+            special_echo('$postは');
+            special_var_dump($post['s_id']);
+
             $this->picture->create($post,$files);
-              session_destroy();
-              header('Location:add');
+              //session_destroy();
+              header('Location:/cebu_log/shops/show/'.$post['s_id']);
               exit();
-               //header('Location: index');
         }
 
         function edit($id) {
