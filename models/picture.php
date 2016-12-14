@@ -15,7 +15,7 @@
         function random() {
             special_echo('モデルのrandom()が呼び出されました。');
 
-            $sql = 'SELECT `shop_picture_path` ,`s_id` FROM `pictures` WHERE `categoly` = 0 ORDER BY RAND() LIMIT 25';
+            $sql = 'SELECT `shop_picture_path` ,`s_id` FROM `pictures` WHERE `categoly` = 0 AND `shop_picture_path` != "" ORDER BY RAND() LIMIT 25';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
