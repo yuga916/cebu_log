@@ -49,6 +49,7 @@
             $this->viewOptions = $this->picture->random();
             $this->Counts = $this->picture->count();
             special_var_dump($this->Counts);
+            special_var_dump($this->viewOptions);
             // データをViewに送る
             $this->display();
         }
