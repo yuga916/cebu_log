@@ -195,26 +195,19 @@
                   </div>
 				    	</div>
 				    	<div class="row mt">
+				    		<?php foreach ($this->viewlikesranks as $viewlikesrank): ?>
+				    		<?php $this->i++;  ?>
 				    		<div class="col-lg-4">
-				    			<p class="capitalize">1</p>
+				    			<p class="capitalize"><?php echo $this->i; ?>位</p>
 				    			<img src="images/gurume.jpg" style="border-radius: 30px;
                       												 height: 150px;
                       												 width: 150px;" width="100" height="100">
                   <br>
                   <br>
-				    			<a href="mypage/mypage.php"><h4>グルメ太郎</h4></a>
-				    			<p>Built for all levels of expertise, whether you need simple pages or complex ones, creating something incredible with Marco is an effortless and intuitive process.</p>
-				    		</div>
-				    		<div class="col-lg-4">
-				    			<p class="capitalize">2</p>
-				    			<h4>Analysis</h4>
-				    			<p>We’ve taken great care to ensure that Marco is fully retina-ready. So it’ll look good on any retina display. We use retina.js to ensure the best view.</p>
-				    		</div>
-				    		<div class="col-lg-4">
-				    			<p class="capitalize">3</p>
-				    			<h4>Planning</h4>
-				    			<p>Marco fits any device handsomely. We tested our theme in major devices and browsers. Check it out and test it before buy it on responsinator.com.</p>
-				    		</div>    	
+				    			<a href="mypage/mypage.php"><h4><?php echo $viewlikesrank['shop_name']; ?></h4></a>
+				    			<p><?php echo $viewlikesrank['shop_intro']; ?></p>
+				    		</div>	
+				    		<?php endforeach ?>
 				
 				    	</div><!-- /row -->
 				    </div><!-- /container -->
@@ -233,50 +226,15 @@
     </div>
 				    	</div>
 				    	<div class="row mt">
+				    	<?php foreach ($this->viewrealtimepics as $viewrealtimepic): ?>
 				    		<div class="col-lg-2">
-				    			<img src="images/gurume.jpg" style="border-radius: 10px;
+				    			<img src="/cebu_log/uploads/pictures/<?php echo $viewrealtimepic['shop_picture_path']; ?>" style="border-radius: 10px;
                       												 height: 150px;
                       												 width: 150px;" width="100" height="100">
                   <br>
 				    		</div>
-
-				    		<div class="col-lg-2">
-				    			<img src="images/gurume.jpg" style="border-radius: 10px;
-                      												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
-                  <br>
-				    		</div>
-
-				    		<div class="col-lg-2">
-				    			<img src="images/gurume.jpg" style="border-radius: 10px;
-                      												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
-                  <br>
-				    		</div>
-
-				    		<div class="col-lg-2">
-				    			<img src="images/gurume.jpg" style="border-radius: 10px;
-                      												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
-                  <br>
-				    		</div>
-
-				    		<div class="col-lg-2">
-				    			<img src="images/gurume.jpg" style="border-radius: 10px;
-                      												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
-                  <br>
-				    		</div>
-
-				    		<div class="col-lg-2">
-				    			<img src="images/gurume.jpg" style="border-radius: 10px;
-                      												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
-                  <br>
-				    		</div>
-
 				    		
-				
+				    	<?php endforeach ?>	
 				    	</div><!-- /row -->
 				    </div><!-- /container -->
 			    </div><!-- /white -->
