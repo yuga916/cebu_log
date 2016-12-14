@@ -70,16 +70,18 @@
     </div><!-- /.container -->
     
     <!-- MAC IMAGE -->
-  <div class="container">
-    <div class="row centered">
-      <div class="col-lg-10 col-lg-offset-1">
-        <img class="" src="/cebu_log/uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
-        style="height: auto;
-               width: 500px;
-               text-align:center;">
+  <?php if($this->Picture_tops['shop_picture_path'] != null): ?>
+      <div class="container">
+        <div class="row centered">
+          <div class="col-lg-10 col-lg-offset-1">
+            <img class="" src="/cebu_log/uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
+            style="height: auto;
+                   width: 500px;
+                   text-align:center;">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+  <?php endif; ?>
   <br>
   <br>
   
