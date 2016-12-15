@@ -131,7 +131,7 @@
             //special_var_dump($this->viewTweets);
 
             $this->action = 'show';
-           // $this->display();
+            $this->display();
         }
 
 //like機能

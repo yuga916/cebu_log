@@ -20,7 +20,6 @@
         //$id = 1;
         $post = array();
         $files=array();
-        $get=array();
     }
     
 
@@ -45,8 +44,9 @@
             $files=null;
         }
 
+        if (isset($_GET)) {
             $get=$_GET;
-    
+        }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
 ?>
