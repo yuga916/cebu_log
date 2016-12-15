@@ -11,8 +11,9 @@
     special_var_dump($parameters);
     if(empty($parameters[0])){
         
-        $action = 'home';
-        require('controllers/home_controller.php');
+        $action = 'show';
+        $resource='show';
+        require('controllers/' . $resource . '_controller.php');
         exit();
     } else {
         $resource = $parameters[0];
@@ -44,9 +45,9 @@
             $files=null;
         }
 
+        if (isset($_GET)) {
             $get=$_GET;
-    special_var_dump($get);
-    
+        }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
 ?>

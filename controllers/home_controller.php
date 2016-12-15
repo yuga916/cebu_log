@@ -14,7 +14,7 @@
         break;
 
       case 'show':
-        $controller->show($id);
+        $controller->show();
         break;
 
         default:
@@ -33,6 +33,10 @@
         private $action;
         private $viewOptions;
         private $Counts;
+        private $viewlikesranks;
+        private $viewrealtimepics;
+        private $i;
+
 
         function __construct() {
             $this->resource = 'home';
@@ -41,6 +45,9 @@
             $this->user = new User();
             $this->viewOptions = array();
             $this->Counts = array();
+            $this->viewlikesranks=array();
+            $this->viewrealtimepics=array();
+            $this->i=0;
         }
 
         function home() {
@@ -50,6 +57,10 @@
             $this->Counts = $this->picture->count();
             special_var_dump($this->Counts);
             special_var_dump($this->viewOptions);
+            $this->viewlikesranks=$this->user->shopslikesranking();
+            $this->viewrealtimepics=$this->picture->realtime_top();
+            special_var_dump($this->viewrealtimepics);
+            //pecial_var_dump($this->Counts);
             // データをViewに送る
             $this->display();
         }

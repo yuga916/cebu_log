@@ -151,6 +151,7 @@
 // ログインページ表示
         function login() {
             special_echo('Controllerのlogin()が呼び出されました。');
+            session_destroy();
             $this->action = 'login';
             $this->display();
         }
@@ -159,7 +160,7 @@
                     special_echo('Controllerのauth()が呼び出されました。');
                     $login_flag = $this->user->auth($post);
                     if ($login_flag) {
-                        header('Location:/cebu_log/');
+                        header('Location:/cebu_log');
                         exit();
                     } else {
                         header('Location:login');
