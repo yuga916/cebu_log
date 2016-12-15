@@ -31,7 +31,7 @@
 //お店、ユーザー、写真の数をカウント
         function count() {
             special_echo('モデルのcount()が呼び出されました。');
-            $sql = 'SELECT COUNT(*) AS `cnt` FROM `pictures`
+            $sql = 'SELECT COUNT(*) AS `cnt` FROM `pictures` WHERE NOT `shop_picture_path`=""
                     UNION ALL
                     SELECT COUNT(*) AS `cnt` FROM `shops`
                     UNION ALL
