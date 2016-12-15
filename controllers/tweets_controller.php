@@ -67,6 +67,7 @@
 		                  }
 		                        $_SESSION['post']=$post;
 		                        $_SESSION['picture_path']=$picture_path;
+		                        $this->picture->update_sid_path($post,$picture_path);
 		                        special_echo('$_SESSION＝');
 		                        special_var_dump($_SESSION);
 		                        header('Location:create_picture');

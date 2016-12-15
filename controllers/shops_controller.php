@@ -14,7 +14,7 @@
     switch ($action) {
     
       case 'show':
-        $controller->show($id);
+        $controller->show($id,$get['search_word']);
         break;
 
 //like機能
@@ -86,7 +86,7 @@
 
 
 // 詳細ページ表示アクション
-        function show($id) {
+        function show($id,$search_word) {
             special_echo('Controllerのshow()が呼び出されました。');
             special_echo('$idは' . $id . 'です。');
 
@@ -99,10 +99,24 @@
             $this->viewLikes = $this->shop->is_like($id);
             $this->likeCounts = $this->shop->count_like($id);
             $this->viewsoptionsCategoly=$this->picture->add_categoly();
-//sample
-            $this->viewSamples=$this->shop->sample($id);
+//sample:talkspot
+            if(empty($search_word)){
+                $this->viewSamples=$this->shop->sample($id);                
+            }
+            else{
+                $resultstweets=$this->shop->seach_tweet($id,$search_word);
+                //検索結果が空
+                if (empty($resultstweets)) {
+                $this->viewSamples=$this->shop->sample($id);                  
+                }
+                //検索結果が空じゃない場合
+                else{
+                    $this->viewSamples=$resultstweets;
+                }
+            }
 
             special_var_dump($this->viewSamples);
+
             //special_echo('viewOptions');
             //special_var_dump($this->viewOptions);
             //special_echo('viewPictures');
@@ -168,6 +182,7 @@
 	   		$this->shop->create($post);
 	   		//session_destroy();//登録使用したでーたは消す
             $this->shopid=$this->shop->show_shop_id($post);
+            $this->picture->create_sid_path($this->shopid);
             special_echo('shopidは');
             special_var_dump($this->shopid);
 	   		header('Location:show/'.$this->shopid['shop_id']);

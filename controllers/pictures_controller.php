@@ -48,6 +48,11 @@
         $controller->delete($id);
         break;
 
+      case 'show_sid_path':
+        $controller->show_sid_path($id);
+        break;
+
+
       default:
         # code...
         break;
@@ -194,6 +199,7 @@
                         move_uploaded_file($files['picture_path']['tmp_name'],'uploads/pictures/' .$picture_path);
                         $_SESSION['post']=$post;
                         $_SESSION['picture_path']=$picture_path;
+                        $this->picture->update_sid_path($post,$picture_path);
                         special_echo('$_SESSION＝');
                         special_var_dump($_SESSION);
                         header('Location:create');
@@ -210,6 +216,10 @@
         // Viewを表示するメソッド
         function display() {
             require('views/layouts/application.php');
+        }
+
+        function show_sid($id){
+            $this->picture->show_sid_path($id);
         }
     }
  ?>

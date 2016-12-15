@@ -61,6 +61,22 @@
             return $rtn;
         }
 
+        function realtime_top() {
+            special_echo('モデルのrealtime()が呼び出されました。');
+
+            $sql = 'SELECT `s_id`,`shop_picture_path` FROM `pictures` WHERE NOT `shop_picture_path`="" ORDER BY `created` DESC LIMIT 6';
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+            // 戻り値 (Controllerへ渡すデータ)
+            $rtn = array();
+            while ($result = mysqli_fetch_assoc($results)) {
+                $rtn[] = $result;
+            }
+
+            // var_dump($rtn);
+            return $rtn;
+        }
+
         function all_show($id) {
             special_echo('モデルのall_show()が呼び出されました。');
             $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id`=%d  ORDER BY RAND() LIMIT 25',$id);
@@ -191,6 +207,29 @@
                   }
                   return $rtn;
           
-                }   
+                }
+//言い値ランキングの上位の画像pathを取得
+              function home_ranking_picturepath($id){
+                special_echo('home_ranking_picturepathの呼び出し');
+                $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id`=%d ORDER BY `created` DESC LIMIT 1',$id['s_id']);
+                $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+                  while ($result = mysqli_fetch_assoc($results)) {
+                      $rtn[] = $result;
+                  }
+
+                return $rtn;
+
+              }
+//お店を登録後shop_idを登録
+              function create_sid_path($shopid){
+              $sql=sprintf('INSERT `sid_picpath`SET `s_id`=%d,`shop_picture_path`=""',mysqli_real_escape_string($this->dbconnect, $shopid['shop_id'])
+                );
+                mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+              }
+//画像の投稿、talkスポットでの画像投稿後、update
+              function update_sid_path($post,$file){
+                $sql=sprintf('UPDATE `sid_picpath`SET `shop_picture_path`="%s" WHERE`s_id`=%d',mysqli_real_escape_string($this->dbconnect, $file),mysqli_real_escape_string($this->dbconnect, $post['s_id']));
+                mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+              }
     }
  ?>
