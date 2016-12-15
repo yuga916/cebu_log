@@ -15,7 +15,7 @@
         function random() {
             special_echo('モデルのrandom()が呼び出されました。');
 
-            $sql = 'SELECT `shop_picture_path` ,`s_id` FROM `pictures` WHERE `categoly` = 0 ORDER BY RAND() LIMIT 25';
+            $sql = 'SELECT `shop_picture_path` ,`s_id` FROM `pictures` WHERE `categoly` = 0 AND `shop_picture_path` != "" ORDER BY RAND() LIMIT 25';
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             // 戻り値 (Controllerへ渡すデータ)
@@ -92,7 +92,7 @@
 
 //shopのトップ画像のランダム表示
         function shop_top($id) {
-            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d AND `categoly`= 0 ORDER BY RAND() LIMIT 1',
+            $sql = sprintf('SELECT `shop_picture_path` FROM `pictures` WHERE `s_id` = %d AND `categoly`= 0 AND `shop_picture_path` != "" ORDER BY RAND() LIMIT 1',
             mysqli_real_escape_string($this->dbconnect, $id)
             );
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -161,7 +161,8 @@
                   special_echo('$idは' . $id . 'です(モデル内)');
                   $sql =  sprintf('SELECT `shop_picture_path`
                        FROM `pictures` 
-                      WHERE `s_id` = %d AND `shop_picture_path`!="" ORDER BY `created` DESC  LIMIT 8',
+                      WHERE `s_id` = %d AND `shop_picture_path` != "" ORDER BY `created` DESC  LIMIT 8',
+
                       mysqli_real_escape_string($this->dbconnect, $id)
                       );
                   $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));

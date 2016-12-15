@@ -55,6 +55,8 @@
             // モデルを呼び出してデータを返り値として取得
             $this->viewOptions = $this->picture->random();
             $this->Counts = $this->picture->count();
+            special_var_dump($this->Counts);
+            special_var_dump($this->viewOptions);
             $this->viewlikesranks=$this->user->shopslikesranking();
             $this->viewrealtimepics=$this->picture->realtime_top();
             special_var_dump($this->viewrealtimepics);

@@ -183,7 +183,7 @@
                     }
                     // 最終的に、セッションを破壊する
                     session_destroy();
-                    header('Location: /cebu_log/users/login');
+                    header('Location: /cebu_log/');
                     exit();
                 }
 
