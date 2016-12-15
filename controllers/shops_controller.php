@@ -107,6 +107,7 @@
                 $resultstweets=$this->shop->seach_tweet($id,$search_word);
                 //検索結果が空
                 if (empty($resultstweets)) {
+                $this->viewSamples=$this->shop->sample($id);                  
                 }
                 //検索結果が空じゃない場合
                 else{
