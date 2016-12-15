@@ -6,11 +6,11 @@
 
         switch ($action) {
           case 'index': //Tweet表示
-            $Controller->index();
+            $controller->index();
             break;
 
           case 'create': // 新規投稿
-            if (!empty($post['title']) && !empty($post['body'])) {
+            if (!empty($post['body'])) {
               $controller->create($post);
             } else {
               $controller->index();
@@ -24,7 +24,7 @@
     private $resource;
     private $action;
     private $viewOption;
-  
+
 
       function __construct() {
         $this->tweet = new Tweet();
@@ -33,18 +33,34 @@
         $this->viewOptions = array();
       }
 
-      // tweet：プルダウン内容選択「food・shop」
-      // tweet：つぶやき一覧降順（新→古）表示
           function index(){
 //            special_echo("tweets_controllersのindex()を通りました");
             $this->viewOptions = $this->tweet->index();
             $this->display();
           }
 
+          function create($post) {
+            $this->tweet->create($post);
+            header('Location: index');
+          }
+
+          // update
+          function update($post) {
+            $this->tweet->update($post);
+            header('Location: index');
+          }
+
+          // delete
+          function delete($id) {
+            $this->tweet->delete($id);
+            header('Location: index');
+          }
+
+
           function display() {
             require('views/tweets/index.php');
           }
-        }
+  }
 
 
       // 追加候補機能
