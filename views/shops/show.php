@@ -235,6 +235,10 @@
       <br>
       <br>
 
+        <?php if ($this->results=="blank"): ?>
+          <p style="color: red;">*検索結果が０件です。再検索してください。</p>
+        <?php endif ?>
+
         <?php foreach($this->viewSamples as $viewSample): ?>
 
         
@@ -247,7 +251,6 @@
                                   height: 40px;
                                   width: 40px;">
                               
-
                             &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
                             &nbsp;&nbsp;date:<?php echo $viewSample['created']; ?><br><br>
                             <p><?php echo $viewSample['tweet']; ?></p>

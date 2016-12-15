@@ -20,6 +20,7 @@
         //$id = 1;
         $post = array();
         $files=array();
+        $get=array();
     }
     
 
@@ -45,7 +46,6 @@
         }
 
             $get=$_GET;
-    special_var_dump($get);
     
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');
