@@ -158,7 +158,7 @@
                  LEFT JOIN `members` m  ON t.`m_id`= m.`id`
                  WHERE t.`s_id` = %d ORDER BY t.`created` DESC',mysqli_real_escape_string($this->dbconnect, $id));
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
+            $rtn=array();
             while ($result=mysqli_fetch_assoc($results))
             {
                 $rtn[]=$result;
@@ -174,7 +174,6 @@
 
             return $result;
         }
-
 
   }
 ?>

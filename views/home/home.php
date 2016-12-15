@@ -199,12 +199,13 @@
 				    		<?php $this->i++;  ?>
 				    		<div class="col-lg-4">
 				    			<p class="capitalize"><?php echo $this->i; ?>位</p>
-				    			<img src="images/gurume.jpg" style="border-radius: 30px;
+				    			<a href="/cebu_log/shops/show/<?php echo $viewlikesrank['s_id']; ?>">
+				    			<img src="/cebu_log/uploads/pictures/<?php echo $viewlikesrank['shop_picture_path']; ?>" style="border-radius: 30px;
                       												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
+                      												 width: 150px;" width="100" height="100"></a>
                   <br>
                   <br>
-				    			<a href="mypage/mypage.php"><h4><?php echo $viewlikesrank['shop_name']; ?></h4></a>
+				    			<a href="/cebu_log/shops/show/<?php echo $viewlikesrank['s_id']; ?>"><h4><?php echo $viewlikesrank['shop_name']; ?></h4></a>
 				    			<p><?php echo $viewlikesrank['shop_intro']; ?></p>
 				    		</div>	
 				    		<?php endforeach ?>
@@ -228,9 +229,13 @@
 				    	<div class="row mt">
 				    	<?php foreach ($this->viewrealtimepics as $viewrealtimepic): ?>
 				    		<div class="col-lg-2">
-				    			<img src="/cebu_log/uploads/pictures/<?php echo $viewrealtimepic['shop_picture_path']; ?>" style="border-radius: 10px;
+				    			<a href="/cebu_log/shops/show/<?php echo $viewrealtimepic['s_id']; ?>">
+								<img src="/cebu_log/uploads/pictures/<?php echo $viewrealtimepic['shop_picture_path']; ?>" style="border-radius: 10px;
                       												 height: 150px;
-                      												 width: 150px;" width="100" height="100">
+                      												 width: 150px;" width="100" height="100"></a>
+                  <br>
+                  <br>
+
                   <br>
 				    		</div>
 				    		

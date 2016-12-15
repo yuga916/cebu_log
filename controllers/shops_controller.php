@@ -168,6 +168,7 @@
 	   		$this->shop->create($post);
 	   		//session_destroy();//登録使用したでーたは消す
             $this->shopid=$this->shop->show_shop_id($post);
+            $this->picture->create_sid_path($this->shopid);
             special_echo('shopidは');
             special_var_dump($this->shopid);
 	   		header('Location:show/'.$this->shopid['shop_id']);

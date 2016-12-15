@@ -48,7 +48,6 @@
             $this->viewlikesranks=array();
             $this->viewrealtimepics=array();
             $this->i=0;
-
         }
 
         function home() {
@@ -58,7 +57,7 @@
             $this->Counts = $this->picture->count();
             $this->viewlikesranks=$this->user->shopslikesranking();
             $this->viewrealtimepics=$this->picture->realtime_top();
-            special_var_dump($this->viewlikesranks);
+            special_var_dump($this->viewrealtimepics);
             //pecial_var_dump($this->Counts);
             // データをViewに送る
             $this->display();

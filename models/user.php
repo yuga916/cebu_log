@@ -210,7 +210,12 @@
     }
 //お店のいいね数ランキング
     function shopslikesranking(){
-        $sql=sprintf('SELECT l.`s_id`,s.`shop_name`,s.`shop_intro` , COUNT(*) AS `likescnt`FROM `likes` l LEFT JOIN `shops` s ON l.`s_id`=s.`shop_id` GROUP BY l.`s_id`ORDER BY `likescnt` DESC LIMIT 5');
+        $sql=sprintf('
+                    SELECT l.`s_id`,s.`shop_name`,s.`shop_intro`,sp.`shop_picture_path`, COUNT(*) AS `likescnt`FROM `likes` l
+                    LEFT JOIN `shops` s ON l.`s_id`=s.`shop_id`
+                    LEFT JOIN `sid_picpath` sp ON s.`shop_id`=sp.`s_id`
+                    GROUP BY l.`s_id`
+                    ORDER BY `likescnt` DESC LIMIT 5');
         $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         $rtn = array();
         while($result = mysqli_fetch_assoc($results)){
