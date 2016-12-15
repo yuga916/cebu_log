@@ -58,6 +58,7 @@
             special_var_dump($this->Counts);
             special_var_dump($this->viewOptions);
             $this->viewlikesranks=$this->user->shopslikesranking();
+            special_var_dump($this->viewlikesranks);
             $this->viewrealtimepics=$this->picture->realtime_top();
             special_var_dump($this->viewrealtimepics);
             //pecial_var_dump($this->Counts);

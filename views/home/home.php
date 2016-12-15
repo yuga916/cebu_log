@@ -193,12 +193,12 @@
 				    <div class="container">
 				    	<div class="row mt">
 				    		<div class="col-lg-4 col-lg-offset-4 centered">
-				    			<h3>グルメなユーザーから探す</h3>
+				    			<h3>人気のお店から探す</h3>
 				    			<hr>
 				    		</div>
 				    		<div class="col-lg-8"></div><!-- col-lg-8-->
                   <div class="col-lg-4 goright">
-                   <p><a href="img_all.php"><i class="fa fa-angle-right"></i>ユーザーランキングを見る</a></p>
+                   
                   </div>
 				    	</div>
 				    	<div class="row mt">
@@ -230,7 +230,7 @@
 				    		</div>
 				    		<div class="col-lg-8"></div><!-- col-lg-8-->
                 <div class="col-lg-4 goright">
-                 <p><a href="img_all.php"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
+                 <p><a href="/cebu_log/pictures/realtime"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
     </div>
 				    	</div>
 				    	<div class="row mt">
