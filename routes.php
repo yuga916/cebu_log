@@ -11,7 +11,7 @@
     special_var_dump($parameters);
     if(empty($parameters[0])){
         
-        $action = 'show';
+        $action = 'home';
         $resource='show';
         require('controllers/' . $resource . '_controller.php');
         exit();
