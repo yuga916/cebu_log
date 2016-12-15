@@ -151,6 +151,7 @@
 // ログインページ表示
         function login() {
             special_echo('Controllerのlogin()が呼び出されました。');
+            session_destroy();
             $this->action = 'login';
             $this->display();
         }
