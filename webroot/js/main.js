@@ -99,22 +99,7 @@
 	};
 
 
-	var imgPopup = function() {
-
-
-		$('body').on('click', '.img-popup', function(event){
-			event.preventDefault();
-			var src = $(this).attr('href');
-			$.magnificPopup.open({
-		      items: {
-			      src: src
-			   },
-			   type: 'image'
-		  	});
-				
-		});
-		
-	};
+	
 
 
 	// Document on load.
@@ -124,7 +109,7 @@
 		counter();
 		contentWayPoint();
 counterWayPoint();
-		imgPopup();
+		
 	});
 
 

@@ -1,0 +1,34 @@
+#modal-win {
+  width: 100%;
+  position: absolute;
+}
+#modal-win-inner {
+  box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+  margin: 0 auto;
+  position: relative;
+  z-index: 101;
+}
+#modal-bg {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.modal_hidden {
+  display: none;
+}
+
+.modal_view {
+  margin-bottom: 500px
+  margin: 0 auto;
+  text-align: center;
+}
+
+.modal_view a {
+  color: #FFFFFF;
+}
