@@ -193,23 +193,32 @@
 				    <div class="container">
 				    	<div class="row mt">
 				    		<div class="col-lg-4 col-lg-offset-4 centered">
-				    			<h3>グルメなユーザーから探す</h3>
+				    			<h3>美味しいお店から探す</h3>
 				    			<hr>
 				    		</div>
 				    		<div class="col-lg-8"></div><!-- col-lg-8-->
+<!--
                   <div class="col-lg-4 goright">
                    <p><a href="img_all.php"><i class="fa fa-angle-right"></i>ユーザーランキングを見る</a></p>
                   </div>
+-->
 				    	</div>
 				    	<div class="row mt">
 				    		<?php foreach ($this->viewlikesranks as $viewlikesrank): ?>
 				    		<?php $this->i++;  ?>
 				    		<div class="col-lg-4">
 				    			<p class="capitalize"><?php echo $this->i; ?>位</p>
+				    			<?php if (!empty($this->$viewlikesrank['shop_picture_path'])): ?>
 				    			<a href="/cebu_log/shops/show/<?php echo $viewlikesrank['s_id']; ?>">
 				    			<img src="/cebu_log/uploads/pictures/<?php echo $viewlikesrank['shop_picture_path']; ?>" style="border-radius: 30px;
                       												 height: 150px;
-                      												 width: 150px;" width="100" height="100"></a>
+                      												 width: 150px;" width="100" height="100"></a>			
+				    			<?php else: ?>
+				    			<img src="/cebu_log/uploads/pictures/sample.jpg" style="border-radius: 30px;
+                      												 height: 150px;
+                      												 width: 150px;" width="100" height="100">			
+				    			<?php endif; ?>
+
                   <br>
                   <br>
 				    			<a href="/cebu_log/shops/show/<?php echo $viewlikesrank['s_id']; ?>"><h4><?php echo $viewlikesrank['shop_name']; ?></h4></a>
@@ -230,7 +239,7 @@
 				    		</div>
 				    		<div class="col-lg-8"></div><!-- col-lg-8-->
                 <div class="col-lg-4 goright">
-                 <p><a href="img_all.php"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
+                 <p><a href="/cebu_log/pictures/realtime"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
     </div>
 				    	</div>
 				    	<div class="row mt">

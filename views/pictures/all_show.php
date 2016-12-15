@@ -58,7 +58,9 @@
     <div class="container">
           <div id="gallery" class="zoomwall">
           <?php foreach ($this->viewOptions as $viewOption): ?>
-                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"  data-highres="" />  
+                  <?php if (!empty($viewOption['shop_picture_path'])): ?>
+                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"  data-highres="" />                 
+                  <?php endif ?>
           <?php endforeach ?>
                        
           </div>
