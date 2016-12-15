@@ -52,9 +52,15 @@
 	<!-- animatedresponsiveImagegrid  -->
 	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/animatedresponsiveImagegrid.css">
 	<!-- Magnifoc Popup  -->
-	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/magnific-popup.css">
+
 
 	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/style.css">
+
+<!-- グリッド関係 -->
+	 <link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/grid/demo.css" />
+			<link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/grid/style.css" />
+			<link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/grid/modal.css" />
+			<script type="text/javascript" src="/cebu_log/webroot/js/grid2/modernizr.custom.26633.js"></script>	
 
 
 	<!-- Modernizr JS -->
@@ -63,6 +69,12 @@
 
 	</head>
 	<body>
+
+	<div id="modal_view" class="modal_hidden modal_view">
+								<img src="" alt="">
+					    	<p><a class="modal-move" href="#">お店ページへ</a></p>
+					    	<p><a class="modal-close" href="#">閉じる</a></p>
+				  </div>
 
 	
 	<div id="fh5co-page">
@@ -116,26 +128,23 @@
 							</div>
 						</div>
 					</div>
+				
 
 				<div id="ri-grid" class="ri-grid animate-box">
 					<img class="ri-loading-image" src="/cebu_log/images/loading.gif"/>
-					<ul>
-
-					<?php foreach($this->viewOptions as $viewOption): ?>
-						<li>
-							<a href="/cebu_log/shops/<?php echo $viewOption['s_id']; ?>">
-								<img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>">
-								<div class="desc">
-									<h3>Album<br><span>129 Photos</span></h3>
-								</div>
-							</a>
-						</li>
-						
-				 <?php endforeach; ?>
 					
+					<ul>
+					<?php foreach($this->viewOptions as $viewOption): ?>
+						<li id="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"><a href="#modal_view" class="modal" id="<?php echo $viewOption['s_id']; ?>"><img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"/></a>
 
+
+						</li>
+
+				 <?php endforeach; ?>
 					</ul>
 				</div>
+						
+
 			</div>
 		</div>
 
@@ -261,33 +270,61 @@
 	<!-- Counters -->
 	<script src="/cebu_log/webroot/js/jquery.countTo.js"></script>
 	<!-- gridrotator -->
-	<script type="text/javascript" src="/cebu_log/webroot/js/jquery.gridrotator.js"></script>
 	<!-- Magnific Popup -->
-	<script type="text/javascript" src="/cebu_log/webroot/js/jquery.magnific-popup.min.js"></script>
 
 	<!-- Main JS (Do not remove) -->
 	<script src="/cebu_log/webroot/js/main.js"></script>
 
 	
 
+<!-- グリッド -->
+			<script type="text/javascript" src="/cebu_log/webroot/js/grid2/jquery.gridrotator.js"></script>
+			<script type="text/javascript" src="/cebu_log/webroot/js/grid2/simpleModalWindow.js"></script>
 
-	<script type="text/javascript">	
-		$(function() {
-		
-			$( '#ri-grid' ).gridrotator( {
-				rows : 3,
-				// number of columns 
-				columns : 6,
-				w1024 : { rows : 3, columns : 5 },
-				w768 : {rows : 3,columns : 4 },
-				w480 : {rows : 3,columns : 3 },
-				w320 : {rows : 2,columns : 2 },
-				w240 : {rows : 1,columns : 1 },
-				preventClick : false
-			} );
-		
-		});
-	</script>
+			<script type="text/javascript">
+				$(function() {
+					$( '#ri-grid' ).gridrotator( {
+						preventClick : false,
+						rows		: 3,
+						columns		: 8,
+						// animType	: 'fadeInOut',
+						// animSpeed	: 1000,
+						// interval	: 600,
+						step		: 1,
+						w320		: {
+							rows	: 3,
+							columns	: 4
+						},
+						w240		: {
+							rows	: 3,
+							columns	: 4
+						}
+					} );
+				});
+			</script>
+
+			<script type="text/javascript">
+				// パネルの中からタップされた画像のidを取得しmodal画面のmodal-moveクラスを持ったaタグにid属性として追加
+				function setIdAndImgPath(id, img_path) {
+					console.log(id);
+					console.log(img_path);
+					var target_tag = $("#modal_view").find('.modal-move');
+					console.log(target_tag); // id属性を追加する前のaタグ
+					target_tag.attr('id', id);
+					console.log(target_tag);　// id属性を追加した後のaタグ
+					var target_img_tag = $('#modal_view').find('img');
+					target_img_tag.attr('src', img_path);
+				}
+				$(document).ready(function() {
+					$('.modal-move').click(function() {
+						var id = this.id;
+						console.log(id);
+						// jsで遷移
+						// 遷移先のパスはMVCに合わせて作成
+						window.location.href = '/cebu_log/shops/show/' + id;
+					});
+				});
+			</script>
 
 
 	</body>

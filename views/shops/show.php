@@ -282,14 +282,7 @@
                 <?php endforeach; ?>
         </div><!-- timeline-centered -->
 
-          <ul>
-                
-                  <li style="display: inline-block;">前</li>
-                  <li style="display: inline-block;">前</li>
-    
-                
-                
-          </ul>
+        
       </div>
      </div>
     </div><!-- container -->
