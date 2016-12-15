@@ -218,8 +218,9 @@
       <!-- 画面右側 -->
       <div class="col-md-8 content-margin-top">
         <div class="timeline-centered">
+        <?php echo $id; ?>
       <!-- 検索ボックスの表示 -->
-      <form action="index.php" method="get" class="form-horizontal">
+      <form action="/cebu_log/shops/show/<?php echo $id; ?>" method="get" class="form-horizontal">
         <input type="text" name="search_word">
         <!-- index.php?['key'] = ['value']; -->
         <!-- inputに入力されたvalueを取り出すには、$_GET['search_word'] -->

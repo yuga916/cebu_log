@@ -158,6 +158,21 @@
                  LEFT JOIN `members` m  ON t.`m_id`= m.`id`
                  WHERE t.`s_id` = %d ORDER BY t.`created` DESC',mysqli_real_escape_string($this->dbconnect, $id));
             $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+            $rtn=array();
+            while ($result=mysqli_fetch_assoc($results))
+            {
+                $rtn[]=$result;
+            }            
+            return $rtn;
+        }
+//talk spotの検索
+        function seach_tweet($id,$word){
+            $sql=sprintf('SELECT t.`tweet_id`, m.`id`, m.`nick_name`,m.`picture_path`,t.`tweet`,t.`m_id`,t.`s_id`, p.`shop_picture_path`, t.`created` 
+                 FROM `tweets` t 
+                 LEFT JOIN `pictures` p ON t.`picture_id`= p.`picture_id`
+                 LEFT JOIN `members` m  ON t.`m_id`= m.`id`
+                 WHERE t.`s_id` = %d AND t.`tweet` LIKE "%%%s%%" ORDER BY t.`created` DESC',mysqli_real_escape_string($this->dbconnect, $id),mysqli_real_escape_string($this->dbconnect, $word));
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
             while ($result=mysqli_fetch_assoc($results))
             {
@@ -165,6 +180,7 @@
             }            
             return $rtn;
         }
+
 //登録後のお店の名前を取得
         function show_shop_id($post)
         {
