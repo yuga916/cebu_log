@@ -70,28 +70,19 @@
     </div><!-- /.container -->
     
     <!-- MAC IMAGE -->
-  <?php if($this->Picture_tops['shop_picture_path'] != null): ?>
+   
       <div class="container">
         <div class="row centered">
           <div class="col-lg-10 col-lg-offset-1">
+            <?php if (!empty($this->Picture_tops['shop_picture_path'])): ?>
             <img class="" src="/cebu_log/uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
             style="height: auto;
                    width: 500px;
                    text-align:center;">
+            <?php endif; ?>
           </div>
         </div>
-  <div class="container">
-    <div class="row centered">
-      <div class="col-lg-10 col-lg-offset-1">
-       <?php if (!empty($this->Picture_tops['shop_picture_path'])): ?>
-        <img class="" src="/cebu_log/uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
-        style="height: auto;
-               width: 500px;
-               text-align:center;">
-         
-       <?php endif ?>
       </div>
-  <?php endif; ?>
   <br>
   <br>
   
@@ -240,10 +231,6 @@
         <input type="submit" value="検索" class="btn btn-success btn-xs">
       </form>
       <br>
-      <br>
-      <br>
-      <br>
-
         <?php if ($this->results=="blank"): ?>
           <p style="color: red;">*検索結果が０件です。再検索してください。</p>
         <?php endif ?>
@@ -261,7 +248,10 @@
                                   width: 40px;">
                               
                             &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
-                            &nbsp;&nbsp;date:<?php echo $viewSample['created']; ?><br><br>
+                            &nbsp;&nbsp;date:<?php echo $viewSample['created']; ?>
+                                  <?php if(isset($_SESSION['id']) AND ($viewSample['m_id'] == $_SESSION['id'])): ?>
+                                  <a href="/cebu_log/tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o fa-2" aria-hidden="true" style="float: center;" ></i></a>
+                                  <?php endif; ?>
                             <p><?php echo $viewSample['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
@@ -271,9 +261,6 @@
                                <br>
                                <br>
 
-                               <?php if(isset($_SESSION['id']) AND ($viewSample['m_id'] == $_SESSION['id'])): ?>
-                                  <a href="/cebu_log/tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o" style="float: right;"></i></a>
-                                <?php endif; ?>
                           </div>
                         
                       
