@@ -52,7 +52,8 @@
       <div class="row mt centered">
         <div class="col-lg-8 col-lg-offset-2">
           <h1><b><?php echo $this->viewOptions['shop_name']; ?>
-          
+            <br>
+            <br>
 
             <?php if(is_null($this->viewLikes['m_id'])): ?>
               </b><a href="/cebu_log/shops/like/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
@@ -61,10 +62,7 @@
             <?php endif; ?>
           
 
-          
-          
           <p>総いいね数：<?php echo $this->likeCounts['like_cnt']; ?></p>
-          <p><?php echo $this->viewOptions['shop_intro']; ?></p>
         </div>
       </div><!-- /row -->
     </div><!-- /.container -->
@@ -100,13 +98,16 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-5 col-lg-offset-1 desc">
-          <h3>The History Of Mt. Fuji</h3>
-          <p>Mt. Fuji was thought of as sacred. So women were forbidden from climbing until the Meiji era. It is recorded that a monk climbed Mt. Fuji in 663 for the first time.<br>Mt. Fuji was recognized as a UNESCO world heritage site in 2013.</p>
+          <h3>The Features Of Shop</h3>
+          <p><?php echo $this->viewOptions['shop_intro']; ?></p>
         </div>
         
         <div class="col-lg-4 col-lg-offset-1 desc">
-          <h3>The Features Of Mt. Fuji</h3>
-          <p>There are several lakes around Mt. Fuji(Lake Yamanaka, Lake Kawaguchi, Lake Saiko, Lake Motosu and Lake Shojin). These lakes are known as the "Fuji Five Lakes".<br>Sometimes you can clearly see the shadow of Mt. Fuji in the evening.
+          <br>
+          <br>
+          <br>
+          <p>ランチでは残念ながら彼のお口に合わなかったようですが、夜に私が訪れた限りではかなりのオススメのレストランでした！（たぶん斎藤さんは値段を気にしすぎて美味しいのを見逃してたんでしょう。ちっちゃい男です）今回は夜のディナー時の雰囲気、味、値段を交えてご紹介していきたいと思います。<br>
+          
           </p>
           
           
@@ -181,7 +182,7 @@
         <h1 id="ground">Talk Spot</h1>
       </div><!-- col-lg-12 -->
       <div class="col-lg-8">
-        <p>Let's talk about Orange</p>
+        <p>Let's talk about <?php echo $this->viewOptions['shop_name']; ?></p>
       </div><!-- col-lg-8-->
     </div><!-- row -->
 
@@ -275,13 +276,16 @@
                                   <a href="/cebu_log/tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o" style="float: right;"></i></a>
                                 <?php endif; ?>
                           </div>
-                        
+                       <br>
+                       <br>
+
                       
 
                   </article>
                 <?php endforeach; ?>
         </div><!-- timeline-centered -->
-
+          <br>
+          <br>
         
       </div>
      </div>
