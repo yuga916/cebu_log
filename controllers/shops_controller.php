@@ -14,7 +14,7 @@
     switch ($action) {
     
       case 'show':
-        $controller->show($id,$get['search_word']);
+          $controller->show($id,$get['search_word']);
         break;
 
 //like機能
@@ -60,6 +60,7 @@
 	 	private $viewsoptionShops;
 	 	private $viewErrors;
         private $viewSamples;
+        private $resultstweets;
 
 
         function __construct() {
@@ -82,6 +83,8 @@
 
             $this->viewSamples=array();
             $this->shop_id='';
+            $this->resultstweets=array();
+            $this->results='';
         }
 
 
@@ -104,14 +107,15 @@
                 $this->viewSamples=$this->shop->sample($id);                
             }
             else{
-                $resultstweets=$this->shop->seach_tweet($id,$search_word);
+                $this->resultstweets=$this->shop->seach_tweet($id,$search_word);
                 //検索結果が空
-                if (empty($resultstweets)) {
-                $this->viewSamples=$this->shop->sample($id);                  
+                if (empty($this->resultstweets)) {
+                $this->viewSamples=$this->shop->sample($id);
+                $this->results='blank';                  
                 }
                 //検索結果が空じゃない場合
                 else{
-                    $this->viewSamples=$resultstweets;
+                    $this->viewSamples=$this->resultstweets;
                 }
             }
 

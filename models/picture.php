@@ -161,7 +161,7 @@
                   special_echo('$idは' . $id . 'です(モデル内)');
                   $sql =  sprintf('SELECT `shop_picture_path`
                        FROM `pictures` 
-                      WHERE `s_id` = %d ORDER BY `created` DESC  LIMIT 8',
+                      WHERE `s_id` = %d AND `shop_picture_path`!="" ORDER BY `created` DESC  LIMIT 8',
                       mysqli_real_escape_string($this->dbconnect, $id)
                       );
                   $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
