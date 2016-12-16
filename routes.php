@@ -45,8 +45,11 @@
             $files=null;
         }
 
-        if (isset($_GET)) {
+        if (isset($_GET['search_word'])) {
             $get=$_GET;
+        } else {
+            $get['search_word'] = '';
+
         }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');

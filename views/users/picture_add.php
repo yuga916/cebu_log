@@ -76,38 +76,38 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="description" content="">
       <meta name="author" content="">
-      <link rel="shortcut icon" href="/cebu_log/webroot/assets/ico/favicon.png">
+      <link rel="shortcut icon" href="<?php echo makePath() ?>webroot/assets/ico/favicon.png">
 
       <title>Sigh In</title>
 
       <!-- Bootstrap core CSS -->
-      <link href="/cebu_log/webroot/assets/css/bootstrap.css" rel="stylesheet">
+      <link href="<?php echo makePath() ?>webroot/assets/css/bootstrap.css" rel="stylesheet">
 
       <!-- Custom styles for this template -->
-      <!-- <link href="/cebu_log/webroot/assets/css/main.css" rel="stylesheet"> -->
+      <!-- <link href="<?php echo makePath() ?>webroot/assets/css/main.css" rel="stylesheet"> -->
 
-      <link href="/cebu_log/webroot/assets/css/font-awesome.min.css" rel="stylesheet">
+      <link href="<?php echo makePath() ?>webroot/assets/css/font-awesome.min.css" rel="stylesheet">
 
       <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
       
-      <script src="/cebu_log/webroot/assets/js/modernizr.custom.js"></script>
+      <script src="<?php echo makePath() ?>webroot/assets/js/modernizr.custom.js"></script>
 
       
       
 
       <!-- add styles -->
-      <link href="/cebu_log/webroot/assets/top_img/test.css" rel="stylesheet" type="text/css" />
-      <link href="/cebu_log/webroot/assets/top_img/tapmodo-Jcrop-1902fbc/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
+      <link href="<?php echo makePath() ?>webroot/assets/top_img/test.css" rel="stylesheet" type="text/css" />
+      <link href="<?php echo makePath() ?>webroot/assets/top_img/tapmodo-Jcrop-1902fbc/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
 
 
       <!-- add scripts -->
-      <script src="/cebu_log/webroot/assets/top_img/tapmodo-Jcrop-1902fbc/js/jquery.min.js"></script>
-      <script src="/cebu_log/webroot/assets/top_img/tapmodo-Jcrop-1902fbc/js/jquery.Jcrop.min.js"></script>
-      <script src="/cebu_log/webroot/assets/top_img/test.js"></script>
+      <script src="<?php echo makePath() ?>webroot/assets/top_img/tapmodo-Jcrop-1902fbc/js/jquery.min.js"></script>
+      <script src="<?php echo makePath() ?>webroot/assets/top_img/tapmodo-Jcrop-1902fbc/js/jquery.Jcrop.min.js"></script>
+      <script src="<?php echo makePath() ?>webroot/assets/top_img/test.js"></script>
       </head>
 
-      <script src="/cebu_log/webroot/js/main.js"></script>
+      <script src="<?php echo makePath() ?>webroot/js/main.js"></script>
 
 
 <body>

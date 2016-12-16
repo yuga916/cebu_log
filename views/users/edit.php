@@ -36,7 +36,7 @@
         <br>
         <br>
          <legend>ユーザー情報の編集</legend>
-         <form method="post" action="/cebu_log/users/update/<?php echo $this->viewOptions['id']; ?>" class="form-horizontal" role="form" enctype="multipart/form-data">
+         <form method="post" action="<?php echo makePath() ?>users/update/<?php echo $this->viewOptions['id']; ?>" class="form-horizontal" role="form" enctype="multipart/form-data">
            <!-- 投稿 -->
            <div class="form-group">
              <label class="col-sm-4 control-label">名前</label>
