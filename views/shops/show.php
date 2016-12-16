@@ -10,30 +10,12 @@
 
     <title></title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
     
-    <script src="assets/js/modernizr.custom.js"></script>
-
-
-    <!-- oneline_bbs -->
-    <link rel="stylesheet" href="assets/css/form.css">
-    <link rel="stylesheet" href="assets/css/timeline.css">
-
+    
     
   </head>
 
@@ -56,9 +38,9 @@
             <br>
 
             <?php if(is_null($this->viewLikes['m_id'])): ?>
-              </b><a href="/cebu_log/shops/like/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
+              </b><a href="<?php echo makePath() ?>shops/like/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
             <?php else: ?>
-              </b><a href="/cebu_log/shops/unlike/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
+              </b><a href="<?php echo makePath() ?>shops/unlike/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></h1>
             <?php endif; ?>
           
 
@@ -73,7 +55,7 @@
         <div class="row centered">
           <div class="col-lg-10 col-lg-offset-1">
             <?php if (!empty($this->Picture_tops['shop_picture_path'])): ?>
-            <img class="" src="/cebu_log/uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
+            <img class="" src="<?php echo makePath() ?>uploads/pictures/<?php echo $this->Picture_tops['shop_picture_path']; ?>" alt="Spot Theme" 
             style="height: auto;
                    width: 500px;
                    text-align:center;">
@@ -144,7 +126,7 @@
 
     <div class="col-lg-8"></div><!-- col-lg-8-->
     <div class="col-lg-4 goright">
-      <p><a href="/cebu_log/pictures/all_show/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-angle-right"></i> See All Posts</a></p>
+      <p><a href="<?php echo makePath() ?>pictures/all_show/<?php echo $this->viewOptions['shop_id']; ?>"><i class="fa fa-angle-right"></i> See All Posts</a></p>
     </div>
   </div><!-- container -->
 
@@ -155,7 +137,7 @@
         <div class="col-md-3 ">
             <figure>
                 <?php if ($viewPicture['shop_picture_path']!==''): ?>
-                    <img class="img-responsive" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
+                    <img class="img-responsive" src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
                     <br>
                 <?php endif ?>
             </figure><!-- /figure -->
@@ -181,7 +163,7 @@
         <!-- 画面左側 -->
       <div class="col-md-4 content-margin-top">
         <!-- form部分 --> 
-      <form action="/cebu_log/tweets/post_tweet_validation" method="post" enctype="multipart/form-data" onsubmit="if(this.tweet.value==''){alert(this.tweet.name+' が未入力です');return false}">
+      <form action="<?php echo makePath() ?>tweets/post_tweet_validation" method="post" enctype="multipart/form-data" onsubmit="if(this.tweet.value==''){alert(this.tweet.name+' が未入力です');return false}">
 
           <!-- つぶやき入力画面 -->
           <div class="form-group">
@@ -223,7 +205,7 @@
       <div class="col-md-8 content-margin-top">
         <div class="timeline-centered">
       <!-- 検索ボックスの表示 -->
-      <form action="/cebu_log/shops/show/<?php echo $this->viewOptions['shop_id']; ?>
+      <form action="<?php echo makePath() ?>shops/show/<?php echo $this->viewOptions['shop_id']; ?>
 " method="get" class="form-horizontal">
         <input type="text" name="search_word">
         <!-- index.php?['key'] = ['value']; -->
@@ -244,20 +226,20 @@
                               
                           <div class="timeline-label">
 
-                            <img src="/cebu_log/<?php echo $viewSample['picture_path']; ?>" width="48" height="48" style="border-radius: 10px;
+                            <img src="<?php echo makePath() ?><?php echo $viewSample['picture_path']; ?>" width="48" height="48" style="border-radius: 10px;
                                   height: 40px;
                                   width: 40px;">
                               
-                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="<?php echo makePath() ?>users/user_page/<?php echo $viewSample['id']; ?>"><?php echo $viewSample['nick_name']; ?></a></p>
                             &nbsp;&nbsp;date:<?php echo $viewSample['created']; ?>
                                   <?php if(isset($_SESSION['id']) AND ($viewSample['m_id'] == $_SESSION['id'])): ?>
-                                  <a href="/cebu_log/tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o fa-2" aria-hidden="true" style="float: center;" ></i></a>
+                                  <a href="<?php echo makePath() ?>tweets/delete/<?php echo $viewSample['tweet_id'] ?>"><i class="fa fa-trash-o fa-2" aria-hidden="true" style="float: center;" ></i></a>
                                   <?php endif; ?>
                             <p><?php echo $viewSample['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
                                 <?php if ($viewSample['shop_picture_path']!==''): ?>
-                               <img src="/cebu_log/uploads/pictures/<?php echo $viewSample['shop_picture_path']; ?>" width="300">                 
+                               <img src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewSample['shop_picture_path']; ?>" width="300">                 
                                 <?php endif ?>
                                <br>
                                <br>

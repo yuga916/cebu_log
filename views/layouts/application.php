@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="/cebu_log/webroot/assets/ico/favicon.png">
+    <link rel="shortcut icon" href="<?php echo makePath() ?>webroot/assets/ico/favicon.png">
 
     <title>Cebu Log</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/cebu_log/webroot/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo makePath() ?>webroot/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/cebu_log/webroot/assets/css/main.css" rel="stylesheet">
+    <link href="<?php echo makePath() ?>webroot/assets/css/main.css" rel="stylesheet">
 
-    <link href="/cebu_log/webroot/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo makePath() ?>webroot/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-    <script src="/cebu_log/webroot/assets/js/modernizr.custom.js"></script>
+    <script src="<?php echo makePath() ?>webroot/assets/js/modernizr.custom.js"></script>
 
 
     
@@ -32,13 +32,13 @@
   <?php if(!empty($_SESSION['id'])): ?>
       <nav class="menu" id="theMenu">
         <div class="menu-wrap">
-          <h1 class="logo"><a href="/cebu_log/">セブログ</a></h1>
+          <h1 class="logo"><a href="<?php echo makePath() ?>">セブログ</a></h1>
           <i class="fa fa-arrow-right menu-close"></i>
-          <a href="/cebu_log/users/user_page/<?php echo $_SESSION['id']; ?>">マイページ</a>
-          <a href="/cebu_log/timelines/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
-          <a href="/cebu_log/pictures/add">写真を投稿</a>
-          <a href="/cebu_log/shops/add">お店ページを作成</a>
-          <a href="/cebu_log/users/logout">ログアウト</a>
+          <a href="<?php echo makePath() ?>users/user_page/<?php echo $_SESSION['id']; ?>">マイページ</a>
+          <a href="<?php echo makePath() ?>timelines/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
+          <a href="<?php echo makePath() ?>pictures/add">写真を投稿</a>
+          <a href="<?php echo makePath() ?>shops/add">お店ページを作成</a>
+          <a href="<?php echo makePath() ?>users/logout">ログアウト</a>
           <a href="#"><i class="fa fa-facebook"></i></a>
           <a href="#"><i class="fa fa-twitter"></i></a>
           <a href="#"><i class="fa fa-dribbble"></i></a>
@@ -64,7 +64,7 @@
               ):?> 
 
           
-              &nbsp;&nbsp;<a href="/cebu_log/users/signup"><button type="button" class="btn btn-danger" style="float: right;">新規登録</button></a>&nbsp;&nbsp;<a href="/cebu_log/users/login"><button type="button" class="btn btn-secondary" style="float: right;">ログイン</button></a></h2>
+              &nbsp;&nbsp;<a href="<?php echo makePath() ?>users/signup"><button type="button" class="btn btn-danger" style="float: right;">新規登録</button></a>&nbsp;&nbsp;<a href="<?php echo makePath() ?>users/login"><button type="button" class="btn btn-secondary" style="float: right;">ログイン</button></a></h2>
            <?php endif; ?>
         <?php endif; ?>
       </div><!-- row -->
@@ -119,7 +119,7 @@
     
 
     <!-- ヘッダーの動きをつける -->
-    <script src="/cebu_log/webroot/assets/js/main.js"></script>
+    <script src="<?php echo makePath() ?>webroot/assets/js/main.js"></script>
     
   </body>
 </html>
