@@ -12,8 +12,8 @@
     if(empty($parameters[0])){
         
         $action = 'home';
-        $resource='show';
-        require('controllers/' . $resource . '_controller.php');
+        
+        require('controllers/home_controller.php');
         exit();
     } else {
         $resource = $parameters[0];
