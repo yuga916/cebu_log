@@ -142,7 +142,6 @@
                 <?php endif ?>
             </figure><!-- /figure -->
         </div>
-      
       <?php endforeach; ?>
     </div>
       <br>

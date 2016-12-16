@@ -118,8 +118,8 @@
                     $this->viewSamples=$this->resultstweets;
                 }
             }
-
-            special_var_dump($this->viewSamples);
+            special_var_dump($this->viewPictures);
+            //special_var_dump($this->viewSamples);
 
             //special_echo('viewOptions');
             //special_var_dump($this->viewOptions);
