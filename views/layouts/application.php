@@ -54,7 +54,7 @@
   <div id="sp">
     <div class="container">
       <div class="row">
-        <h2>セブログ
+        <h2>Cebu Log
         <?php if(empty($_SESSION['id'])): ?>
            <?php if(($this->action != 'signup') 
               AND ($this->action != 'picture_add') 

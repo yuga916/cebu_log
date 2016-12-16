@@ -36,7 +36,7 @@
          <!--post送信後どこにページ遷移する？-->
          <form method="post" action="<?php echo makePath() ?>pictures/post_validation" enctype="multipart/form-data" class="form-horizontal" role="form">
           <!--owner_idを入力-->
-         <input type="hidden" name="owner_id" value="1">
+         <input type="hidden" name="owner_id" value="<?php echo $_SESSION['id']; ?>">
 
 
            <!-- 投稿 -->
