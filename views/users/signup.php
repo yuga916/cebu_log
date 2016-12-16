@@ -42,6 +42,8 @@
                <input type="email" name="email" class="form-control" placeholder="Ex： cebu_log@net.com" value="<?php echo $this->viewOptions['email']; ?>">
                <?php if(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'blank'): ?>
                   <p style="color:red;">* メールアドレスを入力してください</p>
+                <?php elseif (isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'duplicate'): ?>
+                  <p style="color:red;">* 記入したメールアドレスがすでに利用されています</p>           
                <?php endif; ?>
              </div>
            </div>

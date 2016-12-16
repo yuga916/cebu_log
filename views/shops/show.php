@@ -155,7 +155,7 @@
         <div class="col-md-3 ">
             <figure>
                     <img class="img-responsive" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
-                    <br>
+
             </figure><!-- /figure -->
         </div>
       <?php endforeach; ?>
