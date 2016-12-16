@@ -44,7 +44,7 @@
       <div class="col-md-6 col-lg-offset-3">
         <div class="timeline-centered">
       <!-- 検索ボックスの表示 -->
-      <form action="/cebu_log/timelines/index" method="get" class="form-horizontal">
+      <form action="<?php echo makePath() ?>timelines/index" method="get" class="form-horizontal">
         <input type="text" name="search_word">
         <!-- index.php?['key'] = ['value']; -->
         <!-- inputに入力されたvalueを取り出すには、$_GET['search_word'] -->
@@ -61,19 +61,19 @@
                   <article class="timeline-entry">
                           <div class="timeline-label">
 
-                            <img src="/cebu_log/<?php echo $viewOption['picture_path']; ?>" width="48" height="48" style="border-radius: 10px;
+                            <img src="<?php echo makePath() ?><?php echo $viewOption['picture_path']; ?>" width="48" height="48" style="border-radius: 10px;
                                        height: 40px;
                                        width: 40px;">
                               
 
-                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="/cebu_log/users/user_page/<?php echo $viewOption['id']; ?>"><?php echo $viewOption['nick_name']; ?></a></p>
-                            &nbsp;&nbsp;お店名:<a href="/cebu_log/shops/show/<?php echo $viewOption['shop_id']; ?>"><?php echo $viewOption['shop_name']; ?></a>                            
+                            &nbsp;&nbsp;<p style="display:inline;">name:<a href="<?php echo makePath() ?>users/user_page/<?php echo $viewOption['id']; ?>"><?php echo $viewOption['nick_name']; ?></a></p>
+                            &nbsp;&nbsp;お店名:<a href="<?php echo makePath() ?>shops/show/<?php echo $viewOption['shop_id']; ?>"><?php echo $viewOption['shop_name']; ?></a>                            
                             &nbsp;&nbsp;date:<?php echo $viewOption['created']; ?><br><br>
                             <p><?php echo $viewOption['tweet']; ?></p>
 
                               <!-- 投稿画像の表示 -->
                                 <?php if ($viewOption['shop_picture_path']!==''): ?>
-                               <img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>" width="300">                 
+                               <img src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>" width="300">                 
                                 <?php endif ?>
                                <br>
                                <br>

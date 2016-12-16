@@ -14,9 +14,9 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/cebu_log/webroot/assets/css/main.css" rel="stylesheet">
+    <link href="<?php echo makePath() ?>webroot/assets/css/main.css" rel="stylesheet">
 
-    <link href="/cebu_log/webroot/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo makePath() ?>webroot/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
@@ -27,15 +27,15 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     
-    <script src="/cebu_log/webroot/assets/js/modernizr.custom.js"></script>
+    <script src="<?php echo makePath() ?>webroot/assets/js/modernizr.custom.js"></script>
 
     <!-- oneline_bbs -->
-    <link rel="stylesheet" href="/cebu_log/webroot/assets/css/form.css">
-    <link rel="stylesheet" href="/cebu_log/webroot/assets/css/timeline.css">
+    <link rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/css/form.css">
+    <link rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/css/timeline.css">
 
     <!-- ギャラリー -->
-    <link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/zoomwall.js-master/zoomwall.css" />
-    <script type="text/javascript" src="/cebu_log/webroot/assets/zoomwall.js-master/zoomwall.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath() ?>webroot/assets/zoomwall.js-master/zoomwall.css" />
+    <script type="text/javascript" src="<?php echo makePath() ?>webroot/assets/zoomwall.js-master/zoomwall.js"></script>
     
   </head>
 
@@ -70,11 +70,11 @@
              
            
            <?php if($this->viewFollows['is_follow'] == 0): ?>
-               <a href="/cebu_log/users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローする</button></a>
+               <a href="<?php echo makePath() ?>users/follow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローする</button></a>
            
            <?php else: ?>   
 
-               <a href="/cebu_log/users/unfollow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
+               <a href="<?php echo makePath() ?>users/unfollow/<?php echo $this->viewOptions['id']; ?>"><button type="button" class="btn btn-warning">フォローを解除する</button></a>
            <?php endif; ?>
 
           <?php endif; ?> 
@@ -84,12 +84,12 @@
             <div class="row mt centered">
               <div class="col-lg-6">
                 <br>
-                <p><b>フォロー数:<a href="/cebu_log/users/followings/<?php echo $this->viewOptions['id']; ?>"><?php echo $this->followings['follow_cnt']; ?></a></b>人</p>
+                <p><b>フォロー数:<a href="<?php echo makePath() ?>users/followings/<?php echo $this->viewOptions['id']; ?>"><?php echo $this->followings['follow_cnt']; ?></a></b>人</p>
               </div>
 
               <div class="col-lg-6">
                 <br>
-                <p><b>フォロワー数:<a href="/cebu_log/users/followers/<?php echo $this->viewOptions['id']; ?>"><?php echo $this->followers['following_cnt']; ?></a></b>人</p>
+                <p><b>フォロワー数:<a href="<?php echo makePath() ?>users/followers/<?php echo $this->viewOptions['id']; ?>"><?php echo $this->followers['following_cnt']; ?></a></b>人</p>
               </div>
             </div>
         
@@ -106,7 +106,7 @@
           <div id="gallery" class="zoomwall">
 
             <?php foreach($this->viewPictures as $viewPicture): ?>
-                      <img style="padding: 2px;" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
+                      <img style="padding: 2px;" src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewPicture['shop_picture_path']?>"  data-highres="" />
             <?php endforeach; ?>
           </div>
     </div>
@@ -120,11 +120,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/cebu_log/webroot/assets/js/bootstrap.min.js"></script>
-  <script src="/cebu_log/webroot/assets/js/masonry.pkgd.min.js"></script>
-  <script src="/cebu_log/webroot/assets/js/imagesloaded.js"></script>
-    <script src="/cebu_log/webroot/assets/js/classie.js"></script>
-  <script src="/cebu_log/webroot/assets/js/AnimOnScroll.js"></script>
+    <script src="<?php echo makePath() ?>webroot/assets/js/bootstrap.min.js"></script>
+  <script src="<?php echo makePath() ?>webroot/assets/js/masonry.pkgd.min.js"></script>
+  <script src="<?php echo makePath() ?>webroot/assets/js/imagesloaded.js"></script>
+    <script src="<?php echo makePath() ?>webroot/assets/js/classie.js"></script>
+  <script src="<?php echo makePath() ?>webroot/assets/js/AnimOnScroll.js"></script>
   
 
   <!-- ギャラリー -->

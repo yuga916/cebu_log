@@ -96,7 +96,7 @@
 				special_var_dump($post);
 				special_var_dump($picture_id);
 				$this->tweet->create($post,$picture_id);
-				header('Location:/cebu_log/shops/show/' . $post['s_id']);
+				own_header('shops/show/' . $post['s_id']);
 				exit();
 			}
 
@@ -104,7 +104,8 @@
 			function delete($id) {
             special_echo('controllerのdeleteが表示されました。');
             $this->tweet->delete($id);
-            header('Location: /cebu_log');
+            own_header('');
+
         }
 
 

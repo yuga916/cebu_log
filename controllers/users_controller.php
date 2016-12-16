@@ -183,7 +183,7 @@
                     }
                     // 最終的に、セッションを破壊する
                     session_destroy();
-                    header('Location: /cebu_log/');
+                    own_header('');
                     exit();
                 }
 
@@ -262,7 +262,7 @@
         function follow($id) {
             special_echo('users_controllerのfollow()が呼び出されました');
             $this->user->follow($id);
-           header('Location: /cebu_log/users/user_page/' . $id);
+            own_header('users/user_page/' . $id);
     
         }
 
@@ -270,7 +270,7 @@
         function unfollow($id) {
             special_echo('users_controllerのunfollow()が呼び出されました');
             $this->user->unfollow($id);
-            header('Location: /cebu_log/users/user_page/' . $id);
+            own_header('users/user_page/' . $id);
         }
 
 //フォロー一覧ページ
@@ -302,7 +302,7 @@
 //ユーザー情報のアップデート処理
         function update($post,$id) {
             $this->user->update($post);
-            header('Location:/cebu_log/users/user_page/' . $id);
+            own_header('users/user_page/' . $id);
         }
         function delete($id) {
             special_echo('controllerのdeleteが表示されました。');
