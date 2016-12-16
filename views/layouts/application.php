@@ -91,7 +91,7 @@
     <?php else: ?>
       
     <!-- CONTACT FOOTER -->
-    <div id="cf">
+    <div id="footercf">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">

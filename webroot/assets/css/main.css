@@ -452,6 +452,27 @@ hr {
     margin: 0;
     padding: 0;
 }
+
+#footercf {
+    background: #f5deb3;
+}
+#footercf h4 {
+    color: #696969;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+#footercf p {
+    color: #696969;
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 15px;
+}
+#footercf .container {
+    width: 100%}
+#footercf .col-lg-8 {
+    margin: 0;
+    padding: 0;
+}
 .process {
     max-width: 69em;
     list-style: none;
