@@ -10,32 +10,10 @@
 
      <title>Log In画面</title>
 
-     <!-- Bootstrap core CSS -->
-     <link href="assets/css/bootstrap.css" rel="stylesheet">
-
-     <!-- Custom styles for this template -->
-     <link href="assets/css/main.css" rel="stylesheet">
-
-     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
      <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
      <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-     <!--[if lt IE 9]>
-       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-     <![endif]-->
-     
-     <script src="assets/js/modernizr.custom.js"></script>
-
-     <!-- street view from brushed -->
-
-
-
-     <!-- oneline_bbs -->
-     <link rel="stylesheet" href="assets/css/form.css">
-     <link rel="stylesheet" href="assets/css/timeline.css">
 
      
    </head>
@@ -47,7 +25,7 @@
       <br>
       <br>
         <legend>ログイン</legend>
-        <form method="post" action="/cebu_log/users/auth" class="form-horizontal" role="form">
+        <form method="post" action="<?php echo makePath() ?>users/auth" class="form-horizontal" role="form">
           <!-- メールアドレス -->
           <div class="form-group">
             <label class="col-sm-4 control-label">メールアドレス</label>
@@ -71,7 +49,7 @@
             </div>
             
           </div>
-          <input type="submit" class="btn btn-default" value="ログイン"> | <a href="/cebu_log/users/signup" class="btn btn-success">会員登録</a>
+          <input type="submit" class="btn btn-default" value="ログイン"> | <a href="<?php echo makePath() ?>users/signup" class="btn btn-success">会員登録</a>
         </form>
       </div>
     </div>
