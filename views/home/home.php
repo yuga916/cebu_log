@@ -91,8 +91,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 animate-box text-center">
-						<h2 class="intro-heading">Focus leads you for a better Photography site</h2>
-						<p><span>Created with <i class="icon-heart3"></i> by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></span></p>
+						<h2 class="intro-heading">Cebu Log</h2>
+						<p><span>You are what you eat. Let's enjoy eating out!</span></p>
 					</div>
 				</div>
 			</div>
