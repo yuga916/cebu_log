@@ -154,13 +154,10 @@
      <?php foreach($this->viewPictures as $viewPicture): ?>
         <div class="col-md-3 ">
             <figure>
-                <?php if ($viewPicture['shop_picture_path']!==''): ?>
                     <img class="img-responsive" src="/cebu_log/uploads/pictures/<?php echo $viewPicture['shop_picture_path'] ?>" >
                     <br>
-                <?php endif ?>
             </figure><!-- /figure -->
         </div>
-      
       <?php endforeach; ?>
     </div>
       <br>
