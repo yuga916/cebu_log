@@ -336,12 +336,12 @@ hr {
     margin-top: 150px;
 }
 #sp {
-    background: #2f2f2f;
+    background: #f5deb3;
     padding-top: 35px;
     padding-bottom: 35px;
 }
 #sp h2 {
-    color: #fff;
+    color: #696969;
 }
 #sp-standout {
     background: url(../img/category/superbview/.jpg) no-repeat center top;
@@ -449,6 +449,27 @@ hr {
 #cf .container {
     width: 100%}
 #cf .col-lg-8 {
+    margin: 0;
+    padding: 0;
+}
+
+#footercf {
+    background: #f5deb3;
+}
+#footercf h4 {
+    color: #696969;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+#footercf p {
+    color: #696969;
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 15px;
+}
+#footercf .container {
+    width: 100%}
+#footercf .col-lg-8 {
     margin: 0;
     padding: 0;
 }

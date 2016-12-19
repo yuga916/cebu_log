@@ -19,6 +19,17 @@
                     if ($post['email'] == '') {
                         $error['email'] = 'blank';
                     }
+                                        //重複チェック                
+                    if (!empty($post['email'])) {
+                        $sql=sprintf('SELECT COUNT(*) AS cnt FROM `members` WHERE `email`="%s"',mysqli_real_escape_string($this->dbconnect,$post['email']));
+                        $record=mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+                        $table=mysqli_fetch_assoc($record);
+                            if($table['cnt']>0)
+                                {
+                                  $error['email']='duplicate';
+                                }                    
+                    }
+
                     if ($post['password'] == '') {
                         $error['password'] = 'blank';
                     } elseif (strlen($post['password']) < 4) {

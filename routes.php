@@ -12,8 +12,8 @@
     if(empty($parameters[0])){
         
         $action = 'home';
-        $resource='show';
-        require('controllers/' . $resource . '_controller.php');
+        
+        require('controllers/home_controller.php');
         exit();
     } else {
         $resource = $parameters[0];
@@ -45,8 +45,11 @@
             $files=null;
         }
 
-        if (isset($_GET)) {
+        if (isset($_GET['search_word'])) {
             $get=$_GET;
+        } else {
+            $get['search_word'] = '';
+
         }
     // Contollers内のリソース名にふさわしいcontrollerファイルを呼び出し
     require('controllers/' . $resource . '_controller.php');

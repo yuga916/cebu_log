@@ -19,16 +19,7 @@
          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
        <![endif]-->
-       
-       <script src="assets/js/modernizr.custom.js"></script>
-
-       <!-- street view from brushed -->
-
-
-
-       <!-- oneline_bbs -->
-       <link rel="stylesheet" href="assets/css/form.css">
-       <link rel="stylesheet" href="assets/css/timeline.css">
+      
 
        
      </head>
@@ -42,7 +33,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4 content-margin-top">
-        <form method="post" action="/cebu_log/users/create" class="form-horizontal" role="form">
+        <form method="post" action="<?php echo makePath() ?>users/create" class="form-horizontal" role="form">
         <br>
         <br>
         <br>

@@ -46,25 +46,25 @@
   <!-- Font Awesome -->
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/animate.css">
+	<link rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/css/home_css/animate.css">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/css/bootstrap.css">
 	<!-- animatedresponsiveImagegrid  -->
-	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/animatedresponsiveImagegrid.css">
+	<link rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/css/home_css/animatedresponsiveImagegrid.css">
 	<!-- Magnifoc Popup  -->
 
 
-	<link rel="stylesheet" href="/cebu_log/webroot/assets/css/home_css/style.css">
+	<link rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/css/home_css/style.css">
 
 <!-- グリッド関係 -->
-	 <link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/grid/demo.css" />
-			<link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/grid/style.css" />
-			<link rel="stylesheet" type="text/css" href="/cebu_log/webroot/assets/grid/modal.css" />
-			<script type="text/javascript" src="/cebu_log/webroot/js/grid2/modernizr.custom.26633.js"></script>	
+	 <link rel="stylesheet" type="text/css" href="<?php echo makePath() ?>webroot/assets/grid/demo.css" />
+			<link rel="stylesheet" type="text/css" href="<?php echo makePath() ?>webroot/assets/grid/style.css" />
+			<link rel="stylesheet" type="text/css" href="<?php echo makePath() ?>webroot/assets/grid/modal.css" />
+			<script type="text/javascript" src="<?php echo makePath() ?>webroot/js/grid2/modernizr.custom.26633.js"></script>	
 
 
 	<!-- Modernizr JS -->
-	<script src="/cebu_log/webroot/js/modernizr-2.6.2.min.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/modernizr-2.6.2.min.js"></script>
 
 
 	</head>
@@ -91,8 +91,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 animate-box text-center">
-						<h2 class="intro-heading">Focus leads you for a better Photography site</h2>
-						<p><span>Created with <i class="icon-heart3"></i> by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></span></p>
+						<h2 class="intro-heading">Cebu Log</h2>
+						<p><span>You are what you eat. Let's enjoy eating out!</span></p>
 					</div>
 				</div>
 			</div>
@@ -131,11 +131,11 @@
 				
 
 				<div id="ri-grid" class="ri-grid animate-box">
-					<img class="ri-loading-image" src="/cebu_log/images/loading.gif"/>
+					<img class="ri-loading-image" src="<?php echo makePath() ?>images/loading.gif"/>
 					
 					<ul>
 					<?php foreach($this->viewOptions as $viewOption): ?>
-						<li id="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"><a href="#modal_view" class="modal" id="<?php echo $viewOption['s_id']; ?>"><img src="/cebu_log/uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"/></a>
+						<li id="<?php echo makePath() ?>uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"><a href="#modal_view" class="modal" id="<?php echo $viewOption['s_id']; ?>"><img src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewOption['shop_picture_path']; ?>"/></a>
 
 
 						</li>
@@ -193,13 +193,13 @@
 				    <div class="container">
 				    	<div class="row mt">
 				    		<div class="col-lg-4 col-lg-offset-4 centered">
-				    			<h3>美味しいお店から探す</h3>
+				    			<h3>人気のお店から探す</h3>
 				    			<hr>
 				    		</div>
 				    		<div class="col-lg-8"></div><!-- col-lg-8-->
 <!--
                   <div class="col-lg-4 goright">
-                   <p><a href="img_all.php"><i class="fa fa-angle-right"></i>ユーザーランキングを見る</a></p>
+                   
                   </div>
 -->
 				    	</div>
@@ -209,19 +209,19 @@
 				    		<div class="col-lg-4">
 				    			<p class="capitalize"><?php echo $this->i; ?>位</p>
 				    			<?php if (!empty($this->$viewlikesrank['shop_picture_path'])): ?>
-				    			<a href="/cebu_log/shops/show/<?php echo $viewlikesrank['s_id']; ?>">
-				    			<img src="/cebu_log/uploads/pictures/<?php echo $viewlikesrank['shop_picture_path']; ?>" style="border-radius: 30px;
+				    			<a href="<?php echo makePath() ?>shops/show/<?php echo $viewlikesrank['s_id']; ?>">
+				    			<img src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewlikesrank['shop_picture_path']; ?>" style="border-radius: 30px;
                       												 height: 150px;
                       												 width: 150px;" width="100" height="100"></a>			
 				    			<?php else: ?>
-				    			<img src="/cebu_log/uploads/pictures/sample.jpg" style="border-radius: 30px;
+				    			<img src="<?php echo makePath() ?>uploads/pictures/sample.jpg" style="border-radius: 30px;
                       												 height: 150px;
                       												 width: 150px;" width="100" height="100">			
 				    			<?php endif; ?>
 
                   <br>
                   <br>
-				    			<a href="/cebu_log/shops/show/<?php echo $viewlikesrank['s_id']; ?>"><h4><?php echo $viewlikesrank['shop_name']; ?></h4></a>
+				    			<a href="<?php echo makePath() ?>shops/show/<?php echo $viewlikesrank['s_id']; ?>"><h4><?php echo $viewlikesrank['shop_name']; ?></h4></a>
 				    			<p><?php echo $viewlikesrank['shop_intro']; ?></p>
 				    		</div>	
 				    		<?php endforeach ?>
@@ -239,14 +239,14 @@
 				    		</div>
 				    		<div class="col-lg-8"></div><!-- col-lg-8-->
                 <div class="col-lg-4 goright">
-                 <p><a href="/cebu_log/pictures/realtime"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
+                 <p><a href="<?php echo makePath() ?>pictures/realtime"><i class="fa fa-angle-right"></i>リアルタイムで投稿されている写真を見る</a></p>
     </div>
 				    	</div>
 				    	<div class="row mt">
 				    	<?php foreach ($this->viewrealtimepics as $viewrealtimepic): ?>
 				    		<div class="col-lg-2">
-				    			<a href="/cebu_log/shops/show/<?php echo $viewrealtimepic['s_id']; ?>">
-								<img src="/cebu_log/uploads/pictures/<?php echo $viewrealtimepic['shop_picture_path']; ?>" style="border-radius: 10px;
+				    			<a href="<?php echo makePath() ?>shops/show/<?php echo $viewrealtimepic['s_id']; ?>">
+								<img src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewrealtimepic['shop_picture_path']; ?>" style="border-radius: 10px;
                       												 height: 150px;
                       												 width: 150px;" width="100" height="100"></a>
                   <br>
@@ -269,26 +269,26 @@
 
 
 	<!-- jQuery -->
-	<script src="/cebu_log/webroot/js/jquery.min.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="/cebu_log/webroot/js/jquery.easing.1.3.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="/cebu_log/webroot/js/bootstrap.min.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="/cebu_log/webroot/js/jquery.waypoints.min.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/jquery.waypoints.min.js"></script>
 	<!-- Counters -->
-	<script src="/cebu_log/webroot/js/jquery.countTo.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/jquery.countTo.js"></script>
 	<!-- gridrotator -->
 	<!-- Magnific Popup -->
 
 	<!-- Main JS (Do not remove) -->
-	<script src="/cebu_log/webroot/js/main.js"></script>
+	<script src="<?php echo makePath() ?>webroot/js/main.js"></script>
 
 	
 
 <!-- グリッド -->
-			<script type="text/javascript" src="/cebu_log/webroot/js/grid2/jquery.gridrotator.js"></script>
-			<script type="text/javascript" src="/cebu_log/webroot/js/grid2/simpleModalWindow.js"></script>
+			<script type="text/javascript" src="<?php echo makePath() ?>webroot/js/grid2/jquery.gridrotator.js"></script>
+			<script type="text/javascript" src="<?php echo makePath() ?>webroot/js/grid2/simpleModalWindow.js"></script>
 
 			<script type="text/javascript">
 				$(function() {
@@ -330,7 +330,7 @@
 						console.log(id);
 						// jsで遷移
 						// 遷移先のパスはMVCに合わせて作成
-						window.location.href = '/cebu_log/shops/show/' + id;
+						window.location.href = '<?php echo makePath() ?>shops/show/' + id;
 					});
 				});
 			</script>

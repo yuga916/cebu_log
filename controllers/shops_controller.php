@@ -118,8 +118,8 @@
                     $this->viewSamples=$this->resultstweets;
                 }
             }
-
-            special_var_dump($this->viewSamples);
+            special_var_dump($this->viewPictures);
+            //special_var_dump($this->viewSamples);
 
             //special_echo('viewOptions');
             //special_var_dump($this->viewOptions);
@@ -138,13 +138,13 @@
         function like($id) {
             $this->viewLikes = $this->shop->like($id);
             $this->action = 'like';
-            header('Location: /cebu_log/shops/show/' . $id);
+            own_header('shops/show/' . $id);
         }
 
 //unlike機能
         function unlike($id) {
             $this->shop->unlike($id);
-            header('Location: /cebu_log/shops/show/' . $id);
+            own_header('shops/show/' . $id);
         }
       
 

@@ -1,5 +1,5 @@
 <div>
-	<form method="POST" action="/cebu_log/shops/post_validation" enctype="multipart/form-data">
+	<form method="POST" action="<?php echo makePath() ?>shops/post_validation" enctype="multipart/form-data">
 		<input type="hidden" name="owner_id" value="1">
 
         <div>

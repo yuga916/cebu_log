@@ -21,9 +21,6 @@
       <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
       
-      <script src="assets/js/modernizr.custom.js"></script>
-
-      <!-- street view from brushed -->
 
     </head>
 
@@ -37,9 +34,9 @@
         <br>
          <legend>新規foodの投稿</legend>
          <!--post送信後どこにページ遷移する？-->
-         <form method="post" action="/cebu_log/pictures/post_validation" enctype="multipart/form-data" class="form-horizontal" role="form">
+         <form method="post" action="<?php echo makePath() ?>pictures/post_validation" enctype="multipart/form-data" class="form-horizontal" role="form">
           <!--owner_idを入力-->
-         <input type="hidden" name="owner_id" value="1">
+         <input type="hidden" name="owner_id" value="<?php echo $_SESSION['id']; ?>">
 
 
            <!-- 投稿 -->

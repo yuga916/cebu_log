@@ -17,11 +17,11 @@ var_dump($results);
 
       <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-      <script src="/cebu_log/webroot/assets/google_map/google_map.js"></script>
-      <link href="/cebu_log/webroot/assets/google_map/google_map.css" rel="stylesheet">
+      <script src="<?php echo makePath() ?>webroot/assets/google_map/google_map.js"></script>
+      <link href="<?php echo makePath() ?>webroot/assets/google_map/google_map.css" rel="stylesheet">
       <script src="assets/js/modernizr.custom.js"></script>
       <!-- googleaddress　MAP css -->
-      <link type="text/css" rel="stylesheet" href="/cebu_log/webroot/assets/google_map/google_place_map.css"></script>
+      <link type="text/css" rel="stylesheet" href="<?php echo makePath() ?>webroot/assets/google_map/google_place_map.css"></script>
     </head>
 
 <body>
@@ -35,7 +35,7 @@ var_dump($results);
         <br>
         <br>
          <legend>新規shopの作成</legend>
-         <form method="POST" action="/cebu_log/shops/post_validation" class="form-horizontal" role="form" enctype="multipart/form-data">
+         <form method="POST" action="<?php echo makePath() ?>shops/post_validation" class="form-horizontal" role="form" enctype="multipart/form-data">
           <input type="hidden" name="owner_id" value="1">
 
 
@@ -233,7 +233,7 @@ function geocodeAddress(geocoder, resultsMap) {
        <script src="../assets/js/classie.js"></script>
      
            <!-- googleaddress　MAP -->    
-    <script scr="/cebu_log/webroot/assets/google_map/google_place_map.js"></script>
+    <script scr="<?php echo makePath() ?>webroot/assets/google_map/google_place_map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6-NLDf0FhhazUiJYsEoiUWETMYTTwpDg&libraries=places&callback=initMap"　async defer></script>
 
    </body>
