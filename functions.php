@@ -16,6 +16,7 @@
         }
     }
 
+   
     function makePath() {
          if (DEBUG) {
            return '/cebu_log/';
