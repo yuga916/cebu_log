@@ -183,7 +183,7 @@
                     }
                     // 最終的に、セッションを破壊する
                     session_destroy();
-                    own_header('');
+                    own_header('users/login');
                     exit();
                 }
 

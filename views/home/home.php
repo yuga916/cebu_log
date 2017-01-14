@@ -208,7 +208,7 @@
 				    		<?php $this->i++;  ?>
 				    		<div class="col-lg-4">
 				    			<p class="capitalize"><?php echo $this->i; ?>位</p>
-				    			<?php if (!empty($this->$viewlikesrank['shop_picture_path'])): ?>
+				    			<?php if (!empty($viewlikesrank['shop_picture_path'])): ?>
 				    			<a href="<?php echo makePath() ?>shops/show/<?php echo $viewlikesrank['s_id']; ?>">
 				    			<img src="<?php echo makePath() ?>uploads/pictures/<?php echo $viewlikesrank['shop_picture_path']; ?>" style="border-radius: 30px;
                       												 height: 150px;
